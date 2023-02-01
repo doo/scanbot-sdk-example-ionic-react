@@ -1,0 +1,93 @@
+[
+  {
+    "metadataOutputVersion" : "3.0",
+    "storagePrecision" : "Float16",
+    "outputSchema" : [
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float32",
+        "formattedType" : "MultiArray (Float32)",
+        "shortDescription" : "",
+        "shape" : "[]",
+        "name" : "feature_block_12",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float32",
+        "formattedType" : "MultiArray (Float32)",
+        "shortDescription" : "",
+        "shape" : "[]",
+        "name" : "feature_block_5",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float32",
+        "formattedType" : "MultiArray (Float32)",
+        "shortDescription" : "",
+        "shape" : "[]",
+        "name" : "cells_grid",
+        "type" : "MultiArray"
+      }
+    ],
+    "modelParameters" : [
+
+    ],
+    "specificationVersion" : 2,
+    "computePrecision" : "Float16",
+    "isUpdatable" : "0",
+    "availability" : {
+      "macOS" : "10.13.2",
+      "tvOS" : "11.2",
+      "watchOS" : "4.2",
+      "iOS" : "11.2",
+      "macCatalyst" : "11.2"
+    },
+    "neuralNetworkLayerTypeHistogram" : {
+      "DivideBroadcastable" : 1,
+      "Concat" : 1,
+      "UnaryExp" : 1,
+      "UnaryThreshold" : 35,
+      "Convolution" : 55,
+      "ActivationSigmoid" : 1,
+      "Transpose" : 3,
+      "ReduceMax" : 1,
+      "PaddingConstant" : 5,
+      "ReduceSum" : 1,
+      "Add" : 10,
+      "BatchNorm" : 55,
+      "ActivationLinear" : 70,
+      "ActivationReLU" : 35,
+      "SubtractBroadcastable" : 1
+    },
+    "modelType" : {
+      "name" : "MLModelType_neuralNetwork"
+    },
+    "userDefinedMetadata" : {
+      "com.github.apple.coremltools.version" : "4.1",
+      "com.github.apple.coremltools.source" : "tensorflow==2.2.0"
+    },
+    "generatedClassName" : "DocumentDetectorModel",
+    "inputSchema" : [
+      {
+        "formattedType" : "Image (Color 224 × 224)",
+        "hasSizeFlexibility" : "1",
+        "shortDescription" : "",
+        "sizeRange" : "[[224, 224], [224, 224]]",
+        "width" : "224",
+        "type" : "Image",
+        "isColor" : "1",
+        "height" : "224",
+        "sizeFlexibility" : "224 × 224",
+        "colorspace" : "BGR",
+        "name" : "image",
+        "isOptional" : "0"
+      }
+    ],
+    "method" : "predict"
+  }
+]

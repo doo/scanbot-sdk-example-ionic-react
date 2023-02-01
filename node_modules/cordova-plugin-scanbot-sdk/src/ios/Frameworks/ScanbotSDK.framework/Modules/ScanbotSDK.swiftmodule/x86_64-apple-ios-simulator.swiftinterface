@@ -1,0 +1,80 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7 (swiftlang-5.7.0.127.4 clang-1400.0.29.50)
+// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name ScanbotSDK
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import Foundation
+@_exported import ScanbotSDK
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+@objc extension SBSDKUICroppingScreenConfiguration {
+  @objc convenience dynamic public init?(json: String)
+}
+@objc extension SBSDKUIBarcodesBatchScannerConfiguration {
+  @objc convenience dynamic public init?(json: String)
+}
+@objc extension SBSDKUIDocumentScannerConfiguration {
+  @objc convenience dynamic public init?(json: String)
+}
+@objc extension SBSDKUIHealthInsuranceCardScannerConfiguration {
+  @objc convenience dynamic public init?(json: String)
+}
+@objc extension SBSDKUIGenericDocumentRecognizerConfiguration {
+  @objc convenience dynamic public init?(json: String)
+}
+@objc extension UIColor {
+  @objc public static func colorWithHexCode(_ hex: String?) -> UIColor?
+}
+@objc extension SBSDKUIMRZScannerConfiguration {
+  @objc convenience dynamic public init?(json: String)
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class ScanbotSDKConfiguration : NSObject {
+  @objc public var loggingEnabled: Bool
+  @objc public var licenseString: String?
+  @objc public var licenseLoggingEnabled: Bool
+  @objc public var licenseFailureHandler: SBSDKLicenseFailureHandler
+  @objc public var resourceBundle: Bundle
+  @objc public var sharedApplication: UIApplication?
+  @objc public var defaultDocumentDetectorMode: SBSDKDocumentDetectorMode
+  @objc public var shouldShowStatusBarOnScanningScreens: Bool
+  @objc public var defaultStatusBarStyle: UIStatusBarStyle
+  @objc public var fileStorageImageQuality: UInt8
+  @objc public var fileStorageImageFormat: SBSDKImageFileFormat
+  @objc public var fileStorageBaseDirectory: URL?
+  @objc public var fileEncryptionMode: SBSDKAESEncrypterMode
+  @objc public var fileEncryptionPassword: String?
+  @objc override dynamic public init()
+  @objc public class func defaultConfiguration() -> ScanbotSDKConfiguration
+  @objc public class func configurationWith(JSON: String) -> ScanbotSDKConfiguration?
+  @objc public class func configurationWithJSONFrom(URL: URL) -> ScanbotSDKConfiguration?
+  @objc deinit
+}
+@objc public class SBSDKBarcodeResultsAccumulator : NSObject {
+  @objc public init(maxAge: TimeInterval)
+  @objc public func accumulateResults(_ results: [SBSDKBarcodeScannerResult]) -> [SBSDKBarcodeScannerResult]
+  @objc public func clear()
+  @objc deinit
+}
+@objc extension SBSDKUINFCPassportReaderConfiguration {
+  @objc convenience dynamic public init?(json: String)
+}
+@objc extension SBSDKUICheckRecognizerConfiguration {
+  @objc convenience dynamic public init?(json: String)
+}
+@objc extension SBSDKUIBarcodeScannerConfiguration {
+  @objc convenience dynamic public init?(json: String)
+}
+@objc extension SBSDKUITextDataScannerConfiguration {
+  @objc convenience dynamic public init?(json: String)
+}
+@objc extension SBSDKUILicensePlateScannerConfiguration {
+  @objc convenience dynamic public init?(json: String)
+}
+@objc extension SBSDKUIMedicalCertificateScannerConfiguration {
+  @objc convenience dynamic public init?(json: String)
+}
+@objc extension ScanbotSDK {
+  @discardableResult
+  @objc dynamic public class func applyConfiguration(_ configuration: ScanbotSDKConfiguration) -> Bool
+}

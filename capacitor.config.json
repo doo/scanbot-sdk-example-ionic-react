@@ -1,0 +1,6 @@
+{
+	"appId": "io.scanbot.example.sdk.barcode.ionic",
+	"appName": "ScanbotIonic",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}

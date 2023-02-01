@@ -1,0 +1,104 @@
+{
+    "acceptedDocumentTypes": [
+        "DeIdCardFront"
+    ],
+    "cameraModule": "BACK",
+    "cameraOverlayColor": "#00000080",
+    "cameraPreviewMode": "FILL_IN",
+    "cancelButtonTitle": "Cancel",
+    "clearButtonTitle": "Clear",
+    "confidenceValue": "%li%% confidence",
+    "detailsActionColor": "#F7CE46",
+    "detailsBackgroundColor": "#000000",
+    "detailsPrimaryColor": "#FFFFFF",
+    "documentsDisplayConfiguration": [
+        {
+            "defaultDisplayText": "German ID Card, Front Side",
+            "normalizedDocumentName": "DeIdCardFront"
+        }
+    ],
+    "enableCameraButtonTitle": "Enable camera",
+    "enableCameraExplanationText": "Please enable the camera permission to start scanning.",
+    "excludedFieldTypes": null,
+    "fieldConfidenceHighColor": "#00CEFF",
+    "fieldConfidenceLowColor": "#FF7948",
+    "fieldConfidenceModerateColor": "#F2CA23",
+    "fieldConfidenceTextColor": "#000000",
+    "fieldsCountText": "%li fields",
+    "fieldsCountTextColor": "#FFFFFF80",
+    "fieldsDisplayConfiguration": [
+        {
+            "defaultDisplayState": "AlwaysVisible",
+            "defaultDisplayText": "Birth date",
+            "normalizedFieldName": "DeIdCardFront.BirthDate"
+        },
+        {
+            "defaultDisplayState": "AlwaysVisible",
+            "defaultDisplayText": "Birthplace",
+            "normalizedFieldName": "DeIdCardFront.Birthplace"
+        },
+        {
+            "defaultDisplayState": "AlwaysVisible",
+            "defaultDisplayText": "Given names",
+            "normalizedFieldName": "DeIdCardFront.GivenNames"
+        },
+        {
+            "defaultDisplayState": "AlwaysVisible",
+            "defaultDisplayText": "Document ID",
+            "normalizedFieldName": "DeIdCardFront.ID"
+        },
+        {
+            "defaultDisplayState": "AlwaysVisible",
+            "defaultDisplayText": "Maiden name",
+            "normalizedFieldName": "DeIdCardFront.MaidenName"
+        },
+        {
+            "defaultDisplayState": "AlwaysVisible",
+            "defaultDisplayText": "Nationality",
+            "normalizedFieldName": "DeIdCardFront.Nationality"
+        },
+        {
+            "defaultDisplayState": "AlwaysVisible",
+            "defaultDisplayText": "PIN",
+            "normalizedFieldName": "DeIdCardFront.PIN"
+        },
+        {
+            "defaultDisplayState": "AlwaysVisible",
+            "defaultDisplayText": "Photo image",
+            "normalizedFieldName": "DeIdCardFront.Photo"
+        },
+        {
+            "defaultDisplayState": "AlwaysVisible",
+            "defaultDisplayText": "Signature image",
+            "normalizedFieldName": "DeIdCardFront.Signature"
+        },
+        {
+            "defaultDisplayState": "AlwaysVisible",
+            "defaultDisplayText": "Surname",
+            "normalizedFieldName": "DeIdCardFront.Surname"
+        }
+    ],
+    "finderLineColor": "#00CEA6",
+    "finderLineWidth": 2,
+    "flashButtonHidden": false,
+    "flashButtonTitle": "",
+    "flashEnabled": false,
+    "imageTitle": "Image",
+    "noDataTitle": "No data",
+    "orientationLockMode": "NONE",
+    "replaceCancelButtonWithIcon": false,
+    "scanBackSideTitle": "Now scan the back side",
+    "scanFrontSideTitle": "Now scan the front side",
+    "scannedEverythingTitle": "Success! You have captured all fields",
+    "screen": "GenericDocumentRecognizer",
+    "sharpnessAcceptanceFactor": 80.0,
+    "startScanningTitle": "Please start scanning",
+    "submitButtonTitle": "View Results",
+    "tipBackgroundColor": "#00CEA6",
+    "tipTextColor": "#FFFFFF",
+    "topBarBackgroundColor": "#000000",
+    "topBarButtonsActiveColor": "#F7CE46",
+    "topBarButtonsInactiveColor": "#FFFFFF",
+    "useButtonsAllCaps": true,
+    "version": "1.0"
+}

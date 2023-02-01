@@ -1,0 +1,44 @@
+{
+    "cameraModule": "BACK",
+    "cameraOverlayColor": "#00000080",
+    "cameraPreviewMode": "FILL_IN",
+    "cancelButtonTitle": "Cancel",
+    "enableCameraButtonTitle": "Enable camera",
+    "enableCameraExplanationText": "Please enable the camera permission to start scanning.",
+    "finderLineColor": "#FFFFFF",
+    "finderLineWidth": 2,
+    "finderTextHintColor": "#FFFFFF",
+    "flashButtonHidden": false,
+    "flashButtonTitle": "",
+    "flashEnabled": false,
+    "maximumNumberOfAccumulatedFrames": 3,
+    "minimumNumberOfRequiredFramesWithEqualRecognitionResult": 2,
+    "ocrResolutionLimit": 0,
+    "orientationLockMode": "NONE",
+    "replaceCancelButtonWithIcon": false,
+    "screen": "TextDataScanner",
+    "supportedLanguages": [
+        "en"
+    ],
+    "textDataScannerStep": {
+        "allowedSymbols": "",
+        "aspectRatio": {
+            "height": 1.0,
+            "width": 5.0
+        },
+        "guidanceText": "",
+        "pattern": "",
+        "preferredZoom": 2.0,
+        "shouldMatchSubstring": false,
+        "significantShakeDelay": -1,
+        "textFilterStrategy": "Document",
+        "unzoomedFinderHeight": 40
+    },
+    "topBarBackgroundColor": "#000000",
+    "topBarButtonsActiveColor": "#F7CE46",
+    "topBarButtonsInactiveColor": "#FFFFFF",
+    "useButtonsAllCaps": true,
+    "version": "1.0",
+    "wordBoxHighlightColor": "#33CCE64D",
+    "wordBoxHighlightEnabled": true
+}

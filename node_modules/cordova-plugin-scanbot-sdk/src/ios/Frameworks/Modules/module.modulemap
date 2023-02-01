@@ -1,0 +1,11 @@
+framework module ScanbotSDK {
+  umbrella header "ScanbotSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module ScanbotSDK.Swift {
+  header "ScanbotSDK-Swift.h"
+  requires objc
+}

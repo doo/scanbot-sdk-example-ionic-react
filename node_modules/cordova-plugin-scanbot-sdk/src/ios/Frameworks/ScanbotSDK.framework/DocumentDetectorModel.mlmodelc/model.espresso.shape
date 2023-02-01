@@ -1,0 +1,1271 @@
+{
+  "layer_shapes" : {
+    "model\/block_1_depthwise_relu\/Relu6__relu6_neg__" : {
+      "k" : 96,
+      "w" : 56,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 56
+    },
+    "model\/block_8_add\/add" : {
+      "k" : 64,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_16_expand_relu\/Relu6__relu6_relu__" : {
+      "k" : 960,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_6_depthwise_relu\/Relu6" : {
+      "k" : 192,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "batch_norm_32" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_10_depthwise_relu\/Relu6" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_9_expand_relu\/Relu6" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_10_expand_relu\/Relu6__relu6_neg__" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_5_depthwise_relu\/Relu6__relu6_neg__" : {
+      "k" : 192,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "_before_transpose_op_Identity" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/out_relu\/Relu6__relu6_neg__" : {
+      "k" : 1280,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_8_depthwise_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_14_depthwise_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 960,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_9_depthwise_relu\/Relu6__relu6_neg__" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_8_depthwise_relu\/Relu6" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_4_expand_relu\/Relu6__relu6_relu__" : {
+      "k" : 192,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/block_9_expand_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_3_expand_relu\/Relu6__relu6_neg__" : {
+      "k" : 144,
+      "w" : 56,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 56
+    },
+    "batch_norm_29" : {
+      "k" : 64,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_9_add\/add" : {
+      "k" : 64,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_15_depthwise_relu\/Relu6__relu6_relu__" : {
+      "k" : 960,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "batch_norm_54" : {
+      "k" : 2,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/Conv1_relu\/Relu6__relu6_neg__" : {
+      "k" : 32,
+      "w" : 112,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 112
+    },
+    "model\/block_15_add\/add" : {
+      "k" : 160,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_14_depthwise_relu\/Relu6" : {
+      "k" : 960,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_3_expand_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 144,
+      "w" : 56,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 56
+    },
+    "model\/block_5_depthwise_relu\/Relu6__relu6_relu__" : {
+      "k" : 192,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/block_2_depthwise_relu\/Relu6" : {
+      "k" : 144,
+      "w" : 56,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 56
+    },
+    "model\/corners_softmax\/Sum" : {
+      "k" : 1,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "cells_grid" : {
+      "k" : 7,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_16_expand_relu\/Relu6__relu6_neg__" : {
+      "k" : 960,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_11_expand_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 576,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_13_depthwise_relu\/Relu6__relu6_relu__" : {
+      "k" : 576,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_11_expand_relu\/Relu6__relu6_relu__" : {
+      "k" : 576,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_16_depthwise_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 960,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "batch_norm_35" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_8_expand_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_9_depthwise_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_4_expand_relu\/Relu6" : {
+      "k" : 192,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/corners_softmax\/Max" : {
+      "k" : 1,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_2_expand_relu\/Relu6__relu6_relu__" : {
+      "k" : 144,
+      "w" : 56,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 56
+    },
+    "model\/block_7_depthwise_relu\/Relu6" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/Conv1_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 32,
+      "w" : 112,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 112
+    },
+    "model\/block_1_expand_relu\/Relu6__relu6_neg__" : {
+      "k" : 96,
+      "w" : 112,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 112
+    },
+    "model\/out_relu\/Relu6__relu6_relu__" : {
+      "k" : 1280,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_14_expand_relu\/Relu6__relu6_neg__" : {
+      "k" : 960,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_12_depthwise_relu\/Relu6" : {
+      "k" : 576,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_2_expand_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 144,
+      "w" : 56,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 56
+    },
+    "model\/block_7_add\/add" : {
+      "k" : 64,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "batch_norm_41" : {
+      "k" : 160,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_3_expand_relu\/Relu6" : {
+      "k" : 144,
+      "w" : 56,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 56
+    },
+    "model\/block_9_depthwise_relu\/Relu6" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "feature_block_12" : {
+      "k" : 14,
+      "w" : 96,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_7_depthwise_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_11_add\/add" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_16_depthwise_relu\/Relu6__relu6_neg__" : {
+      "k" : 960,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_16_expand_relu\/Relu6" : {
+      "k" : 960,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/corners_softmax\/sub" : {
+      "k" : 4,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "batch_norm_11" : {
+      "k" : 32,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/block_7_expand_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/out_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 1280,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "batch_norm_52" : {
+      "k" : 1,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_4_depthwise_relu\/Relu6__relu6_relu__" : {
+      "k" : 192,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/block_14_depthwise_relu\/Relu6__relu6_relu__" : {
+      "k" : 960,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_4_add\/add" : {
+      "k" : 32,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/block_14_expand_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 960,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_12_expand_relu\/Relu6" : {
+      "k" : 576,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "batch_norm_38" : {
+      "k" : 96,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_11_depthwise_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 576,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_3_depthwise_relu\/Relu6" : {
+      "k" : 144,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/block_5_depthwise_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 192,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/block_1_expand_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 96,
+      "w" : 112,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 112
+    },
+    "model\/block_16_depthwise_relu\/Relu6" : {
+      "k" : 960,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_12_depthwise_relu\/Relu6__relu6_relu__" : {
+      "k" : 576,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_14_depthwise_relu\/Relu6__relu6_neg__" : {
+      "k" : 960,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/expanded_conv_depthwise_relu\/Relu6__relu6_neg__" : {
+      "k" : 32,
+      "w" : 112,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 112
+    },
+    "model\/block_15_expand_relu\/Relu6" : {
+      "k" : 960,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_12_expand_relu\/Relu6__relu6_relu__" : {
+      "k" : 576,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_13_expand_relu\/Relu6__relu6_neg__" : {
+      "k" : 576,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_8_expand_relu\/Relu6__relu6_neg__" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_8_expand_relu\/Relu6__relu6_relu__" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_6_expand_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 192,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/Conv1_relu\/Relu6" : {
+      "k" : 32,
+      "w" : 112,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 112
+    },
+    "model\/block_10_depthwise_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "batch_norm_44" : {
+      "k" : 160,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_4_depthwise_relu\/Relu6__relu6_neg__" : {
+      "k" : 192,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/block_6_expand_relu\/Relu6" : {
+      "k" : 192,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/block_11_expand_relu\/Relu6" : {
+      "k" : 576,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/objectness_sigmoid\/Sigmoid" : {
+      "k" : 1,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_2_expand_relu\/Relu6__relu6_neg__" : {
+      "k" : 144,
+      "w" : 56,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 56
+    },
+    "model\/block_1_expand_relu\/Relu6__relu6_relu__" : {
+      "k" : 96,
+      "w" : 112,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 112
+    },
+    "batch_norm_2" : {
+      "k" : 16,
+      "w" : 112,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 112
+    },
+    "model\/block_1_depthwise_relu\/Relu6__relu6_relu__" : {
+      "k" : 96,
+      "w" : 56,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 56
+    },
+    "model\/block_11_expand_relu\/Relu6__relu6_neg__" : {
+      "k" : 576,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_8_depthwise_relu\/Relu6__relu6_neg__" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_13_depthwise_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 576,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/Conv1_relu\/Relu6__relu6_relu__" : {
+      "k" : 32,
+      "w" : 112,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 112
+    },
+    "batch_norm_14" : {
+      "k" : 32,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/expanded_conv_depthwise_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 32,
+      "w" : 112,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 112
+    },
+    "model\/block_2_add\/add" : {
+      "k" : 24,
+      "w" : 56,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 56
+    },
+    "model\/block_3_depthwise_relu\/Relu6__relu6_relu__" : {
+      "k" : 144,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/block_3_depthwise_relu\/Relu6__relu6_neg__" : {
+      "k" : 144,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/block_12_depthwise_relu\/Relu6__relu6_neg__" : {
+      "k" : 576,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_6_depthwise_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 192,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_14_expand_relu\/Relu6" : {
+      "k" : 960,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_5_expand_relu\/Relu6" : {
+      "k" : 192,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/block_14_expand_relu\/Relu6__relu6_relu__" : {
+      "k" : 960,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_16_expand_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 960,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "batch_norm_50" : {
+      "k" : 320,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_9_expand_relu\/Relu6__relu6_relu__" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_5_expand_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 192,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/block_7_depthwise_relu\/Relu6__relu6_neg__" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_6_expand_relu\/Relu6__relu6_neg__" : {
+      "k" : 192,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/block_6_expand_relu\/Relu6__relu6_relu__" : {
+      "k" : 192,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "batch_norm_5" : {
+      "k" : 24,
+      "w" : 56,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 56
+    },
+    "model\/block_10_expand_relu\/Relu6" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "batch_norm_20" : {
+      "k" : 64,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_4_depthwise_relu\/Relu6" : {
+      "k" : 192,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/block_10_expand_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_4_depthwise_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 192,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/block_8_depthwise_relu\/Relu6__relu6_relu__" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_11_depthwise_relu\/Relu6__relu6_relu__" : {
+      "k" : 576,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "batch_norm_47" : {
+      "k" : 160,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_13_expand_relu\/Relu6" : {
+      "k" : 576,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_10_depthwise_relu\/Relu6__relu6_neg__" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_15_depthwise_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 960,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_1_expand_relu\/Relu6" : {
+      "k" : 96,
+      "w" : 112,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 112
+    },
+    "model\/block_13_expand_relu\/Relu6__relu6_relu__" : {
+      "k" : 576,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "batch_norm_8" : {
+      "k" : 24,
+      "w" : 56,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 56
+    },
+    "model\/block_4_expand_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 192,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/block_15_depthwise_relu\/Relu6__relu6_neg__" : {
+      "k" : 960,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "batch_norm_17" : {
+      "k" : 32,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/block_14_add\/add" : {
+      "k" : 160,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_9_expand_relu\/Relu6__relu6_neg__" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/corners_softmax\/truediv" : {
+      "k" : 4,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_2_depthwise_relu\/Relu6__relu6_relu__" : {
+      "k" : 144,
+      "w" : 56,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 56
+    },
+    "model\/block_7_expand_relu\/Relu6__relu6_relu__" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/expanded_conv_depthwise_relu\/Relu6__relu6_relu__" : {
+      "k" : 32,
+      "w" : 112,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 112
+    },
+    "model\/block_2_depthwise_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 144,
+      "w" : 56,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 56
+    },
+    "model\/out_relu\/Relu6" : {
+      "k" : 1280,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_13_depthwise_relu\/Relu6" : {
+      "k" : 576,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_4_expand_relu\/Relu6__relu6_neg__" : {
+      "k" : 192,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/block_15_expand_relu\/Relu6__relu6_neg__" : {
+      "k" : 960,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_8_expand_relu\/Relu6" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "batch_norm_53" : {
+      "k" : 4,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/expanded_conv_depthwise_relu\/Relu6" : {
+      "k" : 32,
+      "w" : 112,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 112
+    },
+    "feature_block_5" : {
+      "k" : 28,
+      "w" : 32,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/block_13_expand_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 576,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "_before_transpose_op_Identity_2" : {
+      "k" : 7,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "image" : {
+      "k" : 3,
+      "w" : 224,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 224
+    },
+    "batch_norm_23" : {
+      "k" : 64,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_15_expand_relu\/Relu6__relu6_relu__" : {
+      "k" : 960,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_12_expand_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 576,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_7_expand_relu\/Relu6" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_13_depthwise_relu\/Relu6__relu6_neg__" : {
+      "k" : 576,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_7_depthwise_relu\/Relu6__relu6_relu__" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_5_depthwise_relu\/Relu6" : {
+      "k" : 192,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/block_7_expand_relu\/Relu6__relu6_neg__" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_9_depthwise_relu\/Relu6__relu6_relu__" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "_before_transpose_op_Identity_1" : {
+      "k" : 32,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/corners_softmax\/Exp" : {
+      "k" : 4,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_5_expand_relu\/Relu6__relu6_relu__" : {
+      "k" : 192,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/block_11_depthwise_relu\/Relu6" : {
+      "k" : 576,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_3_depthwise_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 144,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/block_10_depthwise_relu\/Relu6__relu6_relu__" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_11_depthwise_relu\/Relu6__relu6_neg__" : {
+      "k" : 576,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_16_depthwise_relu\/Relu6__relu6_relu__" : {
+      "k" : 960,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_15_expand_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 960,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_1_depthwise_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 96,
+      "w" : 56,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 56
+    },
+    "batch_norm_26" : {
+      "k" : 64,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_12_depthwise_relu\/Relu6__relu6_threshold6__" : {
+      "k" : 576,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_10_expand_relu\/Relu6__relu6_relu__" : {
+      "k" : 384,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_1_depthwise_relu\/Relu6" : {
+      "k" : 96,
+      "w" : 56,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 56
+    },
+    "model\/block_2_depthwise_relu\/Relu6__relu6_neg__" : {
+      "k" : 144,
+      "w" : 56,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 56
+    },
+    "model\/block_15_depthwise_relu\/Relu6" : {
+      "k" : 960,
+      "w" : 7,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 7
+    },
+    "model\/block_12_expand_relu\/Relu6__relu6_neg__" : {
+      "k" : 576,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_5_expand_relu\/Relu6__relu6_neg__" : {
+      "k" : 192,
+      "w" : 28,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 28
+    },
+    "model\/block_3_expand_relu\/Relu6__relu6_relu__" : {
+      "k" : 144,
+      "w" : 56,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 56
+    },
+    "model\/block_2_expand_relu\/Relu6" : {
+      "k" : 144,
+      "w" : 56,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 56
+    },
+    "model\/block_6_depthwise_relu\/Relu6__relu6_relu__" : {
+      "k" : 192,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    },
+    "model\/block_6_depthwise_relu\/Relu6__relu6_neg__" : {
+      "k" : 192,
+      "w" : 14,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 14
+    }
+  }
+}

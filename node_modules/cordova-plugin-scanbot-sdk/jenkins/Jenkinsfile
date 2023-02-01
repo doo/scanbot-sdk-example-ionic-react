@@ -1,0 +1,123 @@
+@Library('helpers') _
+
+pipeline {
+    agent { label 'Ingo' }
+    options { 
+        timestamps () 
+        disableConcurrentBuilds()
+    }
+    environment {
+        MAC_AGENT = true
+        GITHUB_TOKEN = credentials('github-jenkins-token')
+        VALID_LICENSE = credentials('valid-license')
+        EXPIRED_LICENSE = credentials('expired-license')
+        IOS_LICENSE = credentials('ios-license')
+        ANDROID_LICENSE = credentials('android-license')
+        APP_ID_MISMATCH_LICENSE = credentials('app-id-mismatch-license')
+        APP_ID = 'scanbot.sdk.tests.cordova'
+    }
+    stages {
+        stage ('Install Cordova Paramedic Globally') {
+            steps {
+                sh '''
+                    cd jenkins/scanbot-sdk-cordova-tests
+                    bash scripts/install_paramedic.sh
+                '''
+            }
+        }
+        stage ('Inject Credentials into Tests') {
+            steps {
+                sh 'bash jenkins/scanbot-sdk-cordova-tests/scripts/inject_credentials.sh'
+            }
+        }
+        stage ('Install Scanbot SDK Plugin') {
+            steps {
+                sh '''
+                    cd jenkins/scanbot-sdk-cordova-tests
+                    bash scripts/run_tests_ci.sh --skip-tests --sdk-directory="../.."
+                '''
+            }
+        }
+        stage ('Run Tests') {
+            parallel {
+                stage ('Android Tests') {
+                    environment {
+                        EMU_PORT = "5572"
+                        AVD_NAME = "avd_$EMU_PORT"
+                    }
+                    stages {
+                        stage ('Startup Emulator') {
+                            steps {
+                                sh 'bash jenkins/scanbot-ci/jenkins/pipelines/android/emulators/start_emulator.sh'
+                            }
+                        }
+                        stage ('Run Tests') {
+                            steps {
+                                catchError(buildResult: 'FAILURE', stageResult: 'UNSTABLE') {
+                                    sh """
+                                        cd jenkins/scanbot-sdk-cordova-tests
+                                        bash scripts/run_tests_ci.sh --skip-setup --android --target=emulator-$EMU_PORT
+                                    """
+                                }
+                            }
+                        }
+                        stage ('Kill Emulator') {
+                            steps {
+                                sh 'bash jenkins/scanbot-ci/jenkins/pipelines/android/emulators/kill_emulator.sh'
+                            }
+                        }
+                        stage('Load JUnit Report') {    
+                            steps {
+                                junit 'jenkins/scanbot-sdk-cordova-tests/reports/android/junitresults-cordovapluginscanbotsdktests.tests.xml'
+                            }
+                        }
+                    }
+                }
+                stage ('iOS Tests') {
+                    environment {
+                        IOS_SIMULATOR = "iPhone 11 Pro"
+                        IOS_VERSION = "15.5"
+                    }
+                    stages {
+                        // NOTE: Simulator startup stage is unnecessary since these steps are handled automatically within the cordova-paramedic test runner
+                        stage ('Run Tests') {
+                            steps {
+                                catchError(buildResult: 'FAILURE', stageResult: 'UNSTABLE') {
+                                    sh """
+                                        cd jenkins/scanbot-sdk-cordova-tests
+                                        bash scripts/run_tests_ci.sh --skip-setup --ios --target="$IOS_SIMULATOR" --target-version="$IOS_VERSION"
+                                    """
+                                }
+                            }
+                        }
+                        stage ('Shutdown Simulator') {
+                            steps {
+                                sh '''
+                                    NUM_WORDS=$(echo -n "$IOS_SIMULATOR" | wc -w | tr -d ' ')
+                                    let BOOTED_COLUMN="$NUM_WORDS+1"
+                                    TARGET_DEVICE_ID=$(xcrun simctl list devices | grep "$TARGET" | grep Booted | awk "{print $"$BOOTED_COLUMN"}" | tr -d '()')
+                                    if [ "$TARGET_DEVICE_ID" != "" ]; then
+                                        xcrun simctl shutdown "$TARGET_DEVICE_ID"
+                                    fi 
+                                '''
+                            }
+                        }
+                        stage('Load JUnit Report') {    
+                            steps {
+                                junit 'jenkins/scanbot-sdk-cordova-tests/reports/ios/junitresults-cordovapluginscanbotsdktests.tests.xml'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    post {
+        always {
+            slack_notification(slackChannel: "#scanbot-ci-wrappers", notifyCommitters: false, repoAsTitle: true, buildLogs: true, linkToRepo: true, testResults: true)
+        }
+        cleanup {
+            cleanWs()
+        }
+    }
+}

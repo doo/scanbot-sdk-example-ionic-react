@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Scanbot SDK Cordova Plugin
+
+  Copyright (c) 2022 doo GmbH. All rights reserved.
+-->
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-scanbot-sdk"
+        version="4.16.0">
+
+  <name>Scanbot SDK Cordova Plugin</name>
+  <description>Cordova Plugin for Scanbot SDK</description>
+  <license></license>
+  <keywords>
+    scanbot,sdk,camera,scanner,scanning,document detection,
+    document scanner,edge detection,cropping,pdf,pdf creation,
+    image optimization,image filter,ocr,optical character recognition,
+    barcode,qr code,barcode scanner,qr code scanner,mrz scanner,cordova,plugin
+  </keywords>
+
+  <js-module src="www/ScanbotSdk.js" name="ScanbotSdk">
+    <clobbers target="ScanbotSdk" />
+  </js-module>
+
+  <js-module src="camera.js" name="ScanbotHTMLCamera">
+    <clobbers target="ScanbotHTMLCamera" />
+  </js-module>
+
+  <!-- Android -->
+  <platform name="android">
+    <config-file target="config.xml" parent="/*">
+      <feature name="ScanbotSdk">
+        <param name="android-package" value="io.scanbot.sdk.plugin.cordova.ScanbotSdkPlugin"/>
+      </feature>
+      <feature name="ScanbotSdkUi">
+        <param name="android-package" value="io.scanbot.sdk.plugin.cordova.ScanbotSdkUiPlugin"/>
+      </feature>
+      <feature name="ScanbotSdkTest">
+        <param name="android-package" value="io.scanbot.sdk.plugin.cordova.ScanbotSdkTest"/>
+      </feature>
+    </config-file>
+
+    <!-- Permissions: -->
+    <config-file target="AndroidManifest.xml" parent="/manifest">
+      <uses-permission android:name="android.permission.CAMERA" />
+    </config-file>
+
+    <!-- Java source files/dirs: -->
+    <source-file src="src/android/java/io/scanbot/sdk/plugin/cordova/ScanbotConstants.java" target-dir="src/io/scanbot/sdk/plugin/cordova" />
+    <source-file src="src/android/java/io/scanbot/sdk/plugin/cordova/ScanbotCordovaPluginBase.java" target-dir="src/io/scanbot/sdk/plugin/cordova" />
+    <source-file src="src/android/java/io/scanbot/sdk/plugin/cordova/ScanbotSdkConfiguration.java" target-dir="src/io/scanbot/sdk/plugin/cordova" />
+    <source-file src="src/android/java/io/scanbot/sdk/plugin/cordova/ScanbotSdkPlugin.java" target-dir="src/io/scanbot/sdk/plugin/cordova" />
+    <source-file src="src/android/java/io/scanbot/sdk/plugin/cordova/ScanbotSdkUiPlugin.java" target-dir="src/io/scanbot/sdk/plugin/cordova" />
+    <source-file src="src/android/java/io/scanbot/sdk/plugin/cordova/ScanbotSdkTest.java" target-dir="src/io/scanbot/sdk/plugin/cordova" />
+    <source-file src="src/android/java/io/scanbot/sdk/plugin/cordova/CordovaBarcodeExtensionFilter.java" target-dir="src/io/scanbot/sdk/plugin/cordova" />
+    <source-file src="src/android/java/io/scanbot/sdk/plugin/cordova/ScanbotSdkWrapper.java" target-dir="src/io/scanbot/sdk/plugin/cordova" />
+    <source-file src="src/android/java/io/scanbot/sdk/plugin/cordova/utils/StorageUtils.java" target-dir="src/io/scanbot/sdk/plugin/cordova/utils" />
+    <source-file src="src/android/java/io/scanbot/sdk/plugin/cordova/utils/ImageUtils.java" target-dir="src/io/scanbot/sdk/plugin/cordova/utils" />
+    <source-file src="src/android/java/io/scanbot/sdk/plugin/cordova/utils/JsonArgs.java" target-dir="src/io/scanbot/sdk/plugin/cordova/utils" />
+    <source-file src="src/android/java/io/scanbot/sdk/plugin/cordova/utils/LogUtils.java" target-dir="src/io/scanbot/sdk/plugin/cordova/utils" />
+    <source-file src="src/android/java/io/scanbot/sdk/plugin/cordova/utils/JsonUtils.java" target-dir="src/io/scanbot/sdk/plugin/cordova/utils" />
+    <source-file src="src/android/java/io/scanbot/sdk/plugin/cordova/utils/ObjectMapper.java" target-dir="src/io/scanbot/sdk/plugin/cordova/utils" />
+    <source-file src="src/android/java/io/scanbot/sdk/plugin/cordova/utils/Conversion.java" target-dir="src/io/scanbot/sdk/plugin/cordova/utils" />
+    <source-file src="src/android/java/io/scanbot/sdk/plugin/cordova/utils/SDKError.java" target-dir="src/io/scanbot/sdk/plugin/cordova/utils" />
+    <source-file src="src/android/java/io/scanbot/sdk/plugin/cordova/dto/JsonPage.java" target-dir="src/io/scanbot/sdk/plugin/cordova/dto" />
+    <source-file src="src/android/java/io/scanbot/sdk/plugin/cordova/helpers/ScanbotBarcodeDetectorAdditionalConfigBuilder.java" target-dir="src/io/scanbot/sdk/plugin/cordova/helpers" />
+    <source-file src="src/android/java/io/scanbot/sdk/plugin/cordova/helpers/ScanbotBarcodeDetectorConfigBuilder.java" target-dir="src/io/scanbot/sdk/plugin/cordova/helpers" />
+
+    <!-- Scanbot Gradle settings. Provides dependencies for Scanbot SDK -->
+    <framework src="src/android/build-extras-sb.gradle" custom="true" type="gradleReference" />
+  </platform>
+
+  <!-- iOS -->
+  <platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="ScanbotSdk">
+        <param name="ios-package" value="ScanbotSdkPlugin" />
+      </feature>
+      <feature name="ScanbotSdkUi">
+        <param name="ios-package" value="ScanbotSdkUiPlugin"/>
+      </feature>
+      <feature name="ScanbotSdkTest">
+        <param name="ios-package" value="ScanbotSdkTest"/>
+      </feature>
+    </config-file>
+
+    <header-file src="src/ios/ScanbotSdkPlugin.h" />
+    <source-file src="src/ios/ScanbotSdkPlugin.m" />
+    <header-file src="src/ios/ScanbotSdkUiPlugin.h" />
+    <source-file src="src/ios/ScanbotSdkUiPlugin.m" />
+    <header-file src="src/ios/HandyJSONParameters.h" />
+    <source-file src="src/ios/HandyJSONParameters.m" />
+    <header-file src="src/ios/SharedConfiguration.h" />
+    <source-file src="src/ios/SharedConfiguration.m" />
+    <header-file src="src/ios/ScanbotSdkTest.h"/>
+    <source-file src="src/ios/ScanbotSdkTest.m"/>
+    <header-file src="src/ios/CDVScanbotSDKConfiguration.h"/>
+    <source-file src="src/ios/CDVScanbotSDKConfiguration.m"/>
+
+
+
+    <header-file src="src/ios/Utils/BarcodeMapping.h" target-dir="Utils" />
+    <header-file src="src/ios/Utils/HashUtils.h" target-dir="Utils" />
+    <header-file src="src/ios/Utils/ScanbotStorageUtils.h" target-dir="Utils" />
+    <source-file src="src/ios/Utils/ScanbotStorageUtils.m" target-dir="Utils" />
+    <header-file src="src/ios/Utils/JSONMappings.h" target-dir="Utils" />
+    <header-file src="src/ios/Utils/GenericDocumentRecognizerMapping.h" target-dir="Utils" />
+    <header-file src="src/ios/Utils/LoggingUtils.h" target-dir="Utils" />
+    <header-file src="src/ios/Utils/ObjectMapper.h" target-dir="Utils" />
+    <source-file src="src/ios/Utils/ObjectMapper.m" target-dir="Utils" />
+    <header-file src="src/ios/Utils/CDVOCRCompletionAdapter.h" target-dir="Utils" />
+    <source-file src="src/ios/Utils/CDVOCRCompletionAdapter.m" target-dir="Utils" />
+    <header-file src="src/ios/Utils/CordovaBarcodeExtensionFilter.h" target-dir="Utils" />
+    <source-file src="src/ios/Utils/CordovaBarcodeExtensionFilter.m" target-dir="Utils" />
+
+    <header-file src="src/ios/Categories/SBSDKPolygon+JSON.h" target-dir="Categories" />
+    <source-file src="src/ios/Categories/SBSDKPolygon+JSON.m" target-dir="Categories" />
+    <header-file src="src/ios/Categories/UIColor+JSON.h" target-dir="Categories" />
+    <source-file src="src/ios/Categories/UIColor+JSON.m" target-dir="Categories" />
+    <header-file src="src/ios/Categories/SBSDKOCRResult+JSON.h" target-dir="Categories" />
+    <source-file src="src/ios/Categories/SBSDKOCRResult+JSON.m" target-dir="Categories" />
+    <header-file src="src/ios/Categories/SBSDKPageAnalyzerResult+JSON.h" target-dir="Categories" />
+    <source-file src="src/ios/Categories/SBSDKPageAnalyzerResult+JSON.m" target-dir="Categories" />
+
+    <!-- Scanbot SDK iOS Framework -->
+    <framework src="src/ios/Frameworks/ScanbotSDK.framework" custom="true" embed="true" />
+
+    <!-- Scanbot SDK bundle for MRZ -->
+    <resource-file src="src/ios/Frameworks/AdditionalData/ScanbotSDKMRZData.bundle" />
+
+    <!-- Add NSCameraUsageDescription (required since iOS 10).
+         A suitable value can also be defined in the config.xml of the app. -->
+    <preference name="CAMERA_USAGE_DESCRIPTION" default=" " />
+    <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
+      <string>$CAMERA_USAGE_DESCRIPTION</string>
+    </config-file>
+  </platform>
+</plugin>

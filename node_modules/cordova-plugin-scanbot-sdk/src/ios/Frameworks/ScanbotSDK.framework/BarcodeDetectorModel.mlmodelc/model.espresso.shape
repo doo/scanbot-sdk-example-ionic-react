@@ -1,0 +1,298 @@
+{
+  "layer_shapes" : {
+    "model\/stage_3_3_pw_relu\/Relu" : {
+      "k" : 64,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "model\/head_azt_obj_sigmoid\/Sigmoid" : {
+      "k" : 1,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "model\/head_dm_obj_sigmoid\/Sigmoid" : {
+      "k" : 1,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "model\/head_1d_obj_sigmoid\/Sigmoid" : {
+      "k" : 1,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "batch_norm_24" : {
+      "k" : 1,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "model\/stage_3_4_pw_relu\/Relu" : {
+      "k" : 64,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "batch_norm_15" : {
+      "k" : 1,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "batch_norm_7" : {
+      "k" : 32,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "model\/stage_2_2_pw_relu\/Relu" : {
+      "k" : 32,
+      "w" : 2,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 2
+    },
+    "model\/head_pdf_obj_sigmoid\/Sigmoid" : {
+      "k" : 2,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "avg_pool_0" : {
+      "k" : 16,
+      "w" : 2,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 2
+    },
+    "batch_norm_27" : {
+      "k" : 4,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "batch_norm_22" : {
+      "k" : 4,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "batch_norm_18" : {
+      "k" : 1,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "batch_norm_3" : {
+      "k" : 16,
+      "w" : 2,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 2
+    },
+    "batch_norm_13" : {
+      "k" : 64,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "model\/head_azt_inv_sigmoid\/Sigmoid" : {
+      "k" : 1,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "output" : {
+      "k" : 28,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "model\/stage_1_2_pw_relu\/Relu" : {
+      "k" : 16,
+      "w" : 4,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 4
+    },
+    "batch_norm_25" : {
+      "k" : 2,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "model\/stage_3_1_pw_relu\/Relu" : {
+      "k" : 64,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "batch_norm_20" : {
+      "k" : 1,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "batch_norm_16" : {
+      "k" : 4,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "batch_norm_9" : {
+      "k" : 64,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "batch_norm_11" : {
+      "k" : 64,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "model\/stage_1_1_relu\/Relu" : {
+      "k" : 16,
+      "w" : 4,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 4
+    },
+    "model\/head_pdf_inv_sigmoid\/Sigmoid" : {
+      "k" : 1,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "batch_norm_28" : {
+      "k" : 1,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "model\/head_qr_inv_sigmoid\/Sigmoid" : {
+      "k" : 1,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "avg_pool_1" : {
+      "k" : 32,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "batch_norm_19" : {
+      "k" : 4,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "input" : {
+      "k" : 1,
+      "w" : 8,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 8
+    },
+    "batch_norm_5" : {
+      "k" : 32,
+      "w" : 2,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 2
+    },
+    "model\/stage_3_2_pw_relu\/Relu" : {
+      "k" : 64,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "batch_norm_23" : {
+      "k" : 1,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "model\/head_dm_inv_sigmoid\/Sigmoid" : {
+      "k" : 1,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "batch_norm_26" : {
+      "k" : 1,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "batch_norm_1" : {
+      "k" : 16,
+      "w" : 4,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 4
+    },
+    "batch_norm_21" : {
+      "k" : 2,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "batch_norm_17" : {
+      "k" : 1,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    },
+    "model\/stage_2_1_pw_relu\/Relu" : {
+      "k" : 32,
+      "w" : 2,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 2
+    },
+    "model\/head_qr_obj_sigmoid\/Sigmoid" : {
+      "k" : 1,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 5,
+      "h" : 1
+    }
+  }
+}

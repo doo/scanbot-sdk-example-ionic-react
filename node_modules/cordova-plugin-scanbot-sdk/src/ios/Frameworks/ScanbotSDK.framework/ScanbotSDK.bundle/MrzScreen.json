@@ -1,0 +1,28 @@
+{
+    "cameraModule": "BACK",
+    "cameraOverlayColor": "#00000080",
+    "cameraPreviewMode": "FILL_IN",
+    "cancelButtonTitle": "Cancel",
+    "enableCameraButtonTitle": "Enable camera",
+    "enableCameraExplanationText": "Please enable the camera permission to start scanning.",
+    "finderAspectRatio": {
+        "height": 1.0,
+        "width": 7.0
+    },
+    "finderLineColor": "#FFFFFF",
+    "finderLineWidth": 2.0,
+    "finderTextHint": "Please hold the device over the MRZ code to start scanning.",
+    "finderTextHintColor": "#FFFFFF",
+    "flashButtonHidden": false,
+    "flashButtonTitle": "",
+    "flashEnabled": false,
+    "orientationLockMode": "NONE",
+    "replaceCancelButtonWithIcon": false,
+    "screen": "MrzScanner",
+    "successBeepEnabled": true,
+    "topBarBackgroundColor": "#000000",
+    "topBarButtonsActiveColor": "#F7CE46",
+    "topBarButtonsInactiveColor": "#FFFFFF",
+    "useButtonsAllCaps": true,
+    "version": "1.0"
+}

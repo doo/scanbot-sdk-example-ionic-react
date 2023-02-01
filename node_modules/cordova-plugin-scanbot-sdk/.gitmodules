@@ -1,0 +1,6 @@
+[submodule "scanbot-ci"]
+	path = jenkins/scanbot-ci
+	url = git@github.com:doo/scanbot-ci.git
+[submodule "scanbot-sdk-cordova-tests"]
+	path = jenkins/scanbot-sdk-cordova-tests
+	url = git@github.com:doo/scanbot-sdk-cordova-tests.git

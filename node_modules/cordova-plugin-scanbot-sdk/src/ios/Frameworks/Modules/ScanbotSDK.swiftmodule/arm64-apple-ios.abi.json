@@ -1,0 +1,3975 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "ScanbotInternal",
+        "printedName": "ScanbotInternal",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "ScanbotInternal",
+        "printedName": "ScanbotInternal",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "ScanbotInternal",
+        "printedName": "ScanbotInternal",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "ScanbotInternal",
+        "printedName": "ScanbotInternal",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "ScanbotInternal",
+        "printedName": "ScanbotInternal",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "ScanbotInternal",
+        "printedName": "ScanbotInternal",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "ScanbotInternal",
+        "printedName": "ScanbotInternal",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ScanbotSDKConfiguration",
+        "printedName": "ScanbotSDKConfiguration",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "loggingEnabled",
+            "printedName": "loggingEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(py)loggingEnabled",
+            "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC14loggingEnabledSbvp",
+            "moduleName": "ScanbotSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)loggingEnabled",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC14loggingEnabledSbvg",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)setLoggingEnabled:",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC14loggingEnabledSbvs",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10ScanbotSDK0A16SDKConfigurationC14loggingEnabledSbvM",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC14loggingEnabledSbvM",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "licenseString",
+            "printedName": "licenseString",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(py)licenseString",
+            "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC13licenseStringSSSgvp",
+            "moduleName": "ScanbotSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)licenseString",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC13licenseStringSSSgvg",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)setLicenseString:",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC13licenseStringSSSgvs",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10ScanbotSDK0A16SDKConfigurationC13licenseStringSSSgvM",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC13licenseStringSSSgvM",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "licenseLoggingEnabled",
+            "printedName": "licenseLoggingEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(py)licenseLoggingEnabled",
+            "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC21licenseLoggingEnabledSbvp",
+            "moduleName": "ScanbotSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)licenseLoggingEnabled",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC21licenseLoggingEnabledSbvg",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)setLicenseLoggingEnabled:",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC21licenseLoggingEnabledSbvs",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10ScanbotSDK0A16SDKConfigurationC21licenseLoggingEnabledSbvM",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC21licenseLoggingEnabledSbvM",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "licenseFailureHandler",
+            "printedName": "licenseFailureHandler",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(ScanbotSDK.dooLicenseStatus, ScanbotSDK.dooFeature, Swift.String?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(ScanbotSDK.dooLicenseStatus, ScanbotSDK.dooFeature, Swift.String?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "dooLicenseStatus",
+                        "printedName": "ScanbotSDK.dooLicenseStatus",
+                        "usr": "c:@EA@dooLicenseStatus"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "dooFeature",
+                        "printedName": "ScanbotSDK.dooFeature",
+                        "usr": "c:@EA@dooFeature"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(py)licenseFailureHandler",
+            "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC21licenseFailureHandleryySo16dooLicenseStatusa_So0G7FeatureaSSSgtcvp",
+            "moduleName": "ScanbotSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(ScanbotSDK.dooLicenseStatus, ScanbotSDK.dooFeature, Swift.String?) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(ScanbotSDK.dooLicenseStatus, ScanbotSDK.dooFeature, Swift.String?)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "dooLicenseStatus",
+                            "printedName": "ScanbotSDK.dooLicenseStatus",
+                            "usr": "c:@EA@dooLicenseStatus"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "dooFeature",
+                            "printedName": "ScanbotSDK.dooFeature",
+                            "usr": "c:@EA@dooFeature"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "Swift.String?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "String",
+                                "printedName": "Swift.String",
+                                "usr": "s:SS"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)licenseFailureHandler",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC21licenseFailureHandleryySo16dooLicenseStatusa_So0G7FeatureaSSSgtcvg",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(ScanbotSDK.dooLicenseStatus, ScanbotSDK.dooFeature, Swift.String?) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(ScanbotSDK.dooLicenseStatus, ScanbotSDK.dooFeature, Swift.String?)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "dooLicenseStatus",
+                            "printedName": "ScanbotSDK.dooLicenseStatus",
+                            "usr": "c:@EA@dooLicenseStatus"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "dooFeature",
+                            "printedName": "ScanbotSDK.dooFeature",
+                            "usr": "c:@EA@dooFeature"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "Swift.String?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "String",
+                                "printedName": "Swift.String",
+                                "usr": "s:SS"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)setLicenseFailureHandler:",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC21licenseFailureHandleryySo16dooLicenseStatusa_So0G7FeatureaSSSgtcvs",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10ScanbotSDK0A16SDKConfigurationC21licenseFailureHandleryySo16dooLicenseStatusa_So0G7FeatureaSSSgtcvM",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC21licenseFailureHandleryySo16dooLicenseStatusa_So0G7FeatureaSSSgtcvM",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "resourceBundle",
+            "printedName": "resourceBundle",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bundle",
+                "printedName": "Foundation.Bundle",
+                "usr": "c:objc(cs)NSBundle"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(py)resourceBundle",
+            "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC14resourceBundleSo8NSBundleCvp",
+            "moduleName": "ScanbotSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bundle",
+                    "printedName": "Foundation.Bundle",
+                    "usr": "c:objc(cs)NSBundle"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)resourceBundle",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC14resourceBundleSo8NSBundleCvg",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bundle",
+                    "printedName": "Foundation.Bundle",
+                    "usr": "c:objc(cs)NSBundle"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)setResourceBundle:",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC14resourceBundleSo8NSBundleCvs",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10ScanbotSDK0A16SDKConfigurationC14resourceBundleSo8NSBundleCvM",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC14resourceBundleSo8NSBundleCvM",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "sharedApplication",
+            "printedName": "sharedApplication",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIApplication?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIApplication",
+                    "printedName": "UIKit.UIApplication",
+                    "usr": "c:objc(cs)UIApplication"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(py)sharedApplication",
+            "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC17sharedApplicationSo13UIApplicationCSgvp",
+            "moduleName": "ScanbotSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIApplication?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIApplication",
+                        "printedName": "UIKit.UIApplication",
+                        "usr": "c:objc(cs)UIApplication"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)sharedApplication",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC17sharedApplicationSo13UIApplicationCSgvg",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIApplication?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIApplication",
+                        "printedName": "UIKit.UIApplication",
+                        "usr": "c:objc(cs)UIApplication"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)setSharedApplication:",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC17sharedApplicationSo13UIApplicationCSgvs",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10ScanbotSDK0A16SDKConfigurationC17sharedApplicationSo13UIApplicationCSgvM",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC17sharedApplicationSo13UIApplicationCSgvM",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "defaultDocumentDetectorMode",
+            "printedName": "defaultDocumentDetectorMode",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SBSDKDocumentDetectorMode",
+                "printedName": "ScanbotSDK.SBSDKDocumentDetectorMode",
+                "usr": "c:@E@SBSDKDocumentDetectorMode"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(py)defaultDocumentDetectorMode",
+            "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC27defaultDocumentDetectorModeSo013SBSDKDocumentfG0Vvp",
+            "moduleName": "ScanbotSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SBSDKDocumentDetectorMode",
+                    "printedName": "ScanbotSDK.SBSDKDocumentDetectorMode",
+                    "usr": "c:@E@SBSDKDocumentDetectorMode"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)defaultDocumentDetectorMode",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC27defaultDocumentDetectorModeSo013SBSDKDocumentfG0Vvg",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SBSDKDocumentDetectorMode",
+                    "printedName": "ScanbotSDK.SBSDKDocumentDetectorMode",
+                    "usr": "c:@E@SBSDKDocumentDetectorMode"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)setDefaultDocumentDetectorMode:",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC27defaultDocumentDetectorModeSo013SBSDKDocumentfG0Vvs",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10ScanbotSDK0A16SDKConfigurationC27defaultDocumentDetectorModeSo013SBSDKDocumentfG0VvM",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC27defaultDocumentDetectorModeSo013SBSDKDocumentfG0VvM",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "shouldShowStatusBarOnScanningScreens",
+            "printedName": "shouldShowStatusBarOnScanningScreens",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(py)shouldShowStatusBarOnScanningScreens",
+            "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC36shouldShowStatusBarOnScanningScreensSbvp",
+            "moduleName": "ScanbotSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)shouldShowStatusBarOnScanningScreens",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC36shouldShowStatusBarOnScanningScreensSbvg",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)setShouldShowStatusBarOnScanningScreens:",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC36shouldShowStatusBarOnScanningScreensSbvs",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10ScanbotSDK0A16SDKConfigurationC36shouldShowStatusBarOnScanningScreensSbvM",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC36shouldShowStatusBarOnScanningScreensSbvM",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "defaultStatusBarStyle",
+            "printedName": "defaultStatusBarStyle",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIStatusBarStyle",
+                "printedName": "UIKit.UIStatusBarStyle",
+                "usr": "c:@E@UIStatusBarStyle"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(py)defaultStatusBarStyle",
+            "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC21defaultStatusBarStyleSo08UIStatusfG0Vvp",
+            "moduleName": "ScanbotSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIStatusBarStyle",
+                    "printedName": "UIKit.UIStatusBarStyle",
+                    "usr": "c:@E@UIStatusBarStyle"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)defaultStatusBarStyle",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC21defaultStatusBarStyleSo08UIStatusfG0Vvg",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIStatusBarStyle",
+                    "printedName": "UIKit.UIStatusBarStyle",
+                    "usr": "c:@E@UIStatusBarStyle"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)setDefaultStatusBarStyle:",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC21defaultStatusBarStyleSo08UIStatusfG0Vvs",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10ScanbotSDK0A16SDKConfigurationC21defaultStatusBarStyleSo08UIStatusfG0VvM",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC21defaultStatusBarStyleSo08UIStatusfG0VvM",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "fileStorageImageQuality",
+            "printedName": "fileStorageImageQuality",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UInt8",
+                "printedName": "Swift.UInt8",
+                "usr": "s:s5UInt8V"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(py)fileStorageImageQuality",
+            "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC23fileStorageImageQualitys5UInt8Vvp",
+            "moduleName": "ScanbotSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UInt8",
+                    "printedName": "Swift.UInt8",
+                    "usr": "s:s5UInt8V"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)fileStorageImageQuality",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC23fileStorageImageQualitys5UInt8Vvg",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UInt8",
+                    "printedName": "Swift.UInt8",
+                    "usr": "s:s5UInt8V"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)setFileStorageImageQuality:",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC23fileStorageImageQualitys5UInt8Vvs",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10ScanbotSDK0A16SDKConfigurationC23fileStorageImageQualitys5UInt8VvM",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC23fileStorageImageQualitys5UInt8VvM",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "fileStorageImageFormat",
+            "printedName": "fileStorageImageFormat",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SBSDKImageFileFormat",
+                "printedName": "ScanbotSDK.SBSDKImageFileFormat",
+                "usr": "c:@E@SBSDKImageFileFormat"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(py)fileStorageImageFormat",
+            "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC22fileStorageImageFormatSo014SBSDKImageFileG0Vvp",
+            "moduleName": "ScanbotSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SBSDKImageFileFormat",
+                    "printedName": "ScanbotSDK.SBSDKImageFileFormat",
+                    "usr": "c:@E@SBSDKImageFileFormat"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)fileStorageImageFormat",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC22fileStorageImageFormatSo014SBSDKImageFileG0Vvg",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SBSDKImageFileFormat",
+                    "printedName": "ScanbotSDK.SBSDKImageFileFormat",
+                    "usr": "c:@E@SBSDKImageFileFormat"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)setFileStorageImageFormat:",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC22fileStorageImageFormatSo014SBSDKImageFileG0Vvs",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10ScanbotSDK0A16SDKConfigurationC22fileStorageImageFormatSo014SBSDKImageFileG0VvM",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC22fileStorageImageFormatSo014SBSDKImageFileG0VvM",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "fileStorageBaseDirectory",
+            "printedName": "fileStorageBaseDirectory",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.URL?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "URL",
+                    "printedName": "Foundation.URL",
+                    "usr": "s:10Foundation3URLV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(py)fileStorageBaseDirectory",
+            "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC24fileStorageBaseDirectory10Foundation3URLVSgvp",
+            "moduleName": "ScanbotSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.URL?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "URL",
+                        "printedName": "Foundation.URL",
+                        "usr": "s:10Foundation3URLV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)fileStorageBaseDirectory",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC24fileStorageBaseDirectory10Foundation3URLVSgvg",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.URL?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "URL",
+                        "printedName": "Foundation.URL",
+                        "usr": "s:10Foundation3URLV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)setFileStorageBaseDirectory:",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC24fileStorageBaseDirectory10Foundation3URLVSgvs",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10ScanbotSDK0A16SDKConfigurationC24fileStorageBaseDirectory10Foundation3URLVSgvM",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC24fileStorageBaseDirectory10Foundation3URLVSgvM",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "fileEncryptionMode",
+            "printedName": "fileEncryptionMode",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SBSDKAESEncrypterMode",
+                "printedName": "ScanbotSDK.SBSDKAESEncrypterMode",
+                "usr": "c:@E@SBSDKAESEncrypterMode"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(py)fileEncryptionMode",
+            "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC18fileEncryptionModeSo017SBSDKAESEncrypterF0Vvp",
+            "moduleName": "ScanbotSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SBSDKAESEncrypterMode",
+                    "printedName": "ScanbotSDK.SBSDKAESEncrypterMode",
+                    "usr": "c:@E@SBSDKAESEncrypterMode"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)fileEncryptionMode",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC18fileEncryptionModeSo017SBSDKAESEncrypterF0Vvg",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SBSDKAESEncrypterMode",
+                    "printedName": "ScanbotSDK.SBSDKAESEncrypterMode",
+                    "usr": "c:@E@SBSDKAESEncrypterMode"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)setFileEncryptionMode:",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC18fileEncryptionModeSo017SBSDKAESEncrypterF0Vvs",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10ScanbotSDK0A16SDKConfigurationC18fileEncryptionModeSo017SBSDKAESEncrypterF0VvM",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC18fileEncryptionModeSo017SBSDKAESEncrypterF0VvM",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "fileEncryptionPassword",
+            "printedName": "fileEncryptionPassword",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(py)fileEncryptionPassword",
+            "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC22fileEncryptionPasswordSSSgvp",
+            "moduleName": "ScanbotSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)fileEncryptionPassword",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC22fileEncryptionPasswordSSSgvg",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)setFileEncryptionPassword:",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC22fileEncryptionPasswordSSSgvs",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10ScanbotSDK0A16SDKConfigurationC22fileEncryptionPasswordSSSgvM",
+                "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC22fileEncryptionPasswordSSSgvM",
+                "moduleName": "ScanbotSDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ScanbotSDKConfiguration",
+                "printedName": "ScanbotSDK.ScanbotSDKConfiguration",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(im)init",
+            "mangledName": "$s10ScanbotSDK0A16SDKConfigurationCACycfc",
+            "moduleName": "ScanbotSDK",
+            "overriding": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override",
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "defaultConfiguration",
+            "printedName": "defaultConfiguration()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ScanbotSDKConfiguration",
+                "printedName": "ScanbotSDK.ScanbotSDKConfiguration",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(cm)defaultConfiguration",
+            "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC20defaultConfigurationACyFZ",
+            "moduleName": "ScanbotSDK",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "configurationWith",
+            "printedName": "configurationWith(JSON:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "ScanbotSDK.ScanbotSDKConfiguration?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ScanbotSDKConfiguration",
+                    "printedName": "ScanbotSDK.ScanbotSDKConfiguration",
+                    "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(cm)configurationWithJSON:",
+            "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC17configurationWith4JSONACSgSS_tFZ",
+            "moduleName": "ScanbotSDK",
+            "static": true,
+            "objc_name": "configurationWithJSON:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "configurationWithJSONFrom",
+            "printedName": "configurationWithJSONFrom(URL:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "ScanbotSDK.ScanbotSDKConfiguration?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ScanbotSDKConfiguration",
+                    "printedName": "ScanbotSDK.ScanbotSDKConfiguration",
+                    "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration(cm)configurationWithJSONFromURL:",
+            "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC25configurationWithJSONFrom3URLACSg10FoundationAEV_tFZ",
+            "moduleName": "ScanbotSDK",
+            "static": true,
+            "objc_name": "configurationWithJSONFromURL:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration",
+        "mangledName": "$s10ScanbotSDK0A16SDKConfigurationC",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "AccessControl",
+          "ObjCMembers",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "ScanbotInternal",
+        "printedName": "ScanbotInternal",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SBSDKBarcodeResultsAccumulator",
+        "printedName": "SBSDKBarcodeResultsAccumulator",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(maxAge:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SBSDKBarcodeResultsAccumulator",
+                "printedName": "ScanbotSDK.SBSDKBarcodeResultsAccumulator",
+                "usr": "c:@M@ScanbotSDK@objc(cs)SBSDKBarcodeResultsAccumulator"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@ScanbotSDK@objc(cs)SBSDKBarcodeResultsAccumulator(im)initWithMaxAge:",
+            "mangledName": "$s10ScanbotSDK30SBSDKBarcodeResultsAccumulatorC6maxAgeACSd_tcfc",
+            "moduleName": "ScanbotSDK",
+            "objc_name": "initWithMaxAge:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "accumulateResults",
+            "printedName": "accumulateResults(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[ScanbotSDK.SBSDKBarcodeScannerResult]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SBSDKBarcodeScannerResult",
+                    "printedName": "ScanbotSDK.SBSDKBarcodeScannerResult",
+                    "usr": "c:objc(cs)SBSDKBarcodeScannerResult"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[ScanbotSDK.SBSDKBarcodeScannerResult]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SBSDKBarcodeScannerResult",
+                    "printedName": "ScanbotSDK.SBSDKBarcodeScannerResult",
+                    "usr": "c:objc(cs)SBSDKBarcodeScannerResult"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@ScanbotSDK@objc(cs)SBSDKBarcodeResultsAccumulator(im)accumulateResults:",
+            "mangledName": "$s10ScanbotSDK30SBSDKBarcodeResultsAccumulatorC010accumulateD0ySaySo0C13ScannerResultCGAGF",
+            "moduleName": "ScanbotSDK",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "clear",
+            "printedName": "clear()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@ScanbotSDK@objc(cs)SBSDKBarcodeResultsAccumulator(im)clear",
+            "mangledName": "$s10ScanbotSDK30SBSDKBarcodeResultsAccumulatorC5clearyyF",
+            "moduleName": "ScanbotSDK",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SBSDKBarcodeResultsAccumulator",
+                "printedName": "ScanbotSDK.SBSDKBarcodeResultsAccumulator",
+                "usr": "c:@M@ScanbotSDK@objc(cs)SBSDKBarcodeResultsAccumulator"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@ScanbotSDK@objc(cs)SBSDKBarcodeResultsAccumulator(im)init",
+            "mangledName": "$s10ScanbotSDK30SBSDKBarcodeResultsAccumulatorCACycfc",
+            "moduleName": "ScanbotSDK",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@ScanbotSDK@objc(cs)SBSDKBarcodeResultsAccumulator",
+        "mangledName": "$s10ScanbotSDK30SBSDKBarcodeResultsAccumulatorC",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "ScanbotInternal",
+        "printedName": "ScanbotInternal",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "ScanbotInternal",
+        "printedName": "ScanbotInternal",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "ScanbotInternal",
+        "printedName": "ScanbotInternal",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "ScanbotInternal",
+        "printedName": "ScanbotInternal",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "ScanbotInternal",
+        "printedName": "ScanbotInternal",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "ScanbotInternal",
+        "printedName": "ScanbotInternal",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "ScanbotInternal",
+        "printedName": "ScanbotInternal",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "ScanbotInternal",
+        "printedName": "ScanbotInternal",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "ScanbotSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SBSDKUICroppingScreenConfiguration",
+        "printedName": "SBSDKUICroppingScreenConfiguration",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(json:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "ScanbotSDK.SBSDKUICroppingScreenConfiguration?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SBSDKUICroppingScreenConfiguration",
+                    "printedName": "ScanbotSDK.SBSDKUICroppingScreenConfiguration",
+                    "usr": "c:objc(cs)SBSDKUICroppingScreenConfiguration"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@CM@ScanbotSDK@@objc(cs)SBSDKUICroppingScreenConfiguration(im)initWithJson:",
+            "mangledName": "$sSo34SBSDKUICroppingScreenConfigurationC10ScanbotSDKE4jsonABSgSS_tcfc",
+            "moduleName": "ScanbotSDK",
+            "objc_name": "initWithJson:",
+            "declAttributes": [
+              "Dynamic",
+              "Convenience",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Convenience"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:objc(cs)SBSDKUICroppingScreenConfiguration",
+        "moduleName": "ScanbotSDK",
+        "isOpen": true,
+        "objc_name": "SBSDKUICroppingScreenConfiguration",
+        "declAttributes": [
+          "ObjC",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)SBSDKUIConfiguration",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ScanbotSDK.SBSDKUIConfiguration",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SBSDKUIBarcodesBatchScannerConfiguration",
+        "printedName": "SBSDKUIBarcodesBatchScannerConfiguration",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(json:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "ScanbotSDK.SBSDKUIBarcodesBatchScannerConfiguration?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SBSDKUIBarcodesBatchScannerConfiguration",
+                    "printedName": "ScanbotSDK.SBSDKUIBarcodesBatchScannerConfiguration",
+                    "usr": "c:objc(cs)SBSDKUIBarcodesBatchScannerConfiguration"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@CM@ScanbotSDK@@objc(cs)SBSDKUIBarcodesBatchScannerConfiguration(im)initWithJson:",
+            "mangledName": "$sSo40SBSDKUIBarcodesBatchScannerConfigurationC10ScanbotSDKE4jsonABSgSS_tcfc",
+            "moduleName": "ScanbotSDK",
+            "objc_name": "initWithJson:",
+            "declAttributes": [
+              "Dynamic",
+              "Convenience",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Convenience"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:objc(cs)SBSDKUIBarcodesBatchScannerConfiguration",
+        "moduleName": "ScanbotSDK",
+        "isOpen": true,
+        "objc_name": "SBSDKUIBarcodesBatchScannerConfiguration",
+        "declAttributes": [
+          "ObjC",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)SBSDKUIConfiguration",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ScanbotSDK.SBSDKUIConfiguration",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SBSDKUIDocumentScannerConfiguration",
+        "printedName": "SBSDKUIDocumentScannerConfiguration",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(json:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "ScanbotSDK.SBSDKUIDocumentScannerConfiguration?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SBSDKUIDocumentScannerConfiguration",
+                    "printedName": "ScanbotSDK.SBSDKUIDocumentScannerConfiguration",
+                    "usr": "c:objc(cs)SBSDKUIDocumentScannerConfiguration"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@CM@ScanbotSDK@@objc(cs)SBSDKUIDocumentScannerConfiguration(im)initWithJson:",
+            "mangledName": "$sSo35SBSDKUIDocumentScannerConfigurationC10ScanbotSDKE4jsonABSgSS_tcfc",
+            "moduleName": "ScanbotSDK",
+            "objc_name": "initWithJson:",
+            "declAttributes": [
+              "Dynamic",
+              "Convenience",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Convenience"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:objc(cs)SBSDKUIDocumentScannerConfiguration",
+        "moduleName": "ScanbotSDK",
+        "isOpen": true,
+        "objc_name": "SBSDKUIDocumentScannerConfiguration",
+        "declAttributes": [
+          "ObjC",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)SBSDKUIConfiguration",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ScanbotSDK.SBSDKUIConfiguration",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SBSDKUIHealthInsuranceCardScannerConfiguration",
+        "printedName": "SBSDKUIHealthInsuranceCardScannerConfiguration",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(json:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "ScanbotSDK.SBSDKUIHealthInsuranceCardScannerConfiguration?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SBSDKUIHealthInsuranceCardScannerConfiguration",
+                    "printedName": "ScanbotSDK.SBSDKUIHealthInsuranceCardScannerConfiguration",
+                    "usr": "c:objc(cs)SBSDKUIHealthInsuranceCardScannerConfiguration"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@CM@ScanbotSDK@@objc(cs)SBSDKUIHealthInsuranceCardScannerConfiguration(im)initWithJson:",
+            "mangledName": "$sSo46SBSDKUIHealthInsuranceCardScannerConfigurationC10ScanbotSDKE4jsonABSgSS_tcfc",
+            "moduleName": "ScanbotSDK",
+            "objc_name": "initWithJson:",
+            "declAttributes": [
+              "Dynamic",
+              "Convenience",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Convenience"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:objc(cs)SBSDKUIHealthInsuranceCardScannerConfiguration",
+        "moduleName": "ScanbotSDK",
+        "isOpen": true,
+        "objc_name": "SBSDKUIHealthInsuranceCardScannerConfiguration",
+        "declAttributes": [
+          "ObjC",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)SBSDKUIConfiguration",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ScanbotSDK.SBSDKUIConfiguration",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SBSDKUIGenericDocumentRecognizerConfiguration",
+        "printedName": "SBSDKUIGenericDocumentRecognizerConfiguration",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(json:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "ScanbotSDK.SBSDKUIGenericDocumentRecognizerConfiguration?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SBSDKUIGenericDocumentRecognizerConfiguration",
+                    "printedName": "ScanbotSDK.SBSDKUIGenericDocumentRecognizerConfiguration",
+                    "usr": "c:objc(cs)SBSDKUIGenericDocumentRecognizerConfiguration"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@CM@ScanbotSDK@@objc(cs)SBSDKUIGenericDocumentRecognizerConfiguration(im)initWithJson:",
+            "mangledName": "$sSo45SBSDKUIGenericDocumentRecognizerConfigurationC10ScanbotSDKE4jsonABSgSS_tcfc",
+            "moduleName": "ScanbotSDK",
+            "objc_name": "initWithJson:",
+            "declAttributes": [
+              "Dynamic",
+              "Convenience",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Convenience"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:objc(cs)SBSDKUIGenericDocumentRecognizerConfiguration",
+        "moduleName": "ScanbotSDK",
+        "isOpen": true,
+        "objc_name": "SBSDKUIGenericDocumentRecognizerConfiguration",
+        "declAttributes": [
+          "ObjC",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)SBSDKUIConfiguration",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ScanbotSDK.SBSDKUIConfiguration",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "UIColor",
+        "printedName": "UIColor",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "colorWithHexCode",
+            "printedName": "colorWithHexCode(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIColor?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@ScanbotSDK@@objc(cs)UIColor(cm)colorWithHexCode:",
+            "mangledName": "$sSo7UIColorC10ScanbotSDKE16colorWithHexCodeyABSgSSSgFZ",
+            "moduleName": "ScanbotSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:objc(cs)UIColor",
+        "moduleName": "UIKit",
+        "isOpen": true,
+        "intro_iOS": "2.0",
+        "objc_name": "UIColor",
+        "declAttributes": [
+          "Available",
+          "ObjC",
+          "SynthesizedProtocol",
+          "NonSendable",
+          "Sendable",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_ExpressibleByColorLiteral",
+            "printedName": "_ExpressibleByColorLiteral",
+            "usr": "s:s26_ExpressibleByColorLiteralP",
+            "mangledName": "$ss26_ExpressibleByColorLiteralP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SBSDKUIMRZScannerConfiguration",
+        "printedName": "SBSDKUIMRZScannerConfiguration",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(json:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "ScanbotSDK.SBSDKUIMRZScannerConfiguration?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SBSDKUIMRZScannerConfiguration",
+                    "printedName": "ScanbotSDK.SBSDKUIMRZScannerConfiguration",
+                    "usr": "c:objc(cs)SBSDKUIMRZScannerConfiguration"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@CM@ScanbotSDK@@objc(cs)SBSDKUIMRZScannerConfiguration(im)initWithJson:",
+            "mangledName": "$sSo30SBSDKUIMRZScannerConfigurationC10ScanbotSDKE4jsonABSgSS_tcfc",
+            "moduleName": "ScanbotSDK",
+            "objc_name": "initWithJson:",
+            "declAttributes": [
+              "Dynamic",
+              "Convenience",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Convenience"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:objc(cs)SBSDKUIMRZScannerConfiguration",
+        "moduleName": "ScanbotSDK",
+        "isOpen": true,
+        "objc_name": "SBSDKUIMRZScannerConfiguration",
+        "declAttributes": [
+          "ObjC",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)SBSDKUIConfiguration",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ScanbotSDK.SBSDKUIConfiguration",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SBSDKUINFCPassportReaderConfiguration",
+        "printedName": "SBSDKUINFCPassportReaderConfiguration",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(json:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "ScanbotSDK.SBSDKUINFCPassportReaderConfiguration?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SBSDKUINFCPassportReaderConfiguration",
+                    "printedName": "ScanbotSDK.SBSDKUINFCPassportReaderConfiguration",
+                    "usr": "c:objc(cs)SBSDKUINFCPassportReaderConfiguration"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@CM@ScanbotSDK@@objc(cs)SBSDKUINFCPassportReaderConfiguration(im)initWithJson:",
+            "mangledName": "$sSo37SBSDKUINFCPassportReaderConfigurationC10ScanbotSDKE4jsonABSgSS_tcfc",
+            "moduleName": "ScanbotSDK",
+            "objc_name": "initWithJson:",
+            "declAttributes": [
+              "Dynamic",
+              "Convenience",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Convenience"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:objc(cs)SBSDKUINFCPassportReaderConfiguration",
+        "moduleName": "ScanbotSDK",
+        "isOpen": true,
+        "objc_name": "SBSDKUINFCPassportReaderConfiguration",
+        "declAttributes": [
+          "ObjC",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)SBSDKUIConfiguration",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ScanbotSDK.SBSDKUIConfiguration",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SBSDKUICheckRecognizerConfiguration",
+        "printedName": "SBSDKUICheckRecognizerConfiguration",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(json:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "ScanbotSDK.SBSDKUICheckRecognizerConfiguration?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SBSDKUICheckRecognizerConfiguration",
+                    "printedName": "ScanbotSDK.SBSDKUICheckRecognizerConfiguration",
+                    "usr": "c:objc(cs)SBSDKUICheckRecognizerConfiguration"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@CM@ScanbotSDK@@objc(cs)SBSDKUICheckRecognizerConfiguration(im)initWithJson:",
+            "mangledName": "$sSo35SBSDKUICheckRecognizerConfigurationC10ScanbotSDKE4jsonABSgSS_tcfc",
+            "moduleName": "ScanbotSDK",
+            "objc_name": "initWithJson:",
+            "declAttributes": [
+              "Dynamic",
+              "Convenience",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Convenience"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:objc(cs)SBSDKUICheckRecognizerConfiguration",
+        "moduleName": "ScanbotSDK",
+        "isOpen": true,
+        "objc_name": "SBSDKUICheckRecognizerConfiguration",
+        "declAttributes": [
+          "ObjC",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)SBSDKUIConfiguration",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ScanbotSDK.SBSDKUIConfiguration",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SBSDKUIBarcodeScannerConfiguration",
+        "printedName": "SBSDKUIBarcodeScannerConfiguration",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(json:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "ScanbotSDK.SBSDKUIBarcodeScannerConfiguration?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SBSDKUIBarcodeScannerConfiguration",
+                    "printedName": "ScanbotSDK.SBSDKUIBarcodeScannerConfiguration",
+                    "usr": "c:objc(cs)SBSDKUIBarcodeScannerConfiguration"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@CM@ScanbotSDK@@objc(cs)SBSDKUIBarcodeScannerConfiguration(im)initWithJson:",
+            "mangledName": "$sSo34SBSDKUIBarcodeScannerConfigurationC10ScanbotSDKE4jsonABSgSS_tcfc",
+            "moduleName": "ScanbotSDK",
+            "objc_name": "initWithJson:",
+            "declAttributes": [
+              "Dynamic",
+              "Convenience",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Convenience"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:objc(cs)SBSDKUIBarcodeScannerConfiguration",
+        "moduleName": "ScanbotSDK",
+        "isOpen": true,
+        "objc_name": "SBSDKUIBarcodeScannerConfiguration",
+        "declAttributes": [
+          "ObjC",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)SBSDKUIConfiguration",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ScanbotSDK.SBSDKUIConfiguration",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SBSDKUITextDataScannerConfiguration",
+        "printedName": "SBSDKUITextDataScannerConfiguration",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(json:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "ScanbotSDK.SBSDKUITextDataScannerConfiguration?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SBSDKUITextDataScannerConfiguration",
+                    "printedName": "ScanbotSDK.SBSDKUITextDataScannerConfiguration",
+                    "usr": "c:objc(cs)SBSDKUITextDataScannerConfiguration"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@CM@ScanbotSDK@@objc(cs)SBSDKUITextDataScannerConfiguration(im)initWithJson:",
+            "mangledName": "$sSo35SBSDKUITextDataScannerConfigurationC10ScanbotSDKE4jsonABSgSS_tcfc",
+            "moduleName": "ScanbotSDK",
+            "objc_name": "initWithJson:",
+            "declAttributes": [
+              "Dynamic",
+              "Convenience",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Convenience"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:objc(cs)SBSDKUITextDataScannerConfiguration",
+        "moduleName": "ScanbotSDK",
+        "isOpen": true,
+        "objc_name": "SBSDKUITextDataScannerConfiguration",
+        "declAttributes": [
+          "ObjC",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)SBSDKUIConfiguration",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ScanbotSDK.SBSDKUIConfiguration",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SBSDKUILicensePlateScannerConfiguration",
+        "printedName": "SBSDKUILicensePlateScannerConfiguration",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(json:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "ScanbotSDK.SBSDKUILicensePlateScannerConfiguration?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SBSDKUILicensePlateScannerConfiguration",
+                    "printedName": "ScanbotSDK.SBSDKUILicensePlateScannerConfiguration",
+                    "usr": "c:objc(cs)SBSDKUILicensePlateScannerConfiguration"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@CM@ScanbotSDK@@objc(cs)SBSDKUILicensePlateScannerConfiguration(im)initWithJson:",
+            "mangledName": "$sSo39SBSDKUILicensePlateScannerConfigurationC10ScanbotSDKE4jsonABSgSS_tcfc",
+            "moduleName": "ScanbotSDK",
+            "objc_name": "initWithJson:",
+            "declAttributes": [
+              "Dynamic",
+              "Convenience",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Convenience"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:objc(cs)SBSDKUILicensePlateScannerConfiguration",
+        "moduleName": "ScanbotSDK",
+        "isOpen": true,
+        "objc_name": "SBSDKUILicensePlateScannerConfiguration",
+        "declAttributes": [
+          "ObjC",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)SBSDKUIConfiguration",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ScanbotSDK.SBSDKUIConfiguration",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SBSDKUIMedicalCertificateScannerConfiguration",
+        "printedName": "SBSDKUIMedicalCertificateScannerConfiguration",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(json:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "ScanbotSDK.SBSDKUIMedicalCertificateScannerConfiguration?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SBSDKUIMedicalCertificateScannerConfiguration",
+                    "printedName": "ScanbotSDK.SBSDKUIMedicalCertificateScannerConfiguration",
+                    "usr": "c:objc(cs)SBSDKUIMedicalCertificateScannerConfiguration"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@CM@ScanbotSDK@@objc(cs)SBSDKUIMedicalCertificateScannerConfiguration(im)initWithJson:",
+            "mangledName": "$sSo45SBSDKUIMedicalCertificateScannerConfigurationC10ScanbotSDKE4jsonABSgSS_tcfc",
+            "moduleName": "ScanbotSDK",
+            "objc_name": "initWithJson:",
+            "declAttributes": [
+              "Dynamic",
+              "Convenience",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Convenience"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:objc(cs)SBSDKUIMedicalCertificateScannerConfiguration",
+        "moduleName": "ScanbotSDK",
+        "isOpen": true,
+        "objc_name": "SBSDKUIMedicalCertificateScannerConfiguration",
+        "declAttributes": [
+          "ObjC",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)SBSDKUIConfiguration",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ScanbotSDK.SBSDKUIConfiguration",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ScanbotSDK",
+        "printedName": "ScanbotSDK",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "applyConfiguration",
+            "printedName": "applyConfiguration(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ScanbotSDKConfiguration",
+                "printedName": "ScanbotSDK.ScanbotSDKConfiguration",
+                "usr": "c:@M@ScanbotSDK@objc(cs)ScanbotSDKConfiguration"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@ScanbotSDK@@objc(cs)ScanbotSDK(cm)applyConfiguration:",
+            "mangledName": "$sSo10ScanbotSDKCAAE18applyConfigurationySbAA0A16SDKConfigurationCFZ",
+            "moduleName": "ScanbotSDK",
+            "static": true,
+            "declAttributes": [
+              "Dynamic",
+              "DiscardableResult",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:objc(cs)ScanbotSDK",
+        "moduleName": "ScanbotSDK",
+        "isOpen": true,
+        "objc_name": "ScanbotSDK",
+        "declAttributes": [
+          "ObjC",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/scanbotci\/Jenkins\/workspace\/ios-sdk-publish-release\/scanbot-sdk-ios\/ScanbotSDK\/Shared Model Code\/ScanbotSDK\/ScanbotSDKConfiguration.swift",
+      "kind": "BooleanLiteral",
+      "offset": 320,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/scanbotci\/Jenkins\/workspace\/ios-sdk-publish-release\/scanbot-sdk-ios\/ScanbotSDK\/Shared Model Code\/ScanbotSDK\/ScanbotSDKConfiguration.swift",
+      "kind": "BooleanLiteral",
+      "offset": 415,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/scanbotci\/Jenkins\/workspace\/ios-sdk-publish-release\/scanbot-sdk-ios\/ScanbotSDK\/Shared Model Code\/ScanbotSDK\/ScanbotSDKConfiguration.swift",
+      "kind": "BooleanLiteral",
+      "offset": 790,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/scanbotci\/Jenkins\/workspace\/ios-sdk-publish-release\/scanbot-sdk-ios\/ScanbotSDK\/Shared Model Code\/ScanbotSDK\/ScanbotSDKConfiguration.swift",
+      "kind": "IntegerLiteral",
+      "offset": 920,
+      "length": 2,
+      "value": "80"
+    },
+    {
+      "filePath": "\/Users\/scanbotci\/Jenkins\/workspace\/ios-sdk-publish-release\/scanbot-sdk-ios\/ScanbotSDK\/Classic Components\/Barcode Scanner\/Helpers\/SBSDKBarcodeResultsAccumulator.swift",
+      "kind": "StringLiteral",
+      "offset": 241,
+      "length": 30,
+      "value": "\"ScanbotSDK.SBSDKBarcodeResultsAccumulator\""
+    }
+  ]
+}

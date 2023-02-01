@@ -1,0 +1,4 @@
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+import{c as t}from"./p-d472be56.js";import{h as o,a as e,b as n}from"./p-5455eb05.js";import{createGesture as r}from"./p-832eb003.js";const s=(s,a)=>{let i,c;const d=(t,o,e)=>{if("undefined"==typeof document)return;const n=document.elementFromPoint(t,o);n&&a(n)?n!==i&&(p(),m(n,e)):p()},m=(o,e)=>{i=o,c||(c=i);const n=i;t((()=>n.classList.add("ion-activated"))),e()},p=(o=!1)=>{if(!i)return;const e=i;t((()=>e.classList.remove("ion-activated"))),o&&c!==i&&i.click(),i=void 0};return r({el:s,gestureName:"buttonActiveDrag",threshold:0,onStart:t=>d(t.currentX,t.currentY,e),onMove:t=>d(t.currentX,t.currentY,n),onEnd:()=>{p(!0),o(),c=void 0}})};export{s as c}

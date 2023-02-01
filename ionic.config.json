@@ -1,0 +1,7 @@
+{
+  "name": "scanbot-example-ionic-capacitor-react",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

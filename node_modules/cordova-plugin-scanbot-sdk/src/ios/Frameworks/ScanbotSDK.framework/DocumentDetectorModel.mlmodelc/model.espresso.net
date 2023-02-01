@@ -1,0 +1,3320 @@
+{
+  "layers" : [
+    {
+      "pad_r" : 1,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/Conv1\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 1,
+      "pad_l" : 0,
+      "top" : "model\/Conv1_relu\/Relu6__relu6_relu__",
+      "K" : 3,
+      "blob_biases" : 1,
+      "stride_x" : 2,
+      "name" : "model\/Conv1\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "stride_y" : 2,
+      "has_biases" : 1,
+      "C" : 32,
+      "bottom" : "image",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 3
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/Conv1_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/Conv1_relu\/Relu6__relu6_neg__",
+      "top" : "model\/Conv1_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/Conv1_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/Conv1_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/Conv1_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/Conv1_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/Conv1_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/Conv1_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/Conv1_relu\/Relu6",
+      "top" : "model\/Conv1_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/Conv1_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/expanded_conv_depthwise\/depthwisex",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/expanded_conv_depthwise_relu\/Relu6__relu6_relu__",
+      "K" : 32,
+      "blob_biases" : 5,
+      "name" : "model\/expanded_conv_depthwise\/depthwisex",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 32,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 32,
+      "bottom" : "model\/Conv1_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 7
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/expanded_conv_depthwise_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/expanded_conv_depthwise_relu\/Relu6__relu6_neg__",
+      "top" : "model\/expanded_conv_depthwise_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/expanded_conv_depthwise_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/expanded_conv_depthwise_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/expanded_conv_depthwise_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/expanded_conv_depthwise_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/expanded_conv_depthwise_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/expanded_conv_depthwise_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/expanded_conv_depthwise_relu\/Relu6",
+      "top" : "model\/expanded_conv_depthwise_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/expanded_conv_depthwise_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/expanded_conv_project\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "batch_norm_2",
+      "K" : 32,
+      "blob_biases" : 9,
+      "name" : "model\/expanded_conv_project\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 16,
+      "bottom" : "model\/expanded_conv_depthwise_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 11
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_1_expand\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_1_expand_relu\/Relu6__relu6_relu__",
+      "K" : 16,
+      "blob_biases" : 13,
+      "name" : "model\/block_1_expand\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 96,
+      "bottom" : "batch_norm_2",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 15
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_1_expand_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_1_expand_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_1_expand_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_1_expand_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_1_expand_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_1_expand_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_1_expand_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_1_expand_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_1_expand_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_1_expand_relu\/Relu6",
+      "top" : "model\/block_1_expand_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_1_expand_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 1,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_1_depthwise\/depthwisex",
+      "pad_fill_mode" : 0,
+      "pad_b" : 1,
+      "pad_l" : 0,
+      "top" : "model\/block_1_depthwise_relu\/Relu6__relu6_relu__",
+      "K" : 96,
+      "blob_biases" : 17,
+      "stride_x" : 2,
+      "name" : "model\/block_1_depthwise\/depthwisex",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 96,
+      "pad_t" : 0,
+      "stride_y" : 2,
+      "has_biases" : 1,
+      "C" : 96,
+      "bottom" : "model\/block_1_expand_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 19
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_1_depthwise_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_1_depthwise_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_1_depthwise_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_1_depthwise_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_1_depthwise_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_1_depthwise_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_1_depthwise_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_1_depthwise_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_1_depthwise_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_1_depthwise_relu\/Relu6",
+      "top" : "model\/block_1_depthwise_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_1_depthwise_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_1_project\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "batch_norm_5",
+      "K" : 96,
+      "blob_biases" : 21,
+      "name" : "model\/block_1_project\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 24,
+      "bottom" : "model\/block_1_depthwise_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 23
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_2_expand\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_2_expand_relu\/Relu6__relu6_relu__",
+      "K" : 24,
+      "blob_biases" : 25,
+      "name" : "model\/block_2_expand\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 144,
+      "bottom" : "batch_norm_5",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 27
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_2_expand_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_2_expand_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_2_expand_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_2_expand_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_2_expand_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_2_expand_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_2_expand_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_2_expand_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_2_expand_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_2_expand_relu\/Relu6",
+      "top" : "model\/block_2_expand_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_2_expand_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_2_depthwise\/depthwisex",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_2_depthwise_relu\/Relu6__relu6_relu__",
+      "K" : 144,
+      "blob_biases" : 29,
+      "name" : "model\/block_2_depthwise\/depthwisex",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 144,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 144,
+      "bottom" : "model\/block_2_expand_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 31
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_2_depthwise_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_2_depthwise_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_2_depthwise_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_2_depthwise_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_2_depthwise_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_2_depthwise_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_2_depthwise_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_2_depthwise_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_2_depthwise_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_2_depthwise_relu\/Relu6",
+      "top" : "model\/block_2_depthwise_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_2_depthwise_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_2_project\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "batch_norm_8",
+      "K" : 144,
+      "blob_biases" : 33,
+      "name" : "model\/block_2_project\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 24,
+      "bottom" : "model\/block_2_depthwise_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 35
+    },
+    {
+      "bottom" : "batch_norm_8,batch_norm_5",
+      "alpha" : 1,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_2_add\/add",
+      "top" : "model\/block_2_add\/add",
+      "type" : "elementwise",
+      "name" : "model\/block_2_add\/add",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_3_expand\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_3_expand_relu\/Relu6__relu6_relu__",
+      "K" : 24,
+      "blob_biases" : 37,
+      "name" : "model\/block_3_expand\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 144,
+      "bottom" : "model\/block_2_add\/add",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 39
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_3_expand_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_3_expand_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_3_expand_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_3_expand_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_3_expand_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_3_expand_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_3_expand_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_3_expand_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_3_expand_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_3_expand_relu\/Relu6",
+      "top" : "model\/block_3_expand_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_3_expand_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 1,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_3_depthwise\/depthwisex",
+      "pad_fill_mode" : 0,
+      "pad_b" : 1,
+      "pad_l" : 0,
+      "top" : "model\/block_3_depthwise_relu\/Relu6__relu6_relu__",
+      "K" : 144,
+      "blob_biases" : 41,
+      "stride_x" : 2,
+      "name" : "model\/block_3_depthwise\/depthwisex",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 144,
+      "pad_t" : 0,
+      "stride_y" : 2,
+      "has_biases" : 1,
+      "C" : 144,
+      "bottom" : "model\/block_3_expand_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 43
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_3_depthwise_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_3_depthwise_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_3_depthwise_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_3_depthwise_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_3_depthwise_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_3_depthwise_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_3_depthwise_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_3_depthwise_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_3_depthwise_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_3_depthwise_relu\/Relu6",
+      "top" : "model\/block_3_depthwise_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_3_depthwise_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_3_project\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "batch_norm_11",
+      "K" : 144,
+      "blob_biases" : 45,
+      "name" : "model\/block_3_project\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 32,
+      "bottom" : "model\/block_3_depthwise_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 47
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_4_expand\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_4_expand_relu\/Relu6__relu6_relu__",
+      "K" : 32,
+      "blob_biases" : 49,
+      "name" : "model\/block_4_expand\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 192,
+      "bottom" : "batch_norm_11",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 51
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_4_expand_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_4_expand_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_4_expand_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_4_expand_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_4_expand_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_4_expand_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_4_expand_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_4_expand_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_4_expand_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_4_expand_relu\/Relu6",
+      "top" : "model\/block_4_expand_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_4_expand_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_4_depthwise\/depthwisex",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_4_depthwise_relu\/Relu6__relu6_relu__",
+      "K" : 192,
+      "blob_biases" : 53,
+      "name" : "model\/block_4_depthwise\/depthwisex",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 192,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 192,
+      "bottom" : "model\/block_4_expand_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 55
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_4_depthwise_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_4_depthwise_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_4_depthwise_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_4_depthwise_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_4_depthwise_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_4_depthwise_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_4_depthwise_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_4_depthwise_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_4_depthwise_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_4_depthwise_relu\/Relu6",
+      "top" : "model\/block_4_depthwise_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_4_depthwise_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_4_project\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "batch_norm_14",
+      "K" : 192,
+      "blob_biases" : 57,
+      "name" : "model\/block_4_project\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 32,
+      "bottom" : "model\/block_4_depthwise_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 59
+    },
+    {
+      "bottom" : "batch_norm_14,batch_norm_11",
+      "alpha" : 1,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_4_add\/add",
+      "top" : "model\/block_4_add\/add",
+      "type" : "elementwise",
+      "name" : "model\/block_4_add\/add",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_5_expand\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_5_expand_relu\/Relu6__relu6_relu__",
+      "K" : 32,
+      "blob_biases" : 61,
+      "name" : "model\/block_5_expand\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 192,
+      "bottom" : "model\/block_4_add\/add",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 63
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_5_expand_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_5_expand_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_5_expand_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_5_expand_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_5_expand_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_5_expand_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_5_expand_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_5_expand_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_5_expand_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_5_expand_relu\/Relu6",
+      "top" : "model\/block_5_expand_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_5_expand_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_5_depthwise\/depthwisex",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_5_depthwise_relu\/Relu6__relu6_relu__",
+      "K" : 192,
+      "blob_biases" : 65,
+      "name" : "model\/block_5_depthwise\/depthwisex",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 192,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 192,
+      "bottom" : "model\/block_5_expand_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 67
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_5_depthwise_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_5_depthwise_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_5_depthwise_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_5_depthwise_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_5_depthwise_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_5_depthwise_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_5_depthwise_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_5_depthwise_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_5_depthwise_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_5_depthwise_relu\/Relu6",
+      "top" : "model\/block_5_depthwise_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_5_depthwise_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_5_project\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "batch_norm_17",
+      "K" : 192,
+      "blob_biases" : 69,
+      "name" : "model\/block_5_project\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 32,
+      "bottom" : "model\/block_5_depthwise_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 71
+    },
+    {
+      "bottom" : "batch_norm_17,model\/block_4_add\/add",
+      "alpha" : 1,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "_before_transpose_op_Identity_1",
+      "top" : "_before_transpose_op_Identity_1",
+      "type" : "elementwise",
+      "name" : "_before_transpose_op_Identity_1",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_6_expand\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_6_expand_relu\/Relu6__relu6_relu__",
+      "K" : 32,
+      "blob_biases" : 73,
+      "name" : "model\/block_6_expand\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 192,
+      "bottom" : "_before_transpose_op_Identity_1",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 75
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_6_expand_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_6_expand_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_6_expand_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_6_expand_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_6_expand_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_6_expand_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_6_expand_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_6_expand_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_6_expand_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_6_expand_relu\/Relu6",
+      "top" : "model\/block_6_expand_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_6_expand_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 1,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_6_depthwise\/depthwisex",
+      "pad_fill_mode" : 0,
+      "pad_b" : 1,
+      "pad_l" : 0,
+      "top" : "model\/block_6_depthwise_relu\/Relu6__relu6_relu__",
+      "K" : 192,
+      "blob_biases" : 77,
+      "stride_x" : 2,
+      "name" : "model\/block_6_depthwise\/depthwisex",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 192,
+      "pad_t" : 0,
+      "stride_y" : 2,
+      "has_biases" : 1,
+      "C" : 192,
+      "bottom" : "model\/block_6_expand_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 79
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_6_depthwise_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_6_depthwise_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_6_depthwise_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_6_depthwise_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_6_depthwise_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_6_depthwise_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_6_depthwise_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_6_depthwise_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_6_depthwise_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_6_depthwise_relu\/Relu6",
+      "top" : "model\/block_6_depthwise_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_6_depthwise_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_6_project\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "batch_norm_20",
+      "K" : 192,
+      "blob_biases" : 81,
+      "name" : "model\/block_6_project\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 64,
+      "bottom" : "model\/block_6_depthwise_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 83
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_7_expand\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_7_expand_relu\/Relu6__relu6_relu__",
+      "K" : 64,
+      "blob_biases" : 85,
+      "name" : "model\/block_7_expand\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 384,
+      "bottom" : "batch_norm_20",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 87
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_7_expand_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_7_expand_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_7_expand_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_7_expand_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_7_expand_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_7_expand_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_7_expand_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_7_expand_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_7_expand_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_7_expand_relu\/Relu6",
+      "top" : "model\/block_7_expand_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_7_expand_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_7_depthwise\/depthwisex",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_7_depthwise_relu\/Relu6__relu6_relu__",
+      "K" : 384,
+      "blob_biases" : 89,
+      "name" : "model\/block_7_depthwise\/depthwisex",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 384,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 384,
+      "bottom" : "model\/block_7_expand_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 91
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_7_depthwise_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_7_depthwise_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_7_depthwise_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_7_depthwise_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_7_depthwise_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_7_depthwise_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_7_depthwise_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_7_depthwise_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_7_depthwise_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_7_depthwise_relu\/Relu6",
+      "top" : "model\/block_7_depthwise_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_7_depthwise_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_7_project\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "batch_norm_23",
+      "K" : 384,
+      "blob_biases" : 93,
+      "name" : "model\/block_7_project\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 64,
+      "bottom" : "model\/block_7_depthwise_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 95
+    },
+    {
+      "bottom" : "batch_norm_23,batch_norm_20",
+      "alpha" : 1,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_7_add\/add",
+      "top" : "model\/block_7_add\/add",
+      "type" : "elementwise",
+      "name" : "model\/block_7_add\/add",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_8_expand\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_8_expand_relu\/Relu6__relu6_relu__",
+      "K" : 64,
+      "blob_biases" : 97,
+      "name" : "model\/block_8_expand\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 384,
+      "bottom" : "model\/block_7_add\/add",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 99
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_8_expand_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_8_expand_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_8_expand_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_8_expand_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_8_expand_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_8_expand_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_8_expand_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_8_expand_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_8_expand_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_8_expand_relu\/Relu6",
+      "top" : "model\/block_8_expand_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_8_expand_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_8_depthwise\/depthwisex",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_8_depthwise_relu\/Relu6__relu6_relu__",
+      "K" : 384,
+      "blob_biases" : 101,
+      "name" : "model\/block_8_depthwise\/depthwisex",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 384,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 384,
+      "bottom" : "model\/block_8_expand_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 103
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_8_depthwise_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_8_depthwise_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_8_depthwise_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_8_depthwise_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_8_depthwise_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_8_depthwise_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_8_depthwise_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_8_depthwise_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_8_depthwise_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_8_depthwise_relu\/Relu6",
+      "top" : "model\/block_8_depthwise_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_8_depthwise_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_8_project\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "batch_norm_26",
+      "K" : 384,
+      "blob_biases" : 105,
+      "name" : "model\/block_8_project\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 64,
+      "bottom" : "model\/block_8_depthwise_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 107
+    },
+    {
+      "bottom" : "batch_norm_26,model\/block_7_add\/add",
+      "alpha" : 1,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_8_add\/add",
+      "top" : "model\/block_8_add\/add",
+      "type" : "elementwise",
+      "name" : "model\/block_8_add\/add",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_9_expand\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_9_expand_relu\/Relu6__relu6_relu__",
+      "K" : 64,
+      "blob_biases" : 109,
+      "name" : "model\/block_9_expand\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 384,
+      "bottom" : "model\/block_8_add\/add",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 111
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_9_expand_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_9_expand_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_9_expand_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_9_expand_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_9_expand_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_9_expand_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_9_expand_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_9_expand_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_9_expand_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_9_expand_relu\/Relu6",
+      "top" : "model\/block_9_expand_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_9_expand_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_9_depthwise\/depthwisex",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_9_depthwise_relu\/Relu6__relu6_relu__",
+      "K" : 384,
+      "blob_biases" : 113,
+      "name" : "model\/block_9_depthwise\/depthwisex",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 384,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 384,
+      "bottom" : "model\/block_9_expand_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 115
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_9_depthwise_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_9_depthwise_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_9_depthwise_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_9_depthwise_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_9_depthwise_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_9_depthwise_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_9_depthwise_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_9_depthwise_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_9_depthwise_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_9_depthwise_relu\/Relu6",
+      "top" : "model\/block_9_depthwise_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_9_depthwise_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_9_project\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "batch_norm_29",
+      "K" : 384,
+      "blob_biases" : 117,
+      "name" : "model\/block_9_project\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 64,
+      "bottom" : "model\/block_9_depthwise_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 119
+    },
+    {
+      "bottom" : "batch_norm_29,model\/block_8_add\/add",
+      "alpha" : 1,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_9_add\/add",
+      "top" : "model\/block_9_add\/add",
+      "type" : "elementwise",
+      "name" : "model\/block_9_add\/add",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_10_expand\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_10_expand_relu\/Relu6__relu6_relu__",
+      "K" : 64,
+      "blob_biases" : 121,
+      "name" : "model\/block_10_expand\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 384,
+      "bottom" : "model\/block_9_add\/add",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 123
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_10_expand_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_10_expand_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_10_expand_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_10_expand_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_10_expand_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_10_expand_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_10_expand_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_10_expand_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_10_expand_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_10_expand_relu\/Relu6",
+      "top" : "model\/block_10_expand_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_10_expand_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_10_depthwise\/depthwisex",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_10_depthwise_relu\/Relu6__relu6_relu__",
+      "K" : 384,
+      "blob_biases" : 125,
+      "name" : "model\/block_10_depthwise\/depthwisex",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 384,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 384,
+      "bottom" : "model\/block_10_expand_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 127
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_10_depthwise_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_10_depthwise_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_10_depthwise_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_10_depthwise_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_10_depthwise_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_10_depthwise_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_10_depthwise_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_10_depthwise_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_10_depthwise_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_10_depthwise_relu\/Relu6",
+      "top" : "model\/block_10_depthwise_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_10_depthwise_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_10_project\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "batch_norm_32",
+      "K" : 384,
+      "blob_biases" : 129,
+      "name" : "model\/block_10_project\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 96,
+      "bottom" : "model\/block_10_depthwise_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 131
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_11_expand\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_11_expand_relu\/Relu6__relu6_relu__",
+      "K" : 96,
+      "blob_biases" : 133,
+      "name" : "model\/block_11_expand\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 576,
+      "bottom" : "batch_norm_32",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 135
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_11_expand_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_11_expand_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_11_expand_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_11_expand_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_11_expand_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_11_expand_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_11_expand_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_11_expand_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_11_expand_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_11_expand_relu\/Relu6",
+      "top" : "model\/block_11_expand_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_11_expand_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_11_depthwise\/depthwisex",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_11_depthwise_relu\/Relu6__relu6_relu__",
+      "K" : 576,
+      "blob_biases" : 137,
+      "name" : "model\/block_11_depthwise\/depthwisex",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 576,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 576,
+      "bottom" : "model\/block_11_expand_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 139
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_11_depthwise_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_11_depthwise_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_11_depthwise_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_11_depthwise_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_11_depthwise_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_11_depthwise_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_11_depthwise_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_11_depthwise_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_11_depthwise_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_11_depthwise_relu\/Relu6",
+      "top" : "model\/block_11_depthwise_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_11_depthwise_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_11_project\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "batch_norm_35",
+      "K" : 576,
+      "blob_biases" : 141,
+      "name" : "model\/block_11_project\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 96,
+      "bottom" : "model\/block_11_depthwise_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 143
+    },
+    {
+      "bottom" : "batch_norm_35,batch_norm_32",
+      "alpha" : 1,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_11_add\/add",
+      "top" : "model\/block_11_add\/add",
+      "type" : "elementwise",
+      "name" : "model\/block_11_add\/add",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_12_expand\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_12_expand_relu\/Relu6__relu6_relu__",
+      "K" : 96,
+      "blob_biases" : 145,
+      "name" : "model\/block_12_expand\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 576,
+      "bottom" : "model\/block_11_add\/add",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 147
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_12_expand_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_12_expand_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_12_expand_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_12_expand_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_12_expand_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_12_expand_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_12_expand_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_12_expand_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_12_expand_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_12_expand_relu\/Relu6",
+      "top" : "model\/block_12_expand_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_12_expand_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_12_depthwise\/depthwisex",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_12_depthwise_relu\/Relu6__relu6_relu__",
+      "K" : 576,
+      "blob_biases" : 149,
+      "name" : "model\/block_12_depthwise\/depthwisex",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 576,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 576,
+      "bottom" : "model\/block_12_expand_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 151
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_12_depthwise_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_12_depthwise_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_12_depthwise_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_12_depthwise_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_12_depthwise_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_12_depthwise_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_12_depthwise_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_12_depthwise_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_12_depthwise_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_12_depthwise_relu\/Relu6",
+      "top" : "model\/block_12_depthwise_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_12_depthwise_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_12_project\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "batch_norm_38",
+      "K" : 576,
+      "blob_biases" : 153,
+      "name" : "model\/block_12_project\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 96,
+      "bottom" : "model\/block_12_depthwise_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 155
+    },
+    {
+      "bottom" : "batch_norm_38,model\/block_11_add\/add",
+      "alpha" : 1,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "_before_transpose_op_Identity",
+      "top" : "_before_transpose_op_Identity",
+      "type" : "elementwise",
+      "name" : "_before_transpose_op_Identity",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_13_expand\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_13_expand_relu\/Relu6__relu6_relu__",
+      "K" : 96,
+      "blob_biases" : 157,
+      "name" : "model\/block_13_expand\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 576,
+      "bottom" : "_before_transpose_op_Identity",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 159
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_13_expand_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_13_expand_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_13_expand_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_13_expand_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_13_expand_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_13_expand_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_13_expand_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_13_expand_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_13_expand_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_13_expand_relu\/Relu6",
+      "top" : "model\/block_13_expand_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_13_expand_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 1,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_13_depthwise\/depthwisex",
+      "pad_fill_mode" : 0,
+      "pad_b" : 1,
+      "pad_l" : 0,
+      "top" : "model\/block_13_depthwise_relu\/Relu6__relu6_relu__",
+      "K" : 576,
+      "blob_biases" : 161,
+      "stride_x" : 2,
+      "name" : "model\/block_13_depthwise\/depthwisex",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 576,
+      "pad_t" : 0,
+      "stride_y" : 2,
+      "has_biases" : 1,
+      "C" : 576,
+      "bottom" : "model\/block_13_expand_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 163
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_13_depthwise_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_13_depthwise_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_13_depthwise_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_13_depthwise_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_13_depthwise_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_13_depthwise_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_13_depthwise_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_13_depthwise_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_13_depthwise_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_13_depthwise_relu\/Relu6",
+      "top" : "model\/block_13_depthwise_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_13_depthwise_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_13_project\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "batch_norm_41",
+      "K" : 576,
+      "blob_biases" : 165,
+      "name" : "model\/block_13_project\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 160,
+      "bottom" : "model\/block_13_depthwise_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 167
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_14_expand\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_14_expand_relu\/Relu6__relu6_relu__",
+      "K" : 160,
+      "blob_biases" : 169,
+      "name" : "model\/block_14_expand\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 960,
+      "bottom" : "batch_norm_41",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 171
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_14_expand_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_14_expand_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_14_expand_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_14_expand_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_14_expand_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_14_expand_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_14_expand_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_14_expand_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_14_expand_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_14_expand_relu\/Relu6",
+      "top" : "model\/block_14_expand_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_14_expand_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_14_depthwise\/depthwisex",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_14_depthwise_relu\/Relu6__relu6_relu__",
+      "K" : 960,
+      "blob_biases" : 173,
+      "name" : "model\/block_14_depthwise\/depthwisex",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 960,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 960,
+      "bottom" : "model\/block_14_expand_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 175
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_14_depthwise_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_14_depthwise_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_14_depthwise_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_14_depthwise_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_14_depthwise_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_14_depthwise_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_14_depthwise_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_14_depthwise_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_14_depthwise_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_14_depthwise_relu\/Relu6",
+      "top" : "model\/block_14_depthwise_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_14_depthwise_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_14_project\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "batch_norm_44",
+      "K" : 960,
+      "blob_biases" : 177,
+      "name" : "model\/block_14_project\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 160,
+      "bottom" : "model\/block_14_depthwise_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 179
+    },
+    {
+      "bottom" : "batch_norm_44,batch_norm_41",
+      "alpha" : 1,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_14_add\/add",
+      "top" : "model\/block_14_add\/add",
+      "type" : "elementwise",
+      "name" : "model\/block_14_add\/add",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_15_expand\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_15_expand_relu\/Relu6__relu6_relu__",
+      "K" : 160,
+      "blob_biases" : 181,
+      "name" : "model\/block_15_expand\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 960,
+      "bottom" : "model\/block_14_add\/add",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 183
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_15_expand_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_15_expand_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_15_expand_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_15_expand_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_15_expand_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_15_expand_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_15_expand_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_15_expand_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_15_expand_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_15_expand_relu\/Relu6",
+      "top" : "model\/block_15_expand_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_15_expand_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_15_depthwise\/depthwisex",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_15_depthwise_relu\/Relu6__relu6_relu__",
+      "K" : 960,
+      "blob_biases" : 185,
+      "name" : "model\/block_15_depthwise\/depthwisex",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 960,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 960,
+      "bottom" : "model\/block_15_expand_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 187
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_15_depthwise_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_15_depthwise_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_15_depthwise_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_15_depthwise_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_15_depthwise_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_15_depthwise_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_15_depthwise_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_15_depthwise_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_15_depthwise_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_15_depthwise_relu\/Relu6",
+      "top" : "model\/block_15_depthwise_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_15_depthwise_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_15_project\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "batch_norm_47",
+      "K" : 960,
+      "blob_biases" : 189,
+      "name" : "model\/block_15_project\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 160,
+      "bottom" : "model\/block_15_depthwise_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 191
+    },
+    {
+      "bottom" : "batch_norm_47,model\/block_14_add\/add",
+      "alpha" : 1,
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_15_add\/add",
+      "top" : "model\/block_15_add\/add",
+      "type" : "elementwise",
+      "name" : "model\/block_15_add\/add",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_16_expand\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_16_expand_relu\/Relu6__relu6_relu__",
+      "K" : 160,
+      "blob_biases" : 193,
+      "name" : "model\/block_16_expand\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 960,
+      "bottom" : "model\/block_15_add\/add",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 195
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_16_expand_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_16_expand_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_16_expand_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_16_expand_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_16_expand_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_16_expand_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_16_expand_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_16_expand_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_16_expand_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_16_expand_relu\/Relu6",
+      "top" : "model\/block_16_expand_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_16_expand_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_16_depthwise\/depthwisex",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/block_16_depthwise_relu\/Relu6__relu6_relu__",
+      "K" : 960,
+      "blob_biases" : 197,
+      "name" : "model\/block_16_depthwise\/depthwisex",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 960,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 960,
+      "bottom" : "model\/block_16_expand_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 199
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_16_depthwise_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_16_depthwise_relu\/Relu6__relu6_neg__",
+      "top" : "model\/block_16_depthwise_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/block_16_depthwise_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/block_16_depthwise_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/block_16_depthwise_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/block_16_depthwise_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/block_16_depthwise_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/block_16_depthwise_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/block_16_depthwise_relu\/Relu6",
+      "top" : "model\/block_16_depthwise_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/block_16_depthwise_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/block_16_project\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "batch_norm_50",
+      "K" : 960,
+      "blob_biases" : 201,
+      "name" : "model\/block_16_project\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 320,
+      "bottom" : "model\/block_16_depthwise_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 203
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/Conv_1\/Conv2Dx",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "model\/out_relu\/Relu6__relu6_relu__",
+      "K" : 320,
+      "blob_biases" : 205,
+      "name" : "model\/Conv_1\/Conv2Dx",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 1280,
+      "bottom" : "batch_norm_50",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 207
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/out_relu\/Relu6__relu6_relu__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/out_relu\/Relu6__relu6_neg__",
+      "top" : "model\/out_relu\/Relu6__relu6_neg__",
+      "type" : "activation",
+      "name" : "model\/out_relu\/Relu6__relu6_neg__",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/out_relu\/Relu6__relu6_neg__",
+      "alpha" : -6,
+      "operation" : 25,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/out_relu\/Relu6__relu6_threshold6__",
+      "top" : "model\/out_relu\/Relu6__relu6_threshold6__",
+      "type" : "elementwise",
+      "name" : "model\/out_relu\/Relu6__relu6_threshold6__",
+      "beta" : 0
+    },
+    {
+      "alpha" : -1,
+      "bottom" : "model\/out_relu\/Relu6__relu6_threshold6__",
+      "weights" : {
+
+      },
+      "mode" : 6,
+      "debug_info" : "model\/out_relu\/Relu6",
+      "top" : "model\/out_relu\/Relu6",
+      "type" : "activation",
+      "name" : "model\/out_relu\/Relu6",
+      "beta" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/objectness_conv\/BiasAdd",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "batch_norm_52",
+      "K" : 1280,
+      "blob_biases" : 209,
+      "name" : "model\/objectness_conv\/BiasAdd",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 1,
+      "bottom" : "model\/out_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 211
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/corners_conv\/BiasAdd",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "batch_norm_53",
+      "K" : 1280,
+      "blob_biases" : 213,
+      "name" : "model\/corners_conv\/BiasAdd",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 4,
+      "bottom" : "model\/out_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 215
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "debug_info" : "model\/coords_conv\/BiasAdd",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "batch_norm_54",
+      "K" : 1280,
+      "blob_biases" : 217,
+      "name" : "model\/coords_conv\/BiasAdd",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 2,
+      "bottom" : "model\/out_relu\/Relu6",
+      "weights" : {
+
+      },
+      "Nx" : 1,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 1,
+      "n_parallel" : 1,
+      "blob_weights_f16" : 219
+    },
+    {
+      "bottom" : "batch_norm_52",
+      "weights" : {
+
+      },
+      "mode" : 3,
+      "debug_info" : "model\/objectness_sigmoid\/Sigmoid",
+      "top" : "model\/objectness_sigmoid\/Sigmoid",
+      "type" : "activation",
+      "name" : "model\/objectness_sigmoid\/Sigmoid"
+    },
+    {
+      "axis_mode" : 4,
+      "bottom" : "batch_norm_53",
+      "weights" : {
+
+      },
+      "mode" : 9,
+      "nd_axis" : 1,
+      "nd_mode" : true,
+      "debug_info" : "model\/corners_softmax\/Max",
+      "use_version" : 1,
+      "top" : "model\/corners_softmax\/Max",
+      "type" : "reduce",
+      "name" : "model\/corners_softmax\/Max"
+    },
+    {
+      "bottom" : "batch_norm_53,model\/corners_softmax\/Max",
+      "alpha" : 1,
+      "operation" : 33,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/corners_softmax\/sub",
+      "nd_mode" : true,
+      "top" : "model\/corners_softmax\/sub",
+      "type" : "elementwise",
+      "name" : "model\/corners_softmax\/sub",
+      "beta" : 0
+    },
+    {
+      "bottom" : "model\/corners_softmax\/sub",
+      "alpha" : 1,
+      "operation" : 27,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/corners_softmax\/Exp",
+      "top" : "model\/corners_softmax\/Exp",
+      "type" : "elementwise",
+      "name" : "model\/corners_softmax\/Exp",
+      "beta" : 0
+    },
+    {
+      "axis_mode" : 4,
+      "bottom" : "model\/corners_softmax\/Exp",
+      "weights" : {
+
+      },
+      "mode" : 0,
+      "nd_axis" : 1,
+      "nd_mode" : true,
+      "debug_info" : "model\/corners_softmax\/Sum",
+      "use_version" : 1,
+      "top" : "model\/corners_softmax\/Sum",
+      "type" : "reduce",
+      "name" : "model\/corners_softmax\/Sum"
+    },
+    {
+      "bottom" : "model\/corners_softmax\/Exp,model\/corners_softmax\/Sum",
+      "alpha" : 1,
+      "operation" : 102,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "debug_info" : "model\/corners_softmax\/truediv",
+      "nd_mode" : true,
+      "top" : "model\/corners_softmax\/truediv",
+      "type" : "elementwise",
+      "name" : "model\/corners_softmax\/truediv",
+      "beta" : 0
+    },
+    {
+      "weights" : {
+
+      },
+      "debug_info" : "_before_transpose_op_Identity_2",
+      "top" : "_before_transpose_op_Identity_2",
+      "type" : "concat",
+      "name" : "_before_transpose_op_Identity_2",
+      "bottom" : "model\/objectness_sigmoid\/Sigmoid,model\/corners_softmax\/truediv,batch_norm_54"
+    },
+    {
+      "axis_seq" : 4,
+      "name" : "Identity",
+      "axis_n" : 3,
+      "axis_h" : 0,
+      "type" : "transpose",
+      "attributes" : {
+        "is_output" : 1
+      },
+      "bottom" : "_before_transpose_op_Identity",
+      "axis_w" : 2,
+      "axis_k" : 1,
+      "debug_info" : "Identity",
+      "weights" : {
+
+      },
+      "top" : "feature_block_12"
+    },
+    {
+      "axis_seq" : 4,
+      "name" : "Identity_1",
+      "axis_n" : 3,
+      "axis_h" : 0,
+      "type" : "transpose",
+      "attributes" : {
+        "is_output" : 1
+      },
+      "bottom" : "_before_transpose_op_Identity_1",
+      "axis_w" : 2,
+      "axis_k" : 1,
+      "debug_info" : "Identity_1",
+      "weights" : {
+
+      },
+      "top" : "feature_block_5"
+    },
+    {
+      "axis_seq" : 4,
+      "name" : "Identity_2",
+      "axis_n" : 3,
+      "axis_h" : 0,
+      "type" : "transpose",
+      "attributes" : {
+        "is_output" : 1
+      },
+      "bottom" : "_before_transpose_op_Identity_2",
+      "axis_w" : 2,
+      "axis_k" : 1,
+      "debug_info" : "Identity_2",
+      "weights" : {
+
+      },
+      "top" : "cells_grid"
+    }
+  ],
+  "transform_params" : {
+    "image" : {
+      "bias_a" : 0,
+      "bias_g" : -1,
+      "bias_r" : -1,
+      "bias_b" : -1,
+      "center_mean" : 0,
+      "is_network_bgr" : 1,
+      "scale" : 0.0078431377187371254
+    }
+  },
+  "storage" : "model.espresso.weights",
+  "metadata_in_weights" : [
+
+  ],
+  "properties" : {
+
+  },
+  "analyses" : {
+
+  },
+  "format_version" : 200
+}

@@ -1,0 +1,41 @@
+{
+    "acceptedCheckStandards": [
+        "USA",
+        "FRA",
+        "KWT",
+        "AUS",
+        "IND"
+    ],
+    "cameraModule": "BACK",
+    "cameraOverlayColor": "#00000080",
+    "cameraPreviewMode": "FILL_IN",
+    "cancelButtonTitle": "Cancel",
+    "captureHighResolutionImage": true,
+    "enableCameraButtonTitle": "Enable camera",
+    "enableCameraExplanationText": "Please enable the camera permission to start scanning.",
+    "finderAspectRatio": {
+        "height": 4.5,
+        "width": 8.5
+    },
+    "finderLineColor": "#00CEA6",
+    "finderLineWidth": 2,
+    "flashButtonHidden": false,
+    "flashButtonTitle": "",
+    "flashEnabled": false,
+    "orientationLockMode": "NONE",
+    "screen": "CheckRecognizer",
+    "topBarBackgroundColor": "#000000",
+    "topBarButtonsActiveColor": "#F7CE46",
+    "topBarButtonsInactiveColor": "#FFFFFF",
+    "useButtonsAllCaps": true,
+    "userGuidanceBackgroundColor": "#00CEA6A8",
+    "userGuidanceStringValues": {
+        "capturing": "Capturing...",
+        "energySaving": "Energy saving active.\nPlease move the device.",
+        "processing": "Processing...",
+        "scanning": "Searching for check...",
+        "startScanning": "Make sure the check\nis completely visible on your screen!"
+    },
+    "userGuidanceTextColor": "#FFFFFF",
+    "version": "1.0"
+}
