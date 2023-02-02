@@ -16,7 +16,10 @@ import { useHistory } from 'react-router';
 import { ImageResultsRepository } from '../utils/ImageRepository';
 import { BarcodeRepository } from '../utils/BarcodeRepository';
 
-import ScanbotSdk, { 
+/* Scanbot SDK Service */
+import { ScanbotSDKService } from '../services/ScanbotSDKService';
+
+import { 
   DocumentScannerConfiguration, 
   BarcodeScannerConfiguration} from 'cordova-plugin-scanbot-sdk';
 
@@ -38,31 +41,28 @@ const Home: React.FC = () => {
       bottomBarBackgroundColor: '#c8193c',
       // see further configs ...
     };
+
+    if(!(ScanbotSDKService.checkLicense())) return;
+
+    try {
+      const documentScannerResults = await ScanbotSDKService.SDK.UI.startDocumentScanner({uiConfigs: configs});
     
-    await ScanbotSdk.UI.startDocumentScanner(async (documentScannerResult) => {
+      if (documentScannerResults.status === 'CANCELED') { return; } 
 
-        if (documentScannerResult.status === 'CANCELED') {
-          // user has canceled the scanning operation
-          return;
-        } 
+      await ImageResultsRepository.INSTANCE.addPages(documentScannerResults.pages);
 
-        await ImageResultsRepository.INSTANCE.addPages(documentScannerResult.pages);
+      history.push("/imagepreview");
 
-        history.push("/imagepreview");
-
-    }, 
-    (error) => {
-      // error handeling call back you can add your logic here
-      presentAlert({
-        header: 'Error',
-        message: error.message,
-        buttons: ['OK'],
-      })
-    }, {uiConfigs: configs});
+    } catch (error) {
+      console.error(error);
+    }
   }
 
-  // scan barcode
+  // scan barcode feature
   const scanBarcode = async () => {
+
+    let barcodeString:string = '';
+
     const configs: BarcodeScannerConfiguration = {
       // Customize colors, text resources, behavior, etc..
       finderTextHint: 'Please align the barcode or QR code in the frame above to scan it.',
@@ -72,13 +72,14 @@ const Home: React.FC = () => {
       // see further configs ...
     };
 
-    await ScanbotSdk.UI.startBarcodeScanner((barcodeResults) => {
-      let barcodeString:string = '';
-      if(barcodeResults.status == "CANCELED") return;
+    if(!(ScanbotSDKService.checkLicense())) return;
 
-      if(barcodeResults.barcodes == undefined) return;
+    try {
+      const barcodeScannerResults = await ScanbotSDKService.SDK.UI.startBarcodeScanner({uiConfigs: configs});
 
-      barcodeResults.barcodes.forEach(barcode => {
+      if(barcodeScannerResults.status == "CANCELED") return;
+
+      barcodeScannerResults.barcodes!.forEach(barcode => {
         barcodeString += barcode.type + ' : ' + barcode.text + '\n';
       });
 
@@ -87,15 +88,10 @@ const Home: React.FC = () => {
         message: barcodeString,
         buttons: ['OK'],
       })
-    }, 
-    (error) => {
-      presentAlert({
-        header: 'Error',
-        message: error.message,
-        buttons: ['OK'],
-      })
-    }, 
-    {uiConfigs: configs})
+
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (

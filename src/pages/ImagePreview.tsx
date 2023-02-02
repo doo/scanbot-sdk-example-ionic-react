@@ -16,8 +16,11 @@ import {
 import { useHistory } from 'react-router';
 import React, {useState } from 'react';
 
-import ScanbotSdk, { Page } from 'cordova-plugin-scanbot-sdk';
+import { Page } from 'cordova-plugin-scanbot-sdk';
 import { ImageResultsRepository } from '../utils/ImageRepository';
+
+/* Scanbot SDK Service */
+import { ScanbotSDKService } from '../services/ScanbotSDKService';
 
 const ImagePreview: React.FC = () => {
 
@@ -28,33 +31,26 @@ const ImagePreview: React.FC = () => {
 
     let pages: Page[] = [];
 
-    useIonViewWillEnter(() => {
-        reloadPages();
+    useIonViewWillEnter(async () => {
+        await reloadPages();
     });
 
-    const reloadPages = () => {
-        pages = ImageResultsRepository.INSTANCE.getPages();
+    const reloadPages = async () => {
 
-        for (const page of pages) {
+        try {
+            pages = ImageResultsRepository.INSTANCE.getPages();
 
-            const url = page.documentPreviewImageFileUri as string;
+            for (const page of pages) {
 
-            ScanbotSdk.getImageData((result) => {
+                const url = page.documentPreviewImageFileUri as string;
 
-                const extension = 'png';
-    
-                let url = `data:image/${extension};base64,` + result.base64ImageData;
+                const imageURL = await ScanbotSDKService.fetchDataFromUri(url);
 
-                setImageData((imageData: any) => [...imageData, {id: page.pageId, url: url}])
-            },
-            (error) => {
-                presentAlert({
-                    header: 'Error',
-                    message: error.message,
-                    buttons: ['OK'],
-                })
-             },
-            { imageFileUri: url }); 
+                setImageData((imageData: any) => [...imageData, {id: page.pageId, url: imageURL}]);
+            }
+
+        } catch (error) {
+            console.error(error);
         }
     }
 

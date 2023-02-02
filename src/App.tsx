@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import ImagePreview from './pages/ImagePreview';
 import ImageEditView from './pages/ImageEditView';
 
+
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -25,7 +26,10 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 /* Scanbot SDK */
-import ScanbotSdk, { ScanbotSDKConfiguration } from 'cordova-plugin-scanbot-sdk';
+import { ScanbotSDKConfiguration } from 'cordova-plugin-scanbot-sdk';
+
+/* Scanbot SDK Service */
+import { ScanbotSDKService } from './services/ScanbotSDKService';
 
 setupIonicReact();
 
@@ -37,16 +41,10 @@ const initializeSdk = async () =>
         licenseKey: '',
     };
     try {
-        ScanbotSdk.initializeSdk(
-          (result) => {
-          if (result.status == "OK"){
-            console.log('Scanbot SDK Initialized');
-          }
-         },
-         (error) => { 
-          console.log(error.message);
-         },
-         config);
+
+      await ScanbotSDKService.SDK.initializeSdk(config)
+            .then(result => console.log(JSON.stringify(result)))
+            .catch(err => console.error('Scanbot sdk initialize error ' + JSON.stringify(err)));
     } catch (e) {
         console.error(e);
     }
