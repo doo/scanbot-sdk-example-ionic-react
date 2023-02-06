@@ -1,8 +1,32 @@
-import ScanbotSdk, { Page } from "cordova-plugin-scanbot-sdk";
+import ScanbotSdk, { Page, PDFPageSize, TIFFCompression } from "cordova-plugin-scanbot-sdk";
 
 export class ImageResultsRepository {
 
     public static INSTANCE = new ImageResultsRepository();
+
+    public TIFFCompressionList: TIFFCompression[] = [
+        "NONE",
+        "CCITTRLE",
+        "CCITTFAX3",
+        "CCITT_T4",
+        "CCITTFAX4",
+        "CCITT_T6",
+        "CCITTRLEW",
+        "LZW",
+        "PACKBITS",
+        "DEFLATE",
+        "ADOBE_DEFLATE"
+    ];
+
+    public pdfPageSizeList: PDFPageSize[] = [
+        "FROM_IMAGE",
+        "A4",
+        "FIXED_A4",
+        "US_LETTER",
+        "FIXED_US_LETTER",
+        "AUTO_LOCALE",
+        "AUTO"
+    ];
 
     private pages: Page[] = [];
 
