@@ -9,7 +9,8 @@ import {
   IonItem,
   IonLabel,
   useIonAlert,
-  useIonLoading } from '@ionic/react';
+  useIonLoading,
+  isPlatform } from '@ionic/react';
 
 import { Camera, CameraResultType, CameraSource, GalleryPhoto } from '@capacitor/camera';
 
@@ -28,7 +29,12 @@ import {
   BarcodeScannerConfiguration,
   BatchBarcodeScannerConfiguration,
   MrzScannerConfiguration,
-  CheckRecognizerConfiguration} from 'cordova-plugin-scanbot-sdk';
+  CheckRecognizerConfiguration,
+  HealthInsuranceCardScannerConfiguration,
+  TextDataScannerStep,
+  DataScannerConfiguration,
+  LicensePlateScannerConfiguration,
+  GenericDocumentRecognizerConfiguration} from 'cordova-plugin-scanbot-sdk';
 
 const Home: React.FC = () => {
 
@@ -55,7 +61,15 @@ const Home: React.FC = () => {
     try {
       const documentScannerResults = await ScanbotSDKService.SDK.UI.startDocumentScanner({uiConfigs: configs});
     
-      if (documentScannerResults.status === 'CANCELED') { return; } 
+      if (documentScannerResults.status === 'CANCELED') {
+        presentAlert({
+          header: 'Error',
+          message: 'Something wrong. Please try again!',
+          buttons: ['OK'],
+        })
+
+        return;
+      } 
 
       await ImageResultsRepository.INSTANCE.addPages(documentScannerResults.pages);
 
@@ -67,7 +81,9 @@ const Home: React.FC = () => {
   }
 
   // scan barcode feature
-  const scanBarcode = async () => {
+  const startBarcodeScanner = async () => {
+
+    if(!(ScanbotSDKService.checkLicense())) {return};
 
     let barcodeString:string = '';
 
@@ -80,15 +96,21 @@ const Home: React.FC = () => {
       // see further configs ...
     };
 
-    if(!(ScanbotSDKService.checkLicense())) return;
-
     try {
       const barcodeScannerResults = await ScanbotSDKService.SDK.UI.startBarcodeScanner({uiConfigs: configs});
 
-      if(barcodeScannerResults.status == "CANCELED") return;
+      if(barcodeScannerResults.status == "CANCELED") {
+        presentAlert({
+          header: 'Error',
+          message: 'Something wrong. Please try again!',
+          buttons: ['OK'],
+        })
+
+        return;
+      };
 
       barcodeScannerResults.barcodes!.forEach(barcode => {
-        barcodeString += barcode.type + ' : ' + barcode.text + '\n';
+        barcodeString += (barcode.type + ' : ' + barcode.text + '\r\n');
       });
 
       presentAlert({
@@ -103,7 +125,9 @@ const Home: React.FC = () => {
   }
 
   // scan batch barcode feature
-  const scanBatchBarcode = async () => {
+  const startBatchBarcodeScanner = async () => {
+
+    if(!(ScanbotSDKService.checkLicense())) return;
 
     let batchBarcodeString:string = '';
 
@@ -116,15 +140,21 @@ const Home: React.FC = () => {
       // see further configs ...
     };
 
-    if(!(ScanbotSDKService.checkLicense())) return;
-
     try {
       const batchBarcodeScannerResults = await ScanbotSDKService.SDK.UI.startBatchBarcodeScanner({uiConfigs: configs});
 
-      if(batchBarcodeScannerResults.status == "CANCELED") return;
+      if(batchBarcodeScannerResults.status == "CANCELED") {
+        presentAlert({
+          header: 'Error',
+          message: 'Something wrong. Please try again!',
+          buttons: ['OK'],
+        })
+
+        return;
+      };
 
       batchBarcodeScannerResults.barcodes!.forEach(barcode => {
-        batchBarcodeString += barcode.type + ' : ' + barcode.text + '\r\n';
+        batchBarcodeString += (barcode.type + ' : ' + barcode.text + '\r\n');
       });
 
       presentAlert({
@@ -142,6 +172,8 @@ const Home: React.FC = () => {
   const detectBarcodeFromImage = async () => {
     try {
 
+      if(!await ScanbotSDKService.checkLicense()) return
+
       let barcodeResultString:string = '';
 
       const image = await Camera.getPhoto({
@@ -158,7 +190,16 @@ const Home: React.FC = () => {
 
       const result = await ScanbotSDKService.SDK.detectBarcodesOnImage({ imageFileUri: originalImageFileUri });
 
-      if(result.status == "CANCELED") return;
+      if(result.status == "CANCELED") {
+        presentAlert({
+          header: 'Error',
+          message: 'Something wrong. Please try again!',
+          buttons: ['OK'],
+        })
+
+        dismiss();
+        return;
+      };
 
       result.barcodes!.forEach(barcode => {
         barcodeResultString += barcode.type + ' : ' + barcode.text + '\r\n';
@@ -180,6 +221,8 @@ const Home: React.FC = () => {
   // detect barcodes from multiple images
   const detectBarcodeFromImages = async () => {
     try {
+
+      if(!await ScanbotSDKService.checkLicense()) return;
       
       let barcodeResultString:string = '';
       const originalImageFileUrls:string[] = [];
@@ -199,7 +242,16 @@ const Home: React.FC = () => {
 
       const response = await ScanbotSDKService.SDK.detectBarcodesOnImages({ imageFilesUris: originalImageFileUrls});
 
-      if(response.status == "CANCELED") return;
+      if(response.status == "CANCELED") {
+        presentAlert({
+          header: 'Error',
+          message: 'Something wrong. Please try again!',
+          buttons: ['OK'],
+        })
+
+        dismiss();
+        return;
+      };
 
       response.results!.forEach(element => {
 
@@ -223,9 +275,12 @@ const Home: React.FC = () => {
 
   // scan mrz
   /// todo => ios does not work need to check with anguler example app.
-  const scanMRZ = async () => {
+  const startMRZScanner = async () => {
 
     try {
+
+      if(!await ScanbotSDKService.checkLicense()) return;
+
       let mrzResultString:string = '';
 
       const configs: MrzScannerConfiguration = {
@@ -234,19 +289,31 @@ const Home: React.FC = () => {
         interfaceOrientation: 'PORTRAIT',
         // see further configs ...
       };
+
+      if (isPlatform('ios')) {
+        const widthPx = window.screen.width;
+        configs.finderWidth = widthPx * 0.9;
+        configs.finderHeight = widthPx * 0.18;
+      }
       
       const result = await ScanbotSDKService.SDK.UI.startMrzScanner({uiConfigs: configs});
       
       if (result.status === 'CANCELED') {
-        // user has canceled the scanning operation
+        presentAlert({
+          header: 'Error',
+          message: 'Something wrong. Please try again!',
+          buttons: ['OK'],
+        })
+
         return;
       }
 
       result.mrzResult?.fields.forEach(element => {
         mrzResultString += (element.name + " : " + element.value + "\r\n");
       });
+
       presentAlert({
-        header: 'Barcode Results',
+        header: 'MRZ Results',
         message: mrzResultString,
         buttons: ['OK'],
       })
@@ -256,10 +323,59 @@ const Home: React.FC = () => {
     }
   }
 
+  // perfom OCR, read text from a image
+  const startOCR = async () => {
+    
+    try {
+      
+      if(!await ScanbotSDKService.checkLicense()) return;
+
+      let pages = ImageResultsRepository.INSTANCE.getPages();
+
+      // if(pages == undefined || pages.length <= 0 ){
+      //   presentAlert({
+      //     header: 'No Pages to Extract Data',
+      //     message: 'Please add a Document',
+      //     buttons: ['OK'],
+      //   })
+
+      //   return;
+      // }
+      present({
+        message: 'Loading...',
+        spinner: 'circles'
+      })
+      
+      const ocrResult = await ScanbotSDKService.SDK.performOcr({
+        images: pages.map(p => p.documentImageFileUri!),
+        languages: ['en', 'de'],
+        outputFormat: 'FULL_OCR_RESULT',
+      });
+
+      dismiss();
+
+      presentAlert({
+        header: 'OCR Results',
+        message: JSON.stringify(ocrResult),
+        buttons: ['OK'],
+      })
+
+    } catch (error) {
+      presentAlert({
+        header: 'OCR Results',
+        message: 'error',
+        buttons: ['OK'],
+      })
+      console.error(error);
+    }
+  }
+
   // scan check
-  const scanCheck = async () => {
+  const startCheckScanner = async () => {
 
     try {
+
+      if(!await ScanbotSDKService.checkLicense()) return;
 
       const configs: CheckRecognizerConfiguration = {
         // Customize colors, text resources, behavior, etc..
@@ -272,7 +388,12 @@ const Home: React.FC = () => {
       const checkResult = await ScanbotSDKService.SDK.UI.startCheckRecognizer({uiConfigs: configs});
       
       if (checkResult.status === 'CANCELED') {
-        // user has canceled the scanning operation
+        presentAlert({
+          header: 'Error',
+          message: 'Something wrong. Please try again!',
+          buttons: ['OK'],
+        })
+
         return;
       }
       
@@ -282,6 +403,170 @@ const Home: React.FC = () => {
         buttons: ['OK'],
       })
 
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  // scan medical card
+  const startEHICCardScanner = async () => {
+
+    try {
+      
+      if(!await ScanbotSDKService.checkLicense()) return;
+
+      const configs: HealthInsuranceCardScannerConfiguration = {
+        // Customize colors, text resources, behavior, etc..
+        finderTextHint: 'Please hold your phone over the back of your Health Insurance Card.',
+        interfaceOrientation: 'PORTRAIT',
+        // see further configs ...
+      };
+      
+      const ehicResult = await ScanbotSDKService.SDK.UI.startEHICScanner({uiConfigs: configs});
+      
+      if (ehicResult.status === 'CANCELED') {
+        presentAlert({
+          header: 'Error',
+          message: 'Something wrong. Please try again!',
+          buttons: ['OK'],
+        })
+
+        return;
+      }
+
+      presentAlert({
+        header: 'EHIC Results',
+        message: JSON.stringify(ehicResult),
+        buttons: ['OK'],
+      })
+      
+    } catch (error)
+    {
+      console.error(error);
+    }
+  }
+
+  // scan data
+  const startDataScanner = async () => {
+
+    try {
+      
+      if(!await ScanbotSDKService.checkLicense()) return; 
+
+      const uiConfigs: DataScannerConfiguration = {
+        // Customize colors, text resources, behavior, etc..
+        cancelButtonTitle: 'Cancel',
+        topBarBackgroundColor: '#c8193c',
+        topBarButtonsColor: '#ffffff',
+        finderLineColor: '#c8193c',
+        interfaceOrientation: 'PORTRAIT',
+        // see further configs...
+      };
+      
+      const scannerStep: TextDataScannerStep = {
+        textFilterStrategy: 'DOCUMENT',
+        guidanceText: 'Place the text line in the frame to scan it',
+        // an optional pattern can be used to validate scanned text and get better OCR results
+        // '?' for any character, '#' for any digit, all other characters represent themselves.
+        //pattern: '',
+      };
+      
+      const dataScannerResult = await ScanbotSDKService.SDK.UI.startDataScanner({uiConfigs, scannerStep});
+      
+      if (dataScannerResult.status === 'CANCELED') {
+        presentAlert({
+          header: 'Error',
+          message: 'Something wrong. Please try again!',
+          buttons: ['OK'],
+        })
+
+        return;
+      }
+
+      presentAlert({
+        header: 'Data Scanner Results',
+        message: JSON.stringify(dataScannerResult),
+        buttons: ['OK'],
+      })
+      
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  // license plate scanner
+  const startLicensePlateScanner = async () => {
+    try {
+      
+      if(!await ScanbotSDKService.checkLicense()) return;
+
+      const config: LicensePlateScannerConfiguration = {
+        // Customize colors, text resources, behavior, etc..
+        detectorMode: 'ML_BASED',
+        topBarBackgroundColor: '#c8193c',
+        topBarButtonsColor: '#ffffff',
+        cancelButtonTitle: 'Cancel',
+        finderLineColor: '#c8193c',
+        finderLineWidth: 5,
+        guidanceText: 'Place the whole license plate in the frame to scan it',
+        interfaceOrientation: 'PORTRAIT',
+        confirmationDialogConfirmButtonFilled: true,
+        // see further configs...
+      };
+      
+      const licensePlateScannerResult = await ScanbotSDKService.SDK.UI.startLicensePlateScanner({uiConfigs: config});
+      
+      if (licensePlateScannerResult.status === 'CANCELED') {
+        presentAlert({
+          header: 'Error',
+          message: 'Something wrong. Please try again!',
+          buttons: ['OK'],
+        })
+
+        return;
+      }
+
+      presentAlert({
+        header: 'License Plate Results',
+        message: JSON.stringify(licensePlateScannerResult),
+        buttons: ['OK'],
+      })
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const startGenericDocumentScanner = async () => {
+
+    try {
+      
+      if(!await ScanbotSDKService.checkLicense()) return;
+
+      const config: GenericDocumentRecognizerConfiguration = {
+        // Customize colors, text resources, behavior, etc..
+        shouldSavePhotoImageInStorage: true,
+        // see further configs...
+      };
+      
+      const genericDocumentRecognizerResult = await ScanbotSDKService.SDK.UI.startGenericDocumentRecognizer({uiConfigs: config});
+      
+      if (genericDocumentRecognizerResult.status === 'CANCELED') {
+        presentAlert({
+          header: 'Error',
+          message: 'Something wrong. Please try again!',
+          buttons: ['OK'],
+        })
+
+        return;
+      }
+
+      presentAlert({
+        header: 'License Plate Results',
+        message: JSON.stringify(genericDocumentRecognizerResult),
+        buttons: ['OK'],
+      })
+      
     } catch (error) {
       console.error(error);
     }
@@ -305,39 +590,64 @@ const Home: React.FC = () => {
             <IonLabel>Scan Document</IonLabel>
           </IonItem>
           <IonItem onClick={() => { history.push("/imagepreview"); }}>
-            <IonLabel>View Images</IonLabel>
+            <IonLabel>View Image Results</IonLabel>
           </IonItem>
         </IonItemGroup>
 
         <IonItemGroup>
           <IonItemDivider>
-            <IonLabel>DATA DETECTORS</IonLabel>
+            <IonLabel>BarCode Detector</IonLabel>
           </IonItemDivider>
 
-          <IonItem onClick={async() => {await scanBarcode()}}>
-            <IonLabel>Scan Barcode</IonLabel>
+          <IonItem onClick={async() => {await startBarcodeScanner()}}>
+            <IonLabel>Scan QR-/Barcode</IonLabel>
           </IonItem>
 
-          <IonItem onClick={async() => {await scanBatchBarcode()}}>
-            <IonLabel>Batch Barcode Scanner</IonLabel>
+          <IonItem onClick={async() => {await startBatchBarcodeScanner()}}>
+            <IonLabel>Scan Batch of Barcodes</IonLabel>
           </IonItem>
 
           <IonItem onClick={async() => {await detectBarcodeFromImage()}}>
-            <IonLabel>Detect Barcode From Image</IonLabel>
+            <IonLabel>Import Image & Detect Barcodes</IonLabel>
           </IonItem>
 
           <IonItem onClick={async() => {await detectBarcodeFromImages()}}>
-            <IonLabel>Detect Barcode From Images</IonLabel>
+            <IonLabel>Import Images & Detect Barcodes</IonLabel>
           </IonItem>
 
-          <IonItem onClick={async() => {await scanMRZ()}}>
+        </IonItemGroup>
+
+        <IonItemGroup>
+          <IonItemDivider>
+            <IonLabel>Data Detectors</IonLabel>
+          </IonItemDivider>
+          <IonItem onClick={async() => {await startMRZScanner()}}>
             <IonLabel>Scan MRZ</IonLabel>
           </IonItem>
 
-          <IonItem onClick={async() => {await scanCheck()}}>
-            <IonLabel>Scan Check</IonLabel>
+          <IonItem onClick={async() => {await startEHICCardScanner()}}>
+            <IonLabel>Scan Health Insuarance Card</IonLabel>
           </IonItem>
 
+          <IonItem onClick={async() => {await startCheckScanner()}}>
+            <IonLabel>Scan Checks</IonLabel>
+          </IonItem>
+
+          <IonItem onClick={async() => {await startLicensePlateScanner()}}>
+            <IonLabel>Scan License Plate (ML)</IonLabel>
+          </IonItem>
+
+          <IonItem onClick={async() => {await startOCR()}}>
+            <IonLabel>Read Texts From a Document</IonLabel>
+          </IonItem>
+
+          <IonItem onClick={async() => {await startDataScanner()}}>
+            <IonLabel>Scan Data</IonLabel>
+          </IonItem>
+
+          <IonItem onClick={async() => {await startGenericDocumentScanner()}}>
+            <IonLabel>Scan Generic Documents</IonLabel>
+          </IonItem>
         </IonItemGroup>
 
       </IonContent>

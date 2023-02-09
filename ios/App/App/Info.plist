@@ -23,7 +23,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Allow access to camera</string>
+	<string>Scan Documents, QR-/Barcodes, MRZ, etc.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>This app needs to access your photo library in order to import images</string>
 	<key>NSPhotoLibraryUsageDescription</key>
