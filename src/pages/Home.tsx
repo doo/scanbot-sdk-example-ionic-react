@@ -332,15 +332,16 @@ const Home: React.FC = () => {
 
       let pages = ImageResultsRepository.INSTANCE.getPages();
 
-      // if(pages == undefined || pages.length <= 0 ){
-      //   presentAlert({
-      //     header: 'No Pages to Extract Data',
-      //     message: 'Please add a Document',
-      //     buttons: ['OK'],
-      //   })
+      if(pages == undefined || pages.length <= 0 ){
+        presentAlert({
+          header: 'No Pages to Extract Data',
+          message: 'Please add a Document',
+          buttons: ['OK'],
+        })
 
-      //   return;
-      // }
+        return;
+      }
+      
       present({
         message: 'Loading...',
         spinner: 'circles'
