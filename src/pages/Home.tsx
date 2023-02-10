@@ -339,9 +339,11 @@ const Home: React.FC = () => {
           buttons: ['OK'],
         })
 
+        //https://scanbot.atlassian.net/browse/EPIC-2857
+
         return;
       }
-      
+
       present({
         message: 'Loading...',
         spinner: 'circles'

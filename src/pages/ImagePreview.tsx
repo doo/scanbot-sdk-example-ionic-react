@@ -48,12 +48,16 @@ const ImagePreview: React.FC = () => {
     /* load scanned documents */
     const reloadPages = async () => {
 
+        if(!(ScanbotSDKService.checkLicense())) return;
+
         try {
             for (const page of pages) {
 
                 const url = page.documentPreviewImageFileUri as string;
 
                 const imageURL = await ScanbotSDKService.fetchDataFromUri(url);
+
+                if(imageURL == '' || imageURL == undefined) break;
 
                 setImageData((imageData: any) => [...imageData, {id: page.pageId, url: imageURL}]);
             }

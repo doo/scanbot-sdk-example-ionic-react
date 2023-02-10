@@ -82,19 +82,32 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
             return;
         }
 
-        const croppingResult = await ScanbotSDKService.SDK.UI.startCroppingScreen({
-            page: page,
-            uiConfigs: {
-                doneButtonTitle: 'Save',
-                interfaceOrientation: 'PORTRAIT',
-                topBarBackgroundColor: '#c8193c',
-                bottomBarBackgroundColor: '#c8193c',
-                hintTitle: 'Custom hint:\nDrag the dots to the document edges.',
-                hintTitleColor: '#0000ff'
-            }
-        });
+        if(!(ScanbotSDKService.checkLicense())) return;
 
         try {
+
+            const croppingResult = await ScanbotSDKService.SDK.UI.startCroppingScreen({
+                page: page,
+                uiConfigs: {
+                    doneButtonTitle: 'Save',
+                    interfaceOrientation: 'PORTRAIT',
+                    topBarBackgroundColor: '#c8193c',
+                    bottomBarBackgroundColor: '#c8193c',
+                    hintTitle: 'Custom hint:\nDrag the dots to the document edges.',
+                    hintTitleColor: '#0000ff'
+                }
+            });
+
+            if (croppingResult.status == "CANCELED") {
+                presentAlert({
+                    header: 'Error',
+                    message: 'Something wrong. Please try again!',
+                    buttons: ['OK'],
+                })
+          
+                return;
+            }
+
             if (croppingResult.page == undefined) return;
 
             ImageResultsRepository.INSTANCE.updatePage(croppingResult.page);
@@ -112,7 +125,11 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
         try {
             setSelectedPage(page);
 
+            if(!(ScanbotSDKService.checkLicense())) return;
+
             const imageURL = await ScanbotSDKService.fetchDataFromUri(page.documentPreviewImageFileUri as string);
+
+            if(imageURL == '' || imageURL == undefined) return;
 
             setUrl(imageURL);
 
@@ -128,6 +145,8 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
 
         if (page == undefined) return;
 
+        if(!(ScanbotSDKService.checkLicense())) return;
+
         try {
             present({
                 message: 'Loading...',
@@ -139,7 +158,16 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
                 imageFilter: selectedFilterOption as ImageFilter
             });
     
-            if (filteredImageResult.status == "CANCELED") return
+            if (filteredImageResult.status == "CANCELED") {
+                presentAlert({
+                    header: 'Error',
+                    message: 'Something wrong. Please try again!',
+                    buttons: ['OK'],
+                })
+          
+                dismiss();
+                return;
+            }
     
             ImageResultsRepository.INSTANCE.updatePage(filteredImageResult.page);
             generateImageURL(filteredImageResult.page);
