@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ScanbotIonicReactJs</string>
+    <string name="title_activity_main">ScanbotIonicReactJs</string>
+    <string name="package_name">io.scanbot.example.sdk.capacitor.ionic.react</string>
+    <string name="custom_url_scheme">io.scanbot.example.sdk.capacitor.ionic.react</string>
+</resources>
