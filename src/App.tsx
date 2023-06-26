@@ -52,7 +52,7 @@ const initializeSdk = async () =>
 
 const App: React.FC = () => {
 
-  initializeSdk();
+  initializeSdk().then(r => console.log('SDK Initialization'));
 
   return (
     <IonApp>

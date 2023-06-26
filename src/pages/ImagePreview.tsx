@@ -48,7 +48,7 @@ const ImagePreview: React.FC = () => {
     /* load scanned documents */
     const reloadPages = async () => {
 
-        if(!(ScanbotSDKService.checkLicense())) return;
+        if(!(await ScanbotSDKService.checkLicense())) return;
 
         try {
             for (const page of pages) {
@@ -81,7 +81,7 @@ const ImagePreview: React.FC = () => {
             
             if(pages == undefined) return;
 
-            present({
+            await present({
                 message: 'Loading...',
                 spinner: 'circles'
             })
@@ -92,22 +92,22 @@ const ImagePreview: React.FC = () => {
             });
 
             if(result.status == "CANCELED") {
-                presentAlert({
+                await presentAlert({
                     header: 'Error',
                     message: result.message,
                     buttons: ['OK'],
                 })
-                dismiss();
+                await dismiss();
                 return;
             }
 
-            presentAlert({
+            await presentAlert({
                 header: 'Success',
                 message: result.pdfFileUri,
                 buttons: ['OK'],
             })
 
-            dismiss();
+            await dismiss();
 
         } catch (error) {
             console.error(error);
@@ -121,7 +121,7 @@ const ImagePreview: React.FC = () => {
 
             if(pages == undefined) return;
 
-            present({
+            await present({
                 message: 'Loading...',
                 spinner: 'circles'
             })
@@ -134,23 +134,23 @@ const ImagePreview: React.FC = () => {
             });
 
             if(result.status == "CANCELED") {
-                presentAlert({
+                await presentAlert({
                     header: 'Error',
                     message: result.message,
                     buttons: ['OK'],
                 })
 
-                dismiss();
+                await dismiss();
                 return;
             }
 
-            presentAlert({
+            await presentAlert({
                 header: 'Success',
                 message: result.tiffFileUri,
                 buttons: ['OK'],
             })
 
-            dismiss();
+            await dismiss();
         } catch (error) {
             console.error(error);
         }

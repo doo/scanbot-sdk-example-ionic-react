@@ -82,7 +82,7 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
             return;
         }
 
-        if(!(ScanbotSDKService.checkLicense())) return;
+        if(!(await ScanbotSDKService.checkLicense())) return;
 
         try {
 
@@ -99,7 +99,7 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
             });
 
             if (croppingResult.status == "CANCELED") {
-                presentAlert({
+                await presentAlert({
                     header: 'Error',
                     message: 'Something wrong. Please try again!',
                     buttons: ['OK'],
@@ -110,9 +110,9 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
 
             if (croppingResult.page == undefined) return;
 
-            ImageResultsRepository.INSTANCE.updatePage(croppingResult.page);
+            await ImageResultsRepository.INSTANCE.updatePage(croppingResult.page);
 
-            generateImageURL(croppingResult.page);
+            await generateImageURL(croppingResult.page);
 
         } catch (error) {
             console.log(error);
@@ -125,7 +125,7 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
         try {
             setSelectedPage(page);
 
-            if(!(ScanbotSDKService.checkLicense())) return;
+            if(!(await ScanbotSDKService.checkLicense())) return;
 
             const imageURL = await ScanbotSDKService.fetchDataFromUri(page.documentPreviewImageFileUri as string);
 
@@ -145,10 +145,10 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
 
         if (page == undefined) return;
 
-        if(!(ScanbotSDKService.checkLicense())) return;
+        if(!(await ScanbotSDKService.checkLicense())) return;
 
         try {
-            present({
+            await present({
                 message: 'Loading...',
                 spinner: 'circles'
             })
@@ -159,20 +159,20 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
             });
     
             if (filteredImageResult.status == "CANCELED") {
-                presentAlert({
+                await presentAlert({
                     header: 'Error',
                     message: 'Something wrong. Please try again!',
                     buttons: ['OK'],
                 })
           
-                dismiss();
+                await dismiss();
                 return;
             }
     
-            ImageResultsRepository.INSTANCE.updatePage(filteredImageResult.page);
-            generateImageURL(filteredImageResult.page);
+            await ImageResultsRepository.INSTANCE.updatePage(filteredImageResult.page);
+            await generateImageURL(filteredImageResult.page);
     
-            dismiss();
+            await dismiss();
 
         } catch (error) {
             console.error(error);

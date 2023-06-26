@@ -35,6 +35,7 @@ import {
   DataScannerConfiguration,
   LicensePlateScannerConfiguration,
   GenericDocumentRecognizerConfiguration} from 'cordova-plugin-scanbot-sdk';
+import React from "react";
 
 const Home: React.FC = () => {
 
@@ -56,13 +57,13 @@ const Home: React.FC = () => {
       // see further configs ...
     };
 
-    if(!(ScanbotSDKService.checkLicense())) return;
+    if(!(await ScanbotSDKService.checkLicense())) return;
 
     try {
       const documentScannerResults = await ScanbotSDKService.SDK.UI.startDocumentScanner({uiConfigs: configs});
     
       if (documentScannerResults.status === 'CANCELED') {
-        presentAlert({
+        await presentAlert({
           header: 'Error',
           message: 'Something wrong. Please try again!',
           buttons: ['OK'],
@@ -83,7 +84,7 @@ const Home: React.FC = () => {
   // scan barcode feature
   const startBarcodeScanner = async () => {
 
-    if(!(ScanbotSDKService.checkLicense())) {return};
+    if(!(await ScanbotSDKService.checkLicense())) {return};
 
     let barcodeString:string = '';
 
@@ -100,7 +101,7 @@ const Home: React.FC = () => {
       const barcodeScannerResults = await ScanbotSDKService.SDK.UI.startBarcodeScanner({uiConfigs: configs});
 
       if(barcodeScannerResults.status == "CANCELED") {
-        presentAlert({
+        await presentAlert({
           header: 'Error',
           message: 'Something wrong. Please try again!',
           buttons: ['OK'],
@@ -113,7 +114,7 @@ const Home: React.FC = () => {
         barcodeString += (barcode.type + ' : ' + barcode.text + '\r\n');
       });
 
-      presentAlert({
+      await presentAlert({
         header: 'Barcode Results',
         message: barcodeString,
         buttons: ['OK'],
@@ -127,7 +128,7 @@ const Home: React.FC = () => {
   // scan batch barcode feature
   const startBatchBarcodeScanner = async () => {
 
-    if(!(ScanbotSDKService.checkLicense())) return;
+    if(!(await ScanbotSDKService.checkLicense())) return;
 
     let batchBarcodeString:string = '';
 
@@ -144,7 +145,7 @@ const Home: React.FC = () => {
       const batchBarcodeScannerResults = await ScanbotSDKService.SDK.UI.startBatchBarcodeScanner({uiConfigs: configs});
 
       if(batchBarcodeScannerResults.status == "CANCELED") {
-        presentAlert({
+        await presentAlert({
           header: 'Error',
           message: 'Something wrong. Please try again!',
           buttons: ['OK'],
@@ -157,7 +158,7 @@ const Home: React.FC = () => {
         batchBarcodeString += (barcode.type + ' : ' + barcode.text + '\r\n');
       });
 
-      presentAlert({
+      await presentAlert({
         header: 'Barcode Results',
         message: batchBarcodeString,
         buttons: ['OK'],
@@ -183,7 +184,7 @@ const Home: React.FC = () => {
 
       const originalImageFileUri = image.path!;
 
-      present({
+      await present({
         message: 'Loading...',
         spinner: 'circles'
       })
@@ -191,13 +192,13 @@ const Home: React.FC = () => {
       const result = await ScanbotSDKService.SDK.detectBarcodesOnImage({ imageFileUri: originalImageFileUri });
 
       if(result.status == "CANCELED") {
-        presentAlert({
+        await presentAlert({
           header: 'Error',
           message: 'Something wrong. Please try again!',
           buttons: ['OK'],
         })
 
-        dismiss();
+        await dismiss();
         return;
       };
 
@@ -205,9 +206,9 @@ const Home: React.FC = () => {
         barcodeResultString += barcode.type + ' : ' + barcode.text + '\r\n';
       });
 
-      dismiss();
+      await dismiss();
 
-      presentAlert({
+      await presentAlert({
         header: 'Barcode Results',
         message: barcodeResultString,
         buttons: ['OK'],
@@ -235,7 +236,7 @@ const Home: React.FC = () => {
         originalImageFileUrls.push(photo.path!);
       });
 
-      present({
+      await present({
         message: 'Loading...',
         spinner: 'circles'
       })
@@ -243,13 +244,13 @@ const Home: React.FC = () => {
       const response = await ScanbotSDKService.SDK.detectBarcodesOnImages({ imageFilesUris: originalImageFileUrls});
 
       if(response.status == "CANCELED") {
-        presentAlert({
+        await presentAlert({
           header: 'Error',
           message: 'Something wrong. Please try again!',
           buttons: ['OK'],
         })
 
-        dismiss();
+        await dismiss();
         return;
       };
 
@@ -260,9 +261,9 @@ const Home: React.FC = () => {
         });
       });
 
-      dismiss();
+      await dismiss();
 
-      presentAlert({
+      await presentAlert({
         header: 'Barcode Results',
         message: barcodeResultString,
         buttons: ['OK'],
@@ -299,7 +300,7 @@ const Home: React.FC = () => {
       const result = await ScanbotSDKService.SDK.UI.startMrzScanner({uiConfigs: configs});
       
       if (result.status === 'CANCELED') {
-        presentAlert({
+        await presentAlert({
           header: 'Error',
           message: 'Something wrong. Please try again!',
           buttons: ['OK'],
@@ -312,7 +313,7 @@ const Home: React.FC = () => {
         mrzResultString += (element.name + " : " + element.value + "\r\n");
       });
 
-      presentAlert({
+      await presentAlert({
         header: 'MRZ Results',
         message: mrzResultString,
         buttons: ['OK'],
@@ -323,7 +324,7 @@ const Home: React.FC = () => {
     }
   }
 
-  // perfom OCR, read text from a image
+  // perform OCR, read text from a image
   const startOCR = async () => {
     
     try {
@@ -333,7 +334,7 @@ const Home: React.FC = () => {
       let pages = ImageResultsRepository.INSTANCE.getPages();
 
       if(pages == undefined || pages.length <= 0 ){
-        presentAlert({
+        await presentAlert({
           header: 'No Pages to Extract Data',
           message: 'Please add a Document',
           buttons: ['OK'],
@@ -344,7 +345,7 @@ const Home: React.FC = () => {
         return;
       }
 
-      present({
+      await present({
         message: 'Loading...',
         spinner: 'circles'
       })
@@ -355,16 +356,16 @@ const Home: React.FC = () => {
         outputFormat: 'FULL_OCR_RESULT',
       });
 
-      dismiss();
+      await dismiss();
 
-      presentAlert({
+      await presentAlert({
         header: 'OCR Results',
         message: JSON.stringify(ocrResult),
         buttons: ['OK'],
       })
 
     } catch (error) {
-      presentAlert({
+      await presentAlert({
         header: 'OCR Results',
         message: 'error',
         buttons: ['OK'],
@@ -391,7 +392,7 @@ const Home: React.FC = () => {
       const checkResult = await ScanbotSDKService.SDK.UI.startCheckRecognizer({uiConfigs: configs});
       
       if (checkResult.status === 'CANCELED') {
-        presentAlert({
+        await presentAlert({
           header: 'Error',
           message: 'Something wrong. Please try again!',
           buttons: ['OK'],
@@ -400,7 +401,7 @@ const Home: React.FC = () => {
         return;
       }
       
-      presentAlert({
+      await presentAlert({
         header: 'Barcode Results',
         message: JSON.stringify(checkResult),
         buttons: ['OK'],
@@ -428,7 +429,7 @@ const Home: React.FC = () => {
       const ehicResult = await ScanbotSDKService.SDK.UI.startEHICScanner({uiConfigs: configs});
       
       if (ehicResult.status === 'CANCELED') {
-        presentAlert({
+        await presentAlert({
           header: 'Error',
           message: 'Something wrong. Please try again!',
           buttons: ['OK'],
@@ -437,7 +438,7 @@ const Home: React.FC = () => {
         return;
       }
 
-      presentAlert({
+      await presentAlert({
         header: 'EHIC Results',
         message: JSON.stringify(ehicResult),
         buttons: ['OK'],
@@ -477,7 +478,7 @@ const Home: React.FC = () => {
       const dataScannerResult = await ScanbotSDKService.SDK.UI.startDataScanner({uiConfigs, scannerStep});
       
       if (dataScannerResult.status === 'CANCELED') {
-        presentAlert({
+        await presentAlert({
           header: 'Error',
           message: 'Something wrong. Please try again!',
           buttons: ['OK'],
@@ -486,7 +487,7 @@ const Home: React.FC = () => {
         return;
       }
 
-      presentAlert({
+      await presentAlert({
         header: 'Data Scanner Results',
         message: JSON.stringify(dataScannerResult),
         buttons: ['OK'],
@@ -520,7 +521,7 @@ const Home: React.FC = () => {
       const licensePlateScannerResult = await ScanbotSDKService.SDK.UI.startLicensePlateScanner({uiConfigs: config});
       
       if (licensePlateScannerResult.status === 'CANCELED') {
-        presentAlert({
+        await presentAlert({
           header: 'Error',
           message: 'Something wrong. Please try again!',
           buttons: ['OK'],
@@ -529,7 +530,7 @@ const Home: React.FC = () => {
         return;
       }
 
-      presentAlert({
+      await presentAlert({
         header: 'License Plate Results',
         message: JSON.stringify(licensePlateScannerResult),
         buttons: ['OK'],
@@ -555,7 +556,7 @@ const Home: React.FC = () => {
       const genericDocumentRecognizerResult = await ScanbotSDKService.SDK.UI.startGenericDocumentRecognizer({uiConfigs: config});
       
       if (genericDocumentRecognizerResult.status === 'CANCELED') {
-        presentAlert({
+        await presentAlert({
           header: 'Error',
           message: 'Something wrong. Please try again!',
           buttons: ['OK'],
@@ -564,7 +565,7 @@ const Home: React.FC = () => {
         return;
       }
 
-      presentAlert({
+      await presentAlert({
         header: 'License Plate Results',
         message: JSON.stringify(genericDocumentRecognizerResult),
         buttons: ['OK'],
