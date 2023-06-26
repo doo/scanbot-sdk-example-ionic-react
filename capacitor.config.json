@@ -1,6 +1,6 @@
 {
-	"appId": "io.scanbot.example.sdk.barcode.ionic",
-	"appName": "ScanbotIonic",
+	"appId": "io.scanbot.example.sdk.capacitor.ionic.react",
+	"appName": "ScanbotIonicReactJs",
 	"webDir": "build",
 	"bundledWebRuntime": false
 }

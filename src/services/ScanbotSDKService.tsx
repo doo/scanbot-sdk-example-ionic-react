@@ -1,9 +1,7 @@
 /* Scanbot SDK */
-import ScanbotSdk, { ScanbotSDKConfiguration } from 'cordova-plugin-scanbot-sdk';
+import ScanbotSdk from 'cordova-plugin-scanbot-sdk';
 
 export class ScanbotSDKService {
-
-
     public static SDK = ScanbotSdk.promisify!();
 
     public static async checkLicense() {

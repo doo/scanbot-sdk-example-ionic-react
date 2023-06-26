@@ -5,7 +5,6 @@ import Home from './pages/Home';
 import ImagePreview from './pages/ImagePreview';
 import ImageEditView from './pages/ImageEditView';
 
-
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -30,18 +29,28 @@ import { ScanbotSDKConfiguration } from 'cordova-plugin-scanbot-sdk';
 
 /* Scanbot SDK Service */
 import { ScanbotSDKService } from './services/ScanbotSDKService';
+import React from "react";
 
 setupIonicReact();
+
+/*
+  * TODO add the license key here.
+  * Please note: The Scanbot SDK will run without a license key for one minute per session!
+  * After the trial period has expired all Scanbot SDK functions as well as the UI components will stop working
+  * or may be terminated. You can get a free "no-strings-attached" trial license key.
+  * Please submit the trial license form (https://scanbot.io/trial/) on our website by using
+  * the app identifier "io.scanbot.example.sdk.capacitor.ionic.react" of this example app.
+  */
+const SDK_LICENSE_KEY = '';
 
 // initialize Scanbot SDK
 const initializeSdk = async () =>
 {
     const config: ScanbotSDKConfiguration = {
         loggingEnabled: true,
-        licenseKey: '',
+        licenseKey: SDK_LICENSE_KEY,
     };
     try {
-
       await ScanbotSDKService.SDK.initializeSdk(config)
             .then(result => console.log(JSON.stringify(result)))
             .catch(err => console.error('Scanbot sdk initialize error ' + JSON.stringify(err)));
@@ -52,7 +61,7 @@ const initializeSdk = async () =>
 
 const App: React.FC = () => {
 
-  initializeSdk().then(r => console.log('SDK Initialization'));
+  initializeSdk().then(result => console.log(JSON.stringify(result)));
 
   return (
     <IonApp>

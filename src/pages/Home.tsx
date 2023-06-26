@@ -1,4 +1,5 @@
-import { 
+import React from "react";
+import {
   IonContent, 
   IonHeader, 
   IonPage, 
@@ -12,7 +13,7 @@ import {
   useIonLoading,
   isPlatform } from '@ionic/react';
 
-import { Camera, CameraResultType, CameraSource, GalleryPhoto } from '@capacitor/camera';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 import './Home.css';
 
@@ -35,17 +36,19 @@ import {
   DataScannerConfiguration,
   LicensePlateScannerConfiguration,
   GenericDocumentRecognizerConfiguration} from 'cordova-plugin-scanbot-sdk';
-import React from "react";
 
 const Home: React.FC = () => {
-
   const history = useHistory();
   const [presentAlert] = useIonAlert();
   const [present, dismiss] = useIonLoading();
 
   // scan document SDK feature
   const startDocumentScanner = async () => {
-  
+    if(!(await ScanbotSDKService.checkLicense())) {
+      alert('Scanbot SDK (trial) license has expired!');
+      return;
+    }
+
     const configs: DocumentScannerConfiguration = {
       cameraPreviewMode: 'FIT_IN',
       interfaceOrientation: 'PORTRAIT',
@@ -56,26 +59,18 @@ const Home: React.FC = () => {
       bottomBarBackgroundColor: '#c8193c',
       // see further configs ...
     };
-
-    if(!(await ScanbotSDKService.checkLicense())) return;
-
     try {
       const documentScannerResults = await ScanbotSDKService.SDK.UI.startDocumentScanner({uiConfigs: configs});
-    
       if (documentScannerResults.status === 'CANCELED') {
         await presentAlert({
           header: 'Error',
-          message: 'Something wrong. Please try again!',
+          message: 'Document scanner Has been cancelled. Please try again!',
           buttons: ['OK'],
         })
-
         return;
-      } 
-
+      }
       await ImageResultsRepository.INSTANCE.addPages(documentScannerResults.pages);
-
       history.push("/imagepreview");
-
     } catch (error) {
       console.error(error);
     }
@@ -83,11 +78,12 @@ const Home: React.FC = () => {
 
   // scan barcode feature
   const startBarcodeScanner = async () => {
-
-    if(!(await ScanbotSDKService.checkLicense())) {return};
+    if(!(await ScanbotSDKService.checkLicense())) {
+      alert('Scanbot SDK (trial) license has expired!');
+      return;
+    }
 
     let barcodeString:string = '';
-
     const configs: BarcodeScannerConfiguration = {
       // Customize colors, text resources, behavior, etc..
       finderTextHint: 'Please align the barcode or QR code in the frame above to scan it.',
@@ -96,19 +92,17 @@ const Home: React.FC = () => {
       barcodeFormats: BarcodeRepository.getAcceptedTypes(), // optional filter for specific barcode types
       // see further configs ...
     };
-
     try {
       const barcodeScannerResults = await ScanbotSDKService.SDK.UI.startBarcodeScanner({uiConfigs: configs});
 
-      if(barcodeScannerResults.status == "CANCELED") {
+      if(barcodeScannerResults.status === "CANCELED") {
         await presentAlert({
           header: 'Error',
-          message: 'Something wrong. Please try again!',
+          message: 'Barcode scanner Has been cancelled. Please try again!',
           buttons: ['OK'],
         })
-
         return;
-      };
+      }
 
       barcodeScannerResults.barcodes!.forEach(barcode => {
         barcodeString += (barcode.type + ' : ' + barcode.text + '\r\n');
@@ -127,11 +121,12 @@ const Home: React.FC = () => {
 
   // scan batch barcode feature
   const startBatchBarcodeScanner = async () => {
-
-    if(!(await ScanbotSDKService.checkLicense())) return;
+    if(!(await ScanbotSDKService.checkLicense())) {
+      alert('Scanbot SDK (trial) license has expired!');
+      return;
+    }
 
     let batchBarcodeString:string = '';
-
     const configs: BatchBarcodeScannerConfiguration = {
       // Customize colors, text resources, behavior, etc..
       finderTextHint: 'Please align the barcode or QR code in the frame above to scan it.',
@@ -140,19 +135,16 @@ const Home: React.FC = () => {
       barcodeFormats: BarcodeRepository.getAcceptedTypes(), // optional filter for specific barcode types
       // see further configs ...
     };
-
     try {
       const batchBarcodeScannerResults = await ScanbotSDKService.SDK.UI.startBatchBarcodeScanner({uiConfigs: configs});
-
-      if(batchBarcodeScannerResults.status == "CANCELED") {
+      if(batchBarcodeScannerResults.status === "CANCELED") {
         await presentAlert({
           header: 'Error',
-          message: 'Something wrong. Please try again!',
+          message: 'BatchBarcode scanner Has been cancelled. Please try again!',
           buttons: ['OK'],
         })
-
         return;
-      };
+      }
 
       batchBarcodeScannerResults.barcodes!.forEach(barcode => {
         batchBarcodeString += (barcode.type + ' : ' + barcode.text + '\r\n');
@@ -163,7 +155,6 @@ const Home: React.FC = () => {
         message: batchBarcodeString,
         buttons: ['OK'],
       })
-
     } catch (error) {
       console.error(error);
     }
@@ -171,49 +162,44 @@ const Home: React.FC = () => {
 
   // detect barcodes from a image
   const detectBarcodeFromImage = async () => {
+    if(!(await ScanbotSDKService.checkLicense())) {
+      alert('Scanbot SDK (trial) license has expired!');
+      return;
+    }
+
     try {
-
-      if(!await ScanbotSDKService.checkLicense()) return
-
       let barcodeResultString:string = '';
-
       const image = await Camera.getPhoto({
         resultType: CameraResultType.Uri,
         source: CameraSource.Photos,
       });
 
       const originalImageFileUri = image.path!;
-
       await present({
         message: 'Loading...',
         spinner: 'circles'
-      })
-
+      });
       const result = await ScanbotSDKService.SDK.detectBarcodesOnImage({ imageFileUri: originalImageFileUri });
-
-      if(result.status == "CANCELED") {
+      if(result.status === "CANCELED") {
         await presentAlert({
           header: 'Error',
-          message: 'Something wrong. Please try again!',
+          message: 'Barcode detection process cancelled. Please try again!',
           buttons: ['OK'],
         })
 
         await dismiss();
         return;
-      };
+      }
 
       result.barcodes!.forEach(barcode => {
         barcodeResultString += barcode.type + ' : ' + barcode.text + '\r\n';
       });
-
       await dismiss();
-
       await presentAlert({
         header: 'Barcode Results',
         message: barcodeResultString,
         buttons: ['OK'],
       })
-      
     } catch (error) {
       console.error(error);
     }
@@ -221,10 +207,12 @@ const Home: React.FC = () => {
 
   // detect barcodes from multiple images
   const detectBarcodeFromImages = async () => {
-    try {
+    if(!(await ScanbotSDKService.checkLicense())) {
+      alert('Scanbot SDK (trial) license has expired!');
+      return;
+    }
 
-      if(!await ScanbotSDKService.checkLicense()) return;
-      
+    try {
       let barcodeResultString:string = '';
       const originalImageFileUrls:string[] = [];
 
@@ -235,40 +223,32 @@ const Home: React.FC = () => {
       pickedImageResults.photos.forEach(photo => {
         originalImageFileUrls.push(photo.path!);
       });
-
       await present({
         message: 'Loading...',
         spinner: 'circles'
-      })
-
+      });
       const response = await ScanbotSDKService.SDK.detectBarcodesOnImages({ imageFilesUris: originalImageFileUrls});
-
-      if(response.status == "CANCELED") {
+      if(response.status === "CANCELED") {
         await presentAlert({
           header: 'Error',
-          message: 'Something wrong. Please try again!',
+          message: 'Barcode detection process cancelled. Please try again!',
           buttons: ['OK'],
         })
-
         await dismiss();
         return;
-      };
+      }
 
       response.results!.forEach(element => {
-
         element.barcodeResults.forEach(barcode => {
           barcodeResultString += barcode.type + ' : ' + barcode.text + '\r\n';
         });
       });
-
       await dismiss();
-
       await presentAlert({
         header: 'Barcode Results',
         message: barcodeResultString,
         buttons: ['OK'],
       })
-      
     } catch (error) {
       console.error(error);
     }
@@ -277,13 +257,13 @@ const Home: React.FC = () => {
   // scan mrz
   /// todo => ios does not work need to check with anguler example app.
   const startMRZScanner = async () => {
+    if(!(await ScanbotSDKService.checkLicense())) {
+      alert('Scanbot SDK (trial) license has expired!');
+      return;
+    }
 
     try {
-
-      if(!await ScanbotSDKService.checkLicense()) return;
-
       let mrzResultString:string = '';
-
       const configs: MrzScannerConfiguration = {
         // Customize colors, text resources, behavior, etc..
         finderTextHint: 'Please hold your phone over the 2- or 3-line MRZ code at the front of your passport.',
@@ -296,52 +276,47 @@ const Home: React.FC = () => {
         configs.finderWidth = widthPx * 0.9;
         configs.finderHeight = widthPx * 0.18;
       }
-      
       const result = await ScanbotSDKService.SDK.UI.startMrzScanner({uiConfigs: configs});
       
       if (result.status === 'CANCELED') {
         await presentAlert({
           header: 'Error',
-          message: 'Something wrong. Please try again!',
+          message: 'MRZ scanner cancelled. Please try again!',
           buttons: ['OK'],
         })
-
         return;
       }
 
       result.mrzResult?.fields.forEach(element => {
         mrzResultString += (element.name + " : " + element.value + "\r\n");
       });
-
       await presentAlert({
         header: 'MRZ Results',
         message: mrzResultString,
         buttons: ['OK'],
       })
-
     } catch (error) {
       console.error(error);
     }
   }
 
-  // perform OCR, read text from a image
+  // perform OCR, read text from an image
   const startOCR = async () => {
-    
-    try {
-      
-      if(!await ScanbotSDKService.checkLicense()) return;
+    if(!(await ScanbotSDKService.checkLicense())) {
+      alert('Scanbot SDK (trial) license has expired!');
+      return;
+    }
 
+    try {
       let pages = ImageResultsRepository.INSTANCE.getPages();
 
-      if(pages == undefined || pages.length <= 0 ){
+      if(pages === undefined || pages.length <= 0 ){
         await presentAlert({
           header: 'No Pages to Extract Data',
           message: 'Please add a Document',
           buttons: ['OK'],
         })
-
         //https://scanbot.atlassian.net/browse/EPIC-2857
-
         return;
       }
 
@@ -349,38 +324,30 @@ const Home: React.FC = () => {
         message: 'Loading...',
         spinner: 'circles'
       })
-      
       const ocrResult = await ScanbotSDKService.SDK.performOcr({
         images: pages.map(p => p.documentImageFileUri!),
         languages: ['en', 'de'],
         outputFormat: 'FULL_OCR_RESULT',
       });
-
       await dismiss();
-
       await presentAlert({
         header: 'OCR Results',
         message: JSON.stringify(ocrResult),
         buttons: ['OK'],
-      })
-
+      });
     } catch (error) {
-      await presentAlert({
-        header: 'OCR Results',
-        message: 'error',
-        buttons: ['OK'],
-      })
       console.error(error);
     }
   }
 
   // scan check
   const startCheckScanner = async () => {
+    if(!(await ScanbotSDKService.checkLicense())) {
+      alert('Scanbot SDK (trial) license has expired!');
+      return;
+    }
 
     try {
-
-      if(!await ScanbotSDKService.checkLicense()) return;
-
       const configs: CheckRecognizerConfiguration = {
         // Customize colors, text resources, behavior, etc..
         enableCameraButtonTitle: 'Enable Camera',
@@ -388,16 +355,14 @@ const Home: React.FC = () => {
         finderLineColor: '#0000ff',
         // see further configs ...
       };
-      
       const checkResult = await ScanbotSDKService.SDK.UI.startCheckRecognizer({uiConfigs: configs});
       
       if (checkResult.status === 'CANCELED') {
         await presentAlert({
           header: 'Error',
-          message: 'Something wrong. Please try again!',
+          message: 'Check scanner cancelled. Please try again!',
           buttons: ['OK'],
         })
-
         return;
       }
       
@@ -405,8 +370,7 @@ const Home: React.FC = () => {
         header: 'Barcode Results',
         message: JSON.stringify(checkResult),
         buttons: ['OK'],
-      })
-
+      });
     } catch (error) {
       console.error(error);
     }
@@ -414,27 +378,26 @@ const Home: React.FC = () => {
 
   // scan medical card
   const startEHICCardScanner = async () => {
+    if(!(await ScanbotSDKService.checkLicense())) {
+      alert('Scanbot SDK (trial) license has expired!');
+      return;
+    }
 
     try {
-      
-      if(!await ScanbotSDKService.checkLicense()) return;
-
       const configs: HealthInsuranceCardScannerConfiguration = {
         // Customize colors, text resources, behavior, etc..
         finderTextHint: 'Please hold your phone over the back of your Health Insurance Card.',
         interfaceOrientation: 'PORTRAIT',
         // see further configs ...
       };
-      
       const ehicResult = await ScanbotSDKService.SDK.UI.startEHICScanner({uiConfigs: configs});
       
       if (ehicResult.status === 'CANCELED') {
         await presentAlert({
           header: 'Error',
-          message: 'Something wrong. Please try again!',
+          message: 'EHICCard Scanner cancelled. Please try again!',
           buttons: ['OK'],
-        })
-
+        });
         return;
       }
 
@@ -443,7 +406,6 @@ const Home: React.FC = () => {
         message: JSON.stringify(ehicResult),
         buttons: ['OK'],
       })
-      
     } catch (error)
     {
       console.error(error);
@@ -452,11 +414,12 @@ const Home: React.FC = () => {
 
   // scan data
   const startDataScanner = async () => {
+    if(!(await ScanbotSDKService.checkLicense())) {
+      alert('Scanbot SDK (trial) license has expired!');
+      return;
+    }
 
     try {
-      
-      if(!await ScanbotSDKService.checkLicense()) return; 
-
       const uiConfigs: DataScannerConfiguration = {
         // Customize colors, text resources, behavior, etc..
         cancelButtonTitle: 'Cancel',
@@ -466,7 +429,6 @@ const Home: React.FC = () => {
         interfaceOrientation: 'PORTRAIT',
         // see further configs...
       };
-      
       const scannerStep: TextDataScannerStep = {
         textFilterStrategy: 'DOCUMENT',
         guidanceText: 'Place the text line in the frame to scan it',
@@ -474,25 +436,21 @@ const Home: React.FC = () => {
         // '?' for any character, '#' for any digit, all other characters represent themselves.
         //pattern: '',
       };
-      
       const dataScannerResult = await ScanbotSDKService.SDK.UI.startDataScanner({uiConfigs, scannerStep});
       
       if (dataScannerResult.status === 'CANCELED') {
         await presentAlert({
           header: 'Error',
-          message: 'Something wrong. Please try again!',
+          message: 'Data scanner cancelled. Please try again!',
           buttons: ['OK'],
         })
-
         return;
       }
-
       await presentAlert({
         header: 'Data Scanner Results',
         message: JSON.stringify(dataScannerResult),
         buttons: ['OK'],
       })
-      
     } catch (error) {
       console.error(error);
     }
@@ -500,10 +458,12 @@ const Home: React.FC = () => {
 
   // license plate scanner
   const startLicensePlateScanner = async () => {
-    try {
-      
-      if(!await ScanbotSDKService.checkLicense()) return;
+    if(!(await ScanbotSDKService.checkLicense())) {
+      alert('Scanbot SDK (trial) license has expired!');
+      return;
+    }
 
+    try {
       const config: LicensePlateScannerConfiguration = {
         // Customize colors, text resources, behavior, etc..
         detectorMode: 'ML_BASED',
@@ -517,60 +477,53 @@ const Home: React.FC = () => {
         confirmationDialogConfirmButtonFilled: true,
         // see further configs...
       };
-      
       const licensePlateScannerResult = await ScanbotSDKService.SDK.UI.startLicensePlateScanner({uiConfigs: config});
       
       if (licensePlateScannerResult.status === 'CANCELED') {
         await presentAlert({
           header: 'Error',
-          message: 'Something wrong. Please try again!',
+          message: 'License plate scanner cancelled. Please try again!',
           buttons: ['OK'],
-        })
-
+        });
         return;
       }
-
       await presentAlert({
         header: 'License Plate Results',
         message: JSON.stringify(licensePlateScannerResult),
         buttons: ['OK'],
       })
-
     } catch (error) {
       console.error(error);
     }
   }
 
   const startGenericDocumentScanner = async () => {
+    if(!(await ScanbotSDKService.checkLicense())) {
+      alert('Scanbot SDK (trial) license has expired!');
+      return;
+    }
 
     try {
-      
-      if(!await ScanbotSDKService.checkLicense()) return;
-
       const config: GenericDocumentRecognizerConfiguration = {
         // Customize colors, text resources, behavior, etc..
         shouldSavePhotoImageInStorage: true,
         // see further configs...
       };
-      
       const genericDocumentRecognizerResult = await ScanbotSDKService.SDK.UI.startGenericDocumentRecognizer({uiConfigs: config});
       
       if (genericDocumentRecognizerResult.status === 'CANCELED') {
         await presentAlert({
           header: 'Error',
-          message: 'Something wrong. Please try again!',
+          message: 'Generic document scanner. Please try again!',
           buttons: ['OK'],
-        })
-
+        });
         return;
       }
-
       await presentAlert({
         header: 'License Plate Results',
         message: JSON.stringify(genericDocumentRecognizerResult),
         buttons: ['OK'],
       })
-      
     } catch (error) {
       console.error(error);
     }

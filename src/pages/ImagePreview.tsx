@@ -30,7 +30,6 @@ import { ImageResultsRepository } from '../utils/ImageRepository';
 import { ScanbotSDKService } from '../services/ScanbotSDKService';
 
 const ImagePreview: React.FC = () => {
-
     const [presentAlert] = useIonAlert();
     const pdfModal = useRef<HTMLIonModalElement>(null);
     const tiffModal = useRef<HTMLIonModalElement>(null);
@@ -47,21 +46,23 @@ const ImagePreview: React.FC = () => {
 
     /* load scanned documents */
     const reloadPages = async () => {
-
-        if(!(await ScanbotSDKService.checkLicense())) return;
+        if(!(await ScanbotSDKService.checkLicense())) {
+            alert('Scanbot SDK (trial) license has expired!');
+            return;
+        }
+        if (pages === undefined) {
+            alert('Can not find valid page. Please try again!');
+            return;
+        }
 
         try {
             for (const page of pages) {
-
                 const url = page.documentPreviewImageFileUri as string;
-
                 const imageURL = await ScanbotSDKService.fetchDataFromUri(url);
-
-                if(imageURL == '' || imageURL == undefined) break;
+                if(imageURL === '' || imageURL === undefined) break;
 
                 setImageData((imageData: any) => [...imageData, {id: page.pageId, url: imageURL}]);
             }
-
         } catch (error) {
             console.error(error);
         }
@@ -75,23 +76,27 @@ const ImagePreview: React.FC = () => {
 
     /* scanbot create pdf feature */
     const createPDF = async (pageSize:string) => {
+        if(!(await ScanbotSDKService.checkLicense())) {
+            alert('Scanbot SDK (trial) license has expired!');
+            return;
+        }
+        if (pages === undefined) {
+            alert('Can not find valid page. Please try again!');
+            return;
+        }
+
         try {
-
             pdfModal.current?.dismiss();
-            
-            if(pages == undefined) return;
-
             await present({
                 message: 'Loading...',
                 spinner: 'circles'
             })
-
             const result = await ScanbotSDKService.SDK.createPdf({
                 images: pages.map(p => p.documentImageFileUri!),
                 pageSize: pageSize as PDFPageSize
             });
 
-            if(result.status == "CANCELED") {
+            if(result.status === "CANCELED") {
                 await presentAlert({
                     header: 'Error',
                     message: result.message,
@@ -106,9 +111,7 @@ const ImagePreview: React.FC = () => {
                 message: result.pdfFileUri,
                 buttons: ['OK'],
             })
-
             await dismiss();
-
         } catch (error) {
             console.error(error);
         }
@@ -116,16 +119,21 @@ const ImagePreview: React.FC = () => {
 
     /* scanbot create tiff feature */
     const createTIFF = async (tiffCompression: string) => {
+        if(!(await ScanbotSDKService.checkLicense())) {
+            alert('Scanbot SDK (trial) license has expired!');
+            return;
+        }
+        if (pages === undefined) {
+            alert('Can not find valid page. Please try again!');
+            return;
+        }
+
         try {
             tiffModal.current?.dismiss();
-
-            if(pages == undefined) return;
-
             await present({
                 message: 'Loading...',
                 spinner: 'circles'
             })
-
             const result = await ScanbotSDKService.SDK.writeTiff({
                 images: pages.map(p => p.documentImageFileUri!),
                 oneBitEncoded: true,
@@ -133,24 +141,22 @@ const ImagePreview: React.FC = () => {
                 compression: tiffCompression as TIFFCompression
             });
 
-            if(result.status == "CANCELED") {
+            if (result.status !== "CANCELED") {
+                await presentAlert({
+                    header: 'Success',
+                    message: result.tiffFileUri,
+                    buttons: ['OK'],
+                })
+                await dismiss();
+            } else {
                 await presentAlert({
                     header: 'Error',
                     message: result.message,
                     buttons: ['OK'],
                 })
-
                 await dismiss();
                 return;
             }
-
-            await presentAlert({
-                header: 'Success',
-                message: result.tiffFileUri,
-                buttons: ['OK'],
-            })
-
-            await dismiss();
         } catch (error) {
             console.error(error);
         }

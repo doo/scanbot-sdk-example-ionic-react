@@ -21,7 +21,7 @@ import {
 import './styles/ImageEditView.css';
 
 import React, { useState, useRef } from 'react';
-import { RouteComponentProps, useHistory } from 'react-router';
+import { RouteComponentProps } from 'react-router';
 
 import { ImageResultsRepository } from '../utils/ImageRepository';
 
@@ -33,7 +33,6 @@ import { ImageFilter, Page } from 'cordova-plugin-scanbot-sdk';
 interface ImageEditViewIdProps extends RouteComponentProps<{ pageId: string; }> { }
 
 const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
-
     let page: any = undefined;
     page = ImageResultsRepository.INSTANCE.getPageById(match.params.pageId);
 
@@ -53,8 +52,6 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
         'LOW_LIGHT_BINARIZATION_2',
         'SENSITIVE_BINARIZATION'
     ];
-
-    const history = useHistory();
     const modal = useRef<HTMLIonModalElement>(null);
     const [present, dismiss] = useIonLoading();
     const [presentAlert] = useIonAlert();
@@ -67,25 +64,23 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
 
     // load selected image
     async function loadPage() {
-
-        if (page == undefined) return;
-
+        if (page === undefined) return;
         setSelectedPage(page);
-
         await generateImageURL(page);
     }
 
     // Scanbot SDK cropping feature
     const imageCrop = async (page: Page | undefined) => {
-
-        if (page == undefined) {
+        if(!(await ScanbotSDKService.checkLicense())) {
+            alert('Scanbot SDK (trial) license has expired!');
+            return;
+        }
+        if (page === undefined) {
+            alert('Can not find valid page. Please try again!');
             return;
         }
 
-        if(!(await ScanbotSDKService.checkLicense())) return;
-
         try {
-
             const croppingResult = await ScanbotSDKService.SDK.UI.startCroppingScreen({
                 page: page,
                 uiConfigs: {
@@ -98,22 +93,16 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
                 }
             });
 
-            if (croppingResult.status == "CANCELED") {
+            if (croppingResult.status === "CANCELED") {
                 await presentAlert({
                     header: 'Error',
-                    message: 'Something wrong. Please try again!',
+                    message: 'Cropping screen cancelled. Please try again!',
                     buttons: ['OK'],
                 })
-          
                 return;
             }
-
-            if (croppingResult.page == undefined) return;
-
-            await ImageResultsRepository.INSTANCE.updatePage(croppingResult.page);
-
-            await generateImageURL(croppingResult.page);
-
+            await ImageResultsRepository.INSTANCE.updatePage(croppingResult.page!);
+            await generateImageURL(croppingResult.page!);
         } catch (error) {
             console.log(error);
         }
@@ -121,18 +110,24 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
 
     // scanbot SDK generate image url feature
     const generateImageURL = async (page: Page) => {
+        if(!(await ScanbotSDKService.checkLicense())) {
+            alert('Scanbot SDK (trial) license has expired!');
+            return;
+        }
+        if (page === undefined) {
+            alert('Can not find valid page. Please try again!');
+            return;
+        }
 
         try {
             setSelectedPage(page);
-
-            if(!(await ScanbotSDKService.checkLicense())) return;
-
             const imageURL = await ScanbotSDKService.fetchDataFromUri(page.documentPreviewImageFileUri as string);
 
-            if(imageURL == '' || imageURL == undefined) return;
-
+            if(imageURL === '' || imageURL === undefined) {
+                alert('Can not find valid url. Please try again!');
+                return;
+            }
             setUrl(imageURL);
-
         } catch (error) {
             console.error(error);
         }
@@ -140,12 +135,16 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
 
     // scanbot image filter feature
     const applyFilter = async (selectedFilterOption: string) => {
+        if(!(await ScanbotSDKService.checkLicense())) {
+            alert('Scanbot SDK (trial) license has expired!');
+            return;
+        }
+        if (page === undefined) {
+            alert('Can not find valid page. Please try again!');
+            return;
+        }
 
         modal.current?.dismiss();
-
-        if (page == undefined) return;
-
-        if(!(await ScanbotSDKService.checkLicense())) return;
 
         try {
             await present({
@@ -158,22 +157,18 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
                 imageFilter: selectedFilterOption as ImageFilter
             });
     
-            if (filteredImageResult.status == "CANCELED") {
+            if (filteredImageResult.status === "CANCELED") {
                 await presentAlert({
                     header: 'Error',
-                    message: 'Something wrong. Please try again!',
+                    message: 'Apply image filter process cancelled. Please try again!',
                     buttons: ['OK'],
                 })
-          
                 await dismiss();
                 return;
             }
-    
             await ImageResultsRepository.INSTANCE.updatePage(filteredImageResult.page);
             await generateImageURL(filteredImageResult.page);
-    
             await dismiss();
-
         } catch (error) {
             console.error(error);
         }
@@ -197,11 +192,11 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
             <IonFooter>
                 <IonToolbar>
                     <IonButtons slot="start">
-                        <IonButton onClick={async () => { imageCrop(selectedPage); }}>Crop</IonButton>
+                        <IonButton onClick={async () => { await imageCrop(selectedPage); }}>Crop</IonButton>
                     </IonButtons>
                     <IonButtons slot="end">
                         <IonButton id="open-custom-dialog" expand="block">
-                            Filtter
+                            Filter
                         </IonButton>
 
                         <IonModal id="example-modal" ref={modal} trigger="open-custom-dialog">
