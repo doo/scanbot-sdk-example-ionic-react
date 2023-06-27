@@ -1,6 +1,7 @@
-import { BarcodeFormat } from "cordova-plugin-scanbot-sdk";
+import {BarcodeFormat, BarcodeResultField} from "cordova-plugin-scanbot-sdk";
 
 export class BarcodeRepository{
+    private static barcodes: BarcodeResultField[] = [];
 
     public static barcodeFormatList = [
         { key: 'AZTEC',        value: true },
@@ -31,5 +32,14 @@ export class BarcodeRepository{
         }
 
         return result;
+    }
+
+    public static async addBarcodes(barcodes: BarcodeResultField[]) {
+        if(this.barcodes.length > 0) this.barcodes = [];
+        this.barcodes = this.barcodes.concat(barcodes);
+    }
+
+    public static getBarcodes(): BarcodeResultField[] {
+        return this.barcodes;
     }
 }

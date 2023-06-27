@@ -42,7 +42,9 @@ const Home: React.FC = () => {
   const [presentAlert] = useIonAlert();
   const [present, dismiss] = useIonLoading();
 
-  // scan document SDK feature
+  // -----------------
+  // Document Scanner
+  // -----------------
   const startDocumentScanner = async () => {
     if(!(await ScanbotSDKService.checkLicense())) {
       alert('Scanbot SDK (trial) license has expired!');
@@ -76,7 +78,9 @@ const Home: React.FC = () => {
     }
   }
 
-  // scan barcode feature
+  // __________________
+  // Barcode Scanner
+  // __________________
   const startBarcodeScanner = async () => {
     if(!(await ScanbotSDKService.checkLicense())) {
       alert('Scanbot SDK (trial) license has expired!');
@@ -107,26 +111,25 @@ const Home: React.FC = () => {
       barcodeScannerResults.barcodes!.forEach(barcode => {
         barcodeString += (barcode.type + ' : ' + barcode.text + '\r\n');
       });
-
       await presentAlert({
         header: 'Barcode Results',
         message: barcodeString,
         buttons: ['OK'],
       })
-
     } catch (error) {
       console.error(error);
     }
   }
 
-  // scan batch barcode feature
+  // ---------------------
+  // BatchBarcode Scanner
+  // ---------------------
   const startBatchBarcodeScanner = async () => {
     if(!(await ScanbotSDKService.checkLicense())) {
       alert('Scanbot SDK (trial) license has expired!');
       return;
     }
 
-    let batchBarcodeString:string = '';
     const configs: BatchBarcodeScannerConfiguration = {
       // Customize colors, text resources, behavior, etc..
       finderTextHint: 'Please align the barcode or QR code in the frame above to scan it.',
@@ -145,22 +148,16 @@ const Home: React.FC = () => {
         })
         return;
       }
-
-      batchBarcodeScannerResults.barcodes!.forEach(barcode => {
-        batchBarcodeString += (barcode.type + ' : ' + barcode.text + '\r\n');
-      });
-
-      await presentAlert({
-        header: 'Barcode Results',
-        message: batchBarcodeString,
-        buttons: ['OK'],
-      })
+      await BarcodeRepository.addBarcodes(batchBarcodeScannerResults.barcodes!);
+      history.push("/barcoderesultview");
     } catch (error) {
       console.error(error);
     }
   }
 
-  // detect barcodes from a image
+  // ------------------------------
+  // Detect barcodes from an image
+  // ------------------------------
   const detectBarcodeFromImage = async () => {
     if(!(await ScanbotSDKService.checkLicense())) {
       alert('Scanbot SDK (trial) license has expired!');
@@ -205,7 +202,9 @@ const Home: React.FC = () => {
     }
   }
 
-  // detect barcodes from multiple images
+  // -------------------------------------
+  // Detect barcodes from multiple images
+  // -------------------------------------
   const detectBarcodeFromImages = async () => {
     if(!(await ScanbotSDKService.checkLicense())) {
       alert('Scanbot SDK (trial) license has expired!');
@@ -254,7 +253,9 @@ const Home: React.FC = () => {
     }
   }
 
-  // scan mrz
+  // -------------
+  // MRZ scanner
+  // -------------
   /// todo => ios does not work need to check with anguler example app.
   const startMRZScanner = async () => {
     if(!(await ScanbotSDKService.checkLicense())) {
@@ -300,7 +301,9 @@ const Home: React.FC = () => {
     }
   }
 
-  // perform OCR, read text from an image
+  // -------------------------------------
+  // Perform OCR, read text from an image
+  // -------------------------------------
   const startOCR = async () => {
     if(!(await ScanbotSDKService.checkLicense())) {
       alert('Scanbot SDK (trial) license has expired!');
@@ -340,7 +343,9 @@ const Home: React.FC = () => {
     }
   }
 
-  // scan check
+  // --------------
+  // Check Scanner
+  // --------------
   const startCheckScanner = async () => {
     if(!(await ScanbotSDKService.checkLicense())) {
       alert('Scanbot SDK (trial) license has expired!');
@@ -376,7 +381,9 @@ const Home: React.FC = () => {
     }
   }
 
-  // scan medical card
+  // ------------------
+  // EHIC Card Scanner
+  // ------------------
   const startEHICCardScanner = async () => {
     if(!(await ScanbotSDKService.checkLicense())) {
       alert('Scanbot SDK (trial) license has expired!');
@@ -412,7 +419,9 @@ const Home: React.FC = () => {
     }
   }
 
-  // scan data
+  // -------------
+  // Data Scanner
+  // -------------
   const startDataScanner = async () => {
     if(!(await ScanbotSDKService.checkLicense())) {
       alert('Scanbot SDK (trial) license has expired!');
@@ -456,7 +465,9 @@ const Home: React.FC = () => {
     }
   }
 
-  // license plate scanner
+  // ----------------------
+  // License Plate Scanner
+  // ----------------------
   const startLicensePlateScanner = async () => {
     if(!(await ScanbotSDKService.checkLicense())) {
       alert('Scanbot SDK (trial) license has expired!');
@@ -497,6 +508,9 @@ const Home: React.FC = () => {
     }
   }
 
+  // -------------------------
+  // Generic Document Scanner
+  // -------------------------
   const startGenericDocumentScanner = async () => {
     if(!(await ScanbotSDKService.checkLicense())) {
       alert('Scanbot SDK (trial) license has expired!');

@@ -30,6 +30,7 @@ import { ScanbotSDKConfiguration } from 'cordova-plugin-scanbot-sdk';
 /* Scanbot SDK Service */
 import { ScanbotSDKService } from './services/ScanbotSDKService';
 import React from "react";
+import BarcodeListView from "./pages/BarcodeListView";
 
 setupIonicReact();
 
@@ -73,11 +74,15 @@ const App: React.FC = () => {
           <Route exact path="/">
             <Redirect to="/home" />
           </Route>
-          <Route exact path="/imagepreview">
-            <ImagePreview />
+            <Route exact path="/imagepreview">
+                <ImagePreview />
+            </Route>
+          <Route exact path="/barcoderesultview">
+            <BarcodeListView />
           </Route>
             <Route exact path="/imageeditview/:pageId" component={ImageEditView}>
-          </Route>
+            </Route>
+
         </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>
