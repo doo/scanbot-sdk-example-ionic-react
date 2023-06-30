@@ -63,25 +63,28 @@ const ImagePreview: React.FC = () => {
 
                 setImageData((imageData: any) => [...imageData, {id: page.pageId, url: imageURL}]);
             }
-        } catch (error) {
+        }
+        catch (error) {
             console.error(error);
         }
     }
 
-    /* navigate to cropping page */
+    /* Navigate to cropping page */
     function navigateToCroppingPage(pageId: string): void {
         history.push("/imageeditview/" + pageId);
         setImageData(() => initialState)
     }
 
-    /* scanbot create pdf feature */
+    /* Create PDF */
     const createPDF = async (pageSize:string) => {
         if(!(await ScanbotSDKService.checkLicense())) {
+            pdfModal.current?.dismiss();
             alert('Scanbot SDK (trial) license has expired!');
             return;
         }
         if (pages === undefined) {
-            alert('Can not find valid page. Please try again!');
+            pdfModal.current?.dismiss();
+            alert('Can not find a valid document. Please try again!');
             return;
         }
 
@@ -95,35 +98,36 @@ const ImagePreview: React.FC = () => {
                 images: pages.map(p => p.documentImageFileUri!),
                 pageSize: pageSize as PDFPageSize
             });
-
+            await dismiss();
             if(result.status === "CANCELED") {
                 await presentAlert({
                     header: 'Error',
                     message: result.message,
                     buttons: ['OK'],
                 })
-                await dismiss();
                 return;
             }
-
             await presentAlert({
                 header: 'Success',
                 message: result.pdfFileUri,
                 buttons: ['OK'],
             })
+        }
+        catch (error) {
             await dismiss();
-        } catch (error) {
             console.error(error);
         }
     }
 
-    /* scanbot create tiff feature */
+    /* Create TIFF */
     const createTIFF = async (tiffCompression: string) => {
         if(!(await ScanbotSDKService.checkLicense())) {
+            tiffModal.current?.dismiss();
             alert('Scanbot SDK (trial) license has expired!');
             return;
         }
         if (pages === undefined) {
+            tiffModal.current?.dismiss();
             alert('Can not find valid page. Please try again!');
             return;
         }
@@ -140,24 +144,25 @@ const ImagePreview: React.FC = () => {
                 dpi: 300,
                 compression: tiffCompression as TIFFCompression
             });
-
+            await dismiss();
             if (result.status !== "CANCELED") {
                 await presentAlert({
                     header: 'Success',
                     message: result.tiffFileUri,
                     buttons: ['OK'],
                 })
-                await dismiss();
-            } else {
+            }
+            else {
                 await presentAlert({
                     header: 'Error',
                     message: result.message,
                     buttons: ['OK'],
                 })
-                await dismiss();
                 return;
             }
-        } catch (error) {
+        }
+        catch (error) {
+            await dismiss();
             console.error(error);
         }
     }
@@ -187,21 +192,17 @@ const ImagePreview: React.FC = () => {
 
             <IonFooter>
                 <IonToolbar>
-                   
                     <IonButtons slot="start">
                         <IonButton id="open-pagesize-list" expand="block"> Create PDF </IonButton>
-
                         <IonModal id="example-modal" ref={pdfModal} trigger="open-pagesize-list">
                             <div className="wrapper">
                                 <h1>Page Size</h1>
-
                                 <IonList lines="inset">
                                     {ImageResultsRepository.INSTANCE.pdfPageSizeList.map((item) => (
                                         <IonItem button={true} detail={false} onClick={() => createPDF(item)}>
                                             <IonLabel>{item}</IonLabel>
                                         </IonItem>
                                     ))}
-
                                 </IonList>
                             </div>
                         </IonModal>
@@ -212,14 +213,12 @@ const ImagePreview: React.FC = () => {
                         <IonModal id="example-modal" ref={tiffModal} trigger="open-tiff-dialog">
                             <div className="wrapper">
                                 <h1>Page Size</h1>
-
                                 <IonList lines="inset">
                                     {ImageResultsRepository.INSTANCE.TIFFCompressionList.map((item) => (
                                         <IonItem button={true} detail={false} onClick={() => createTIFF(item)}>
                                             <IonLabel>{item}</IonLabel>
                                         </IonItem>
                                     ))}
-
                                 </IonList>
                             </div>
                         </IonModal>

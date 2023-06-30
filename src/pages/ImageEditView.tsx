@@ -64,12 +64,15 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
 
     // load selected image
     async function loadPage() {
-        if (page === undefined) return;
+        if (page === undefined) {
+            alert('Can not find a valid document. Please try again!');
+            return;
+        }
         setSelectedPage(page);
         await generateImageURL(page);
     }
 
-    // Scanbot SDK cropping feature
+    /* Crop Image */
     const imageCrop = async (page: Page | undefined) => {
         if(!(await ScanbotSDKService.checkLicense())) {
             alert('Scanbot SDK (trial) license has expired!');
@@ -103,12 +106,13 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
             }
             await ImageResultsRepository.INSTANCE.updatePage(croppingResult.page!);
             await generateImageURL(croppingResult.page!);
-        } catch (error) {
+        }
+        catch (error) {
             console.log(error);
         }
     }
 
-    // scanbot SDK generate image url feature
+    /* Generate image url */
     const generateImageURL = async (page: Page) => {
         if(!(await ScanbotSDKService.checkLicense())) {
             alert('Scanbot SDK (trial) license has expired!');
@@ -124,52 +128,53 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
             const imageURL = await ScanbotSDKService.fetchDataFromUri(page.documentPreviewImageFileUri as string);
 
             if(imageURL === '' || imageURL === undefined) {
-                alert('Can not find valid url. Please try again!');
+                alert('Can not find valid image path. Please try again!');
                 return;
             }
             setUrl(imageURL);
-        } catch (error) {
+        }
+        catch (error) {
             console.error(error);
         }
     }
 
-    // scanbot image filter feature
+    /* Filter Image */
     const applyFilter = async (selectedFilterOption: string) => {
         if(!(await ScanbotSDKService.checkLicense())) {
+            modal.current?.dismiss();
             alert('Scanbot SDK (trial) license has expired!');
             return;
         }
         if (page === undefined) {
+            modal.current?.dismiss();
             alert('Can not find valid page. Please try again!');
             return;
         }
 
-        modal.current?.dismiss();
-
         try {
+            modal.current?.dismiss();
             await present({
                 message: 'Loading...',
                 spinner: 'circles'
             })
-    
             const filteredImageResult = await ScanbotSDKService.SDK.applyImageFilterOnPage({
                 page: page,
                 imageFilter: selectedFilterOption as ImageFilter
             });
-    
+            await dismiss();
             if (filteredImageResult.status === "CANCELED") {
                 await presentAlert({
                     header: 'Error',
-                    message: 'Apply image filter process cancelled. Please try again!',
+                    message: 'Image filtering process cancelled. Please try again!',
                     buttons: ['OK'],
                 })
-                await dismiss();
                 return;
             }
             await ImageResultsRepository.INSTANCE.updatePage(filteredImageResult.page);
             await generateImageURL(filteredImageResult.page);
+        }
+        catch (error) {
             await dismiss();
-        } catch (error) {
             console.error(error);
         }
     }
@@ -198,18 +203,15 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
                         <IonButton id="open-custom-dialog" expand="block">
                             Filter
                         </IonButton>
-
                         <IonModal id="example-modal" ref={modal} trigger="open-custom-dialog">
                             <div className="wrapper">
                                 <h1>Filter Formats</h1>
-
                                 <IonList lines="inset">
                                     {imageFilterList.map((item) => (
                                         <IonItem button={true} detail={false} onClick={() => applyFilter(item)}>
                                             <IonLabel>{item}</IonLabel>
                                         </IonItem>
                                     ))}
-
                                 </IonList>
                             </div>
                         </IonModal>

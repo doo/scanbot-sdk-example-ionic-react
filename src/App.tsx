@@ -55,7 +55,8 @@ const initializeSdk = async () =>
       await ScanbotSDKService.SDK.initializeSdk(config)
             .then(result => console.log(JSON.stringify(result)))
             .catch(err => console.error('Scanbot sdk initialize error ' + JSON.stringify(err)));
-    } catch (e) {
+    }
+    catch (e) {
         console.error(e);
     }
 }

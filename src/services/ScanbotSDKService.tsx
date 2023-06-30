@@ -6,6 +6,8 @@ export class ScanbotSDKService {
 
     public static async checkLicense() {
         const result = await this.SDK.getLicenseInfo();
+        const ocr = await this.SDK.getOcrConfigs();
+        console.log("the path is in : ",ocr.languageDataPath);
         if (result.info.isLicenseValid) {
             // OK - we have a trial session, a valid trial license or valid production license.
             return true;
