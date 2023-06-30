@@ -3,6 +3,7 @@ import ScanbotSdk from 'cordova-plugin-scanbot-sdk';
 
 export class ScanbotSDKService {
     public static SDK = ScanbotSdk.promisify!();
+    private static ImageExtension: String = 'JPG';
 
     public static async checkLicense() {
         const result = await this.SDK.getLicenseInfo();
@@ -16,8 +17,8 @@ export class ScanbotSDKService {
 
     public static async fetchDataFromUri(path: string): Promise<string> {
         const result = await this.SDK.getImageData({ imageFileUri: path });
-        const extension = 'JPG';
+        //const extension = ImageExtension;
         // ScanbotSDK return the raw base64 data. Add prefix to convert it to a dataUri
-        return `data:image/${extension};base64,` + result.base64ImageData;
+        return `data:image/${(ScanbotSDKService.ImageExtension)};base64,` + result.base64ImageData;
     }
 }

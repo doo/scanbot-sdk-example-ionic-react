@@ -66,19 +66,4 @@ export class ImageResultsRepository {
     public async removeAllPages() {
         this.pages = [];
     }
-
-    public fetchDataFromUri(path: string) {
-
-        let imageData: string;
-
-        ScanbotSdk.getImageData((result) => {
-
-            const extension = 'png';
-
-            return imageData = `data:image/${extension};base64,` + result.base64ImageData;
-
-        },
-        () => { },
-        { imageFileUri: path }); 
-    } 
 }
