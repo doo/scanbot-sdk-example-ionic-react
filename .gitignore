@@ -54,8 +54,6 @@ yarn-error.log
 
 
 # Miscellaneous
-/.angular
-/.angular/cache
 .sass-cache/
 /connect.lock
 /coverage
@@ -64,5 +62,4 @@ testem.log
 /typings
 
 # System files
-.DS_Store
 Thumbs.db
