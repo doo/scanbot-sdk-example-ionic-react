@@ -20,7 +20,7 @@ const BarcodeListView: React.FC = () => {
     return (
         <IonPage>
             <IonHeader>
-                <IonToolbar>
+                <IonToolbar color="primary">
                     <IonButtons slot="start">
                         <IonBackButton />
                     </IonButtons>

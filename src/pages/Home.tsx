@@ -15,8 +15,6 @@ import {
 
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
-import './Home.css';
-
 import { useHistory } from 'react-router';
 
 import { ImageResultsRepository } from '../utils/ImageRepository';
@@ -536,10 +534,28 @@ const Home: React.FC = () => {
     }
   }
 
+  const viewLicenseInfo = async () => {
+    const result = await ScanbotSDKService.SDK.getLicenseInfo();
+    await presentAlert({
+      header: 'License info',
+      message: JSON.stringify(result),
+      buttons: ['OK'],
+    })
+  }
+
+  const viewOcrConfigs = async () => {
+    const result = await ScanbotSDKService.SDK.getOcrConfigs();
+    await presentAlert({
+      header: 'OCR Configs',
+      message: JSON.stringify(result),
+      buttons: ['OK'],
+    })
+  }
+
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="primary">
           <IonTitle>Scanbot SDK Example</IonTitle>
         </IonToolbar>
       </IonHeader>
@@ -611,6 +627,24 @@ const Home: React.FC = () => {
 
           <IonItem onClick={async() => {await startGenericDocumentScanner()}}>
             <IonLabel>Scan Generic Documents</IonLabel>
+          </IonItem>
+        </IonItemGroup>
+
+        <IonItemGroup>
+          <IonItemDivider>
+            <IonLabel>Test Other SDK API Methods</IonLabel>
+          </IonItemDivider>
+
+          <IonItem onClick={async () => { await viewLicenseInfo();}}>
+            <IonLabel>View License Info</IonLabel>
+          </IonItem>
+          <IonItem onClick={async () => { await viewOcrConfigs();}}>
+            <IonLabel>View OCR Configs</IonLabel>
+          </IonItem>
+          <IonItem>
+            <a href="https://scanbot.io" target="_blank" rel="noopener noreferrer">
+              Learn More About the Scanbot SDK
+            </a>
           </IonItem>
         </IonItemGroup>
 

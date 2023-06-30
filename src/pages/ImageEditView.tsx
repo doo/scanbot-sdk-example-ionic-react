@@ -182,7 +182,7 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
     return (
         <IonPage>
             <IonHeader>
-                <IonToolbar>
+                <IonToolbar color="primary">
                     <IonButtons slot="start">
                         <IonBackButton />
                     </IonButtons>
