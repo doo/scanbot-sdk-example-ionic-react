@@ -176,11 +176,21 @@ const Home: React.FC = () => {
         spinner: 'circles'
       });
       const result = await ScanbotSDKService.SDK.detectBarcodesOnImage({ imageFileUri: originalImageFileUri });
+      
       if(result.status === "CANCELED") {
         await dismiss();
         await presentAlert({
           header: 'Error',
           message: 'Barcode detection process cancelled. Please try again!',
+          buttons: ['OK'],
+        })
+        return;
+      }
+      else if (result.barcodes?.length == 0) {
+        await dismiss();
+        await presentAlert({
+          header: 'No barcode to detect',
+          message: 'Please upload an image with a barcode.',
           buttons: ['OK'],
         })
         return;
@@ -232,6 +242,15 @@ const Home: React.FC = () => {
           barcodes.push(barcode);
         });
       });
+      if (barcodes?.length == 0) {
+        await dismiss();
+        await presentAlert({
+          header: 'No barcodes to detect',
+          message: 'Please upload images with barcodes.',
+          buttons: ['OK'],
+        })
+        return;
+      }
       await BarcodeRepository.addBarcodes(barcodes);
       await dismiss();
       history.push("/barcoderesultview");
