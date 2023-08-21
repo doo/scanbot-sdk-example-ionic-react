@@ -17,7 +17,6 @@ export class ScanbotSDKService {
 
     public static async fetchDataFromUri(path: string): Promise<string> {
         const result = await this.SDK.getImageData({ imageFileUri: path });
-        //const extension = ImageExtension;
         // ScanbotSDK return the raw base64 data. Add prefix to convert it to a dataUri
         return `data:image/${(ScanbotSDKService.ImageExtension)};base64,` + result.base64ImageData;
     }

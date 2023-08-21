@@ -33,9 +33,6 @@ import { ImageFilter, Page } from 'cordova-plugin-scanbot-sdk';
 interface ImageEditViewIdProps extends RouteComponentProps<{ pageId: string; }> { }
 
 const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
-    let page: any = undefined;
-    page = ImageResultsRepository.INSTANCE.getPageById(match.params.pageId);
-
     const imageFilterList: ImageFilter[] = [
         'NONE',
         'COLOR_ENHANCED',
@@ -55,37 +52,36 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
     const modal = useRef<HTMLIonModalElement>(null);
     const [present, dismiss] = useIonLoading();
     const [presentAlert] = useIonAlert();
-    const [url, setUrl] = useState('');
-    const [selectedPage, setSelectedPage] = useState(page);
+    const [imageData, setImageData] = useState('');
+    const [selectedPage, setSelectedPage] = useState(
+        ImageResultsRepository.INSTANCE.getPageById(match.params.pageId)!
+    );
 
     useIonViewWillEnter(async () => {
-        await loadPage();
+        await loadImageData();
     });
 
-    // load selected image
-    async function loadPage() {
-        if (page === undefined) {
-            alert('No scanned image was found. Please scan at least one page.');
-            return;
-        }
+    async function updatePage(page: Page) {
         setSelectedPage(page);
-        await generateImageURL(page);
+        await ImageResultsRepository.INSTANCE.updatePage(page);
+        await loadImageData();
+    }
+
+    async function checkLicense(): Promise<boolean> {
+        if (!(await ScanbotSDKService.checkLicense())) {
+            alert('Scanbot SDK (trial) license has expired!');
+            return false;
+        }
+        return true;
     }
 
     /* Crop Image */
-    const imageCrop = async (page: Page | undefined) => {
-        if(!(await ScanbotSDKService.checkLicense())) {
-            alert('Scanbot SDK (trial) license has expired!');
-            return;
-        }
-        if (page === undefined) {
-            alert('No scanned image was found. Please scan at least one page.');
-            return;
-        }
+    async function openCroppingUi() {
+        if (!(await checkLicense())) { return; }
 
         try {
             const croppingResult = await ScanbotSDKService.SDK.UI.startCroppingScreen({
-                page: page,
+                page: selectedPage,
                 uiConfigs: {
                     doneButtonTitle: 'Save',
                     interfaceOrientation: 'PORTRAIT',
@@ -101,37 +97,25 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
                     header: 'Information',
                     message: 'Cropping screen cancelled.',
                     buttons: ['OK'],
-                })
+                });
                 return;
             }
-            await ImageResultsRepository.INSTANCE.updatePage(croppingResult.page!);
-            await generateImageURL(croppingResult.page!);
+            await updatePage(croppingResult.page!);
         }
         catch (error) {
             console.log(error);
         }
     }
 
-    /* Generate image url */
-    const generateImageURL = async (page: Page) => {
-        if(!(await ScanbotSDKService.checkLicense())) {
-            alert('Scanbot SDK (trial) license has expired!');
-            return;
-        }
-        if (page === undefined) {
-            alert('No scanned image was found. Please scan at least one page.');
-            return;
-        }
+    /* load image data */
+    async function loadImageData() {
+        if (!(await checkLicense())) { return; }
 
         try {
-            setSelectedPage(page);
-            const imageURL = await ScanbotSDKService.fetchDataFromUri(page.documentPreviewImageFileUri as string);
-
-            if(imageURL === '' || imageURL === undefined) {
-                alert('Can not find valid image path. Please try again!');
-                return;
-            }
-            setUrl(imageURL);
+            const imgData = await ScanbotSDKService.fetchDataFromUri(
+                selectedPage.documentPreviewImageFileUri as string
+            );
+            setImageData(imgData);
         }
         catch (error) {
             console.error(error);
@@ -139,27 +123,18 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
     }
 
     /* Filter Image */
-    const applyFilter = async (selectedFilterOption: string) => {
-        if(!(await ScanbotSDKService.checkLicense())) {
-            modal.current?.dismiss();
-            alert('Scanbot SDK (trial) license has expired!');
-            return;
-        }
-        if (page === undefined) {
-            modal.current?.dismiss();
-            alert('No scanned image was found. Please scan at least one page.');
-            return;
-        }
+    async function applyFilter(selectedFilter: ImageFilter) {
+        if (!(await checkLicense())) { return; }
 
         try {
             modal.current?.dismiss();
             await present({
                 message: 'Loading...',
                 spinner: 'circles'
-            })
+            });
             const filteredImageResult = await ScanbotSDKService.SDK.applyImageFilterOnPage({
-                page: page,
-                imageFilter: selectedFilterOption as ImageFilter
+                page: selectedPage,
+                imageFilter: selectedFilter
             });
             await dismiss();
             if (filteredImageResult.status === "CANCELED") {
@@ -167,11 +142,10 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
                     header: 'Information',
                     message: 'Image filtering process cancelled.',
                     buttons: ['OK'],
-                })
+                });
                 return;
             }
-            await ImageResultsRepository.INSTANCE.updatePage(filteredImageResult.page);
-            await generateImageURL(filteredImageResult.page);
+            await updatePage(filteredImageResult.page);
         }
         catch (error) {
             await dismiss();
@@ -191,13 +165,13 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
             </IonHeader>
 
             <IonContent fullscreen>
-                <IonImg src={url} />
+                <IonImg src={imageData} />
             </IonContent>
 
             <IonFooter>
                 <IonToolbar>
                     <IonButtons slot="start">
-                        <IonButton onClick={async () => { await imageCrop(selectedPage); }}>Crop</IonButton>
+                        <IonButton onClick={() => openCroppingUi()}>Crop</IonButton>
                     </IonButtons>
                     <IonButtons slot="end">
                         <IonButton id="open-custom-dialog" expand="block">

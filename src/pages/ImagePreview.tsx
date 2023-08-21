@@ -30,6 +30,26 @@ import { ImageResultsRepository } from '../utils/ImageRepository';
 import { ScanbotSDKService } from '../services/ScanbotSDKService';
 
 const ImagePreview: React.FC = () => {
+    const pdfPageSizeList: PDFPageSize[] = [
+        "FROM_IMAGE",
+        "A4",
+        "FIXED_A4",
+        "US_LETTER",
+        "FIXED_US_LETTER",
+        "AUTO_LOCALE",
+        "AUTO"
+    ];
+    const tiffOptions = [
+        {
+            label: "Binarized Images (1-bit)",
+            binarized: true
+        },
+        {
+            label: "Color Images",
+            binarized: false
+        },
+    ];
+
     const [presentAlert] = useIonAlert();
     const pdfModal = useRef<HTMLIonModalElement>(null);
     const tiffModal = useRef<HTMLIonModalElement>(null);
@@ -38,22 +58,32 @@ const ImagePreview: React.FC = () => {
     const initialState = useState<any>([]);
     const [imageData, setImageData] = initialState;
 
-    let pages: Page[] = ImageResultsRepository.INSTANCE.getPages();
+    const pages: Page[] = ImageResultsRepository.INSTANCE.getPages();
 
     useIonViewWillEnter(async () => {
         await reloadPages();
     });
 
-    /* load scanned documents */
-    const reloadPages = async () => {
-        if(!(await ScanbotSDKService.checkLicense())) {
+    async function checkLicense(): Promise<boolean> {
+        if (!(await ScanbotSDKService.checkLicense())) {
             alert('Scanbot SDK (trial) license has expired!');
-            return;
+            return false;
         }
+        return true;
+    }
+
+    function hasScannedPages(): boolean {
         if (!pages || pages.length === 0) {
             alert('No scanned images were found. Please scan at least one page.');
-            return;
+            return false;
         }
+        return true;
+    }
+
+    /* load scanned documents */
+    async function reloadPages() {
+        if (!(await checkLicense())) { return; }
+        if (!hasScannedPages()) { return; }
 
         try {
             for (const page of pages) {
@@ -76,42 +106,35 @@ const ImagePreview: React.FC = () => {
     }
 
     /* Create PDF */
-    const createPDF = async (pageSize:string) => {
-        if(!(await ScanbotSDKService.checkLicense())) {
-            pdfModal.current?.dismiss();
-            alert('Scanbot SDK (trial) license has expired!');
-            return;
-        }
-        if (!pages || pages.length === 0) {
-            pdfModal.current?.dismiss();
-            alert('No scanned images were found. Please scan at least one page.');
-            return;
-        }
+    async function createPDF(pageSize: PDFPageSize) {
+        pdfModal.current?.dismiss();
+
+        if (!(await checkLicense())) { return; }
+        if (!hasScannedPages()) { return; }
 
         try {
-            pdfModal.current?.dismiss();
             await present({
                 message: 'Loading...',
                 spinner: 'circles'
             })
             const result = await ScanbotSDKService.SDK.createPdf({
                 images: pages.map(p => p.documentImageFileUri!),
-                pageSize: pageSize as PDFPageSize
+                pageSize: pageSize
             });
             await dismiss();
-            if(result.status === "CANCELED") {
+            if (result.status === "CANCELED") {
                 await presentAlert({
                     header: 'Information',
                     message: result.message,
                     buttons: ['OK'],
-                })
+                });
                 return;
             }
             await presentAlert({
                 header: 'Success',
                 message: result.pdfFileUri,
                 buttons: ['OK'],
-            })
+            });
         }
         catch (error) {
             await dismiss();
@@ -120,30 +143,22 @@ const ImagePreview: React.FC = () => {
     }
 
     /* Create TIFF */
-    const createTIFF = async (tiffCompression: string) => {
-        if(!(await ScanbotSDKService.checkLicense())) {
-            tiffModal.current?.dismiss();
-            alert('Scanbot SDK (trial) license has expired!');
-            return;
-        }
-        if (!pages || pages.length === 0) {
-            tiffModal.current?.dismiss();
-            alert('No scanned images were found. Please scan at least one page.');
-            return;
-        }
+    async function createTIFF(binarized: boolean) {
+        tiffModal.current?.dismiss();
+
+        if (!(await checkLicense())) { return; }
+        if (!hasScannedPages()) { return; }
 
         try {
-            tiffModal.current?.dismiss();
             await present({
                 message: 'Loading...',
                 spinner: 'circles'
-            })
-            var oneBitEncoded = tiffCompression === "Binarized Images (1-bit)" ? true : false;
+            });
             const result = await ScanbotSDKService.SDK.writeTiff({
                 images: pages.map(p => p.documentImageFileUri!),
-                oneBitEncoded: oneBitEncoded,
+                oneBitEncoded: binarized,
                 dpi: 300,
-                compression: oneBitEncoded ? 'CCITT_T6' : 'ADOBE_DEFLATE',
+                compression: binarized ? 'CCITT_T6' : 'ADOBE_DEFLATE',
             });
             await dismiss();
             if (result.status !== "CANCELED") {
@@ -151,14 +166,14 @@ const ImagePreview: React.FC = () => {
                     header: 'Success',
                     message: result.tiffFileUri,
                     buttons: ['OK'],
-                })
+                });
             }
             else {
                 await presentAlert({
                     header: 'Information',
                     message: result.message,
                     buttons: ['OK'],
-                })
+                });
                 return;
             }
         }
@@ -199,7 +214,7 @@ const ImagePreview: React.FC = () => {
                             <div className="wrapper">
                                 <h1>Page Size</h1>
                                 <IonList lines="inset">
-                                    {ImageResultsRepository.INSTANCE.pdfPageSizeList.map((item) => (
+                                    {pdfPageSizeList.map((item) => (
                                         <IonItem button={true} detail={false} onClick={() => createPDF(item)}>
                                             <IonLabel>{item}</IonLabel>
                                         </IonItem>
@@ -213,11 +228,11 @@ const ImagePreview: React.FC = () => {
                         <IonButton id="open-tiff-dialog" expand="block"> Create TIFF </IonButton>
                         <IonModal id="example-modal" ref={tiffModal} trigger="open-tiff-dialog">
                             <div className="wrapper">
-                                <h1>Page Size</h1>
+                                <h1>Image Type</h1>
                                 <IonList lines="inset">
-                                    {ImageResultsRepository.INSTANCE.TIFFCompressionList.map((item) => (
-                                        <IonItem button={true} detail={false} onClick={() => createTIFF(item)}>
-                                            <IonLabel>{item}</IonLabel>
+                                    {tiffOptions.map((item) => (
+                                        <IonItem button={true} detail={false} onClick={() => createTIFF(item.binarized)}>
+                                            <IonLabel>{item.label}</IonLabel>
                                         </IonItem>
                                     ))}
                                 </IonList>
