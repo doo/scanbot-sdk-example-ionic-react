@@ -74,14 +74,14 @@ Connect an Android or iOS device via USB and run the app from IDE or Command Lin
 Open the native projects in corresponding IDEs (Android Studio or Xcode) and hit the "Run" button:
 
 ```
-ionic capacitor open android
-ionic capacitor open ios
+npx cap open android
+npx cap open ios
 ```
 
 #### CLI
 Or alternatively run the projects via CLI (Android or iOS):
 
 ```
-ionic capacitor run android
-ionic capacitor run ios
+npx cap run android
+npx cap run ios
 ```

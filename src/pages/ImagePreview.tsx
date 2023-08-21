@@ -23,7 +23,7 @@ import {
 import { useHistory } from 'react-router';
 import React, {useState, useRef } from 'react';
 
-import { Page, PDFPageSize, TIFFCompression } from 'cordova-plugin-scanbot-sdk';
+import { Page, PDFPageSize } from 'cordova-plugin-scanbot-sdk';
 import { ImageResultsRepository } from '../utils/ImageRepository';
 
 /* Scanbot SDK Service */
@@ -50,8 +50,8 @@ const ImagePreview: React.FC = () => {
             alert('Scanbot SDK (trial) license has expired!');
             return;
         }
-        if (pages === undefined) {
-            alert('Can not find valid page. Please try again!');
+        if (!pages || pages.length === 0) {
+            alert('No scanned images were found. Please scan at least one page.');
             return;
         }
 
@@ -82,9 +82,9 @@ const ImagePreview: React.FC = () => {
             alert('Scanbot SDK (trial) license has expired!');
             return;
         }
-        if (pages === undefined) {
+        if (!pages || pages.length === 0) {
             pdfModal.current?.dismiss();
-            alert('Can not find a valid document. Please try again!');
+            alert('No scanned images were found. Please scan at least one page.');
             return;
         }
 
@@ -101,7 +101,7 @@ const ImagePreview: React.FC = () => {
             await dismiss();
             if(result.status === "CANCELED") {
                 await presentAlert({
-                    header: 'Error',
+                    header: 'Information',
                     message: result.message,
                     buttons: ['OK'],
                 })
@@ -126,9 +126,9 @@ const ImagePreview: React.FC = () => {
             alert('Scanbot SDK (trial) license has expired!');
             return;
         }
-        if (pages === undefined) {
+        if (!pages || pages.length === 0) {
             tiffModal.current?.dismiss();
-            alert('Can not find valid page. Please try again!');
+            alert('No scanned images were found. Please scan at least one page.');
             return;
         }
 
@@ -138,11 +138,12 @@ const ImagePreview: React.FC = () => {
                 message: 'Loading...',
                 spinner: 'circles'
             })
+            var oneBitEncoded = tiffCompression === "Binarized Images (1-bit)" ? true : false;
             const result = await ScanbotSDKService.SDK.writeTiff({
                 images: pages.map(p => p.documentImageFileUri!),
-                oneBitEncoded: true,
+                oneBitEncoded: oneBitEncoded,
                 dpi: 300,
-                compression: tiffCompression as TIFFCompression
+                compression: oneBitEncoded ? 'CCITT_T6' : 'ADOBE_DEFLATE',
             });
             await dismiss();
             if (result.status !== "CANCELED") {
@@ -154,7 +155,7 @@ const ImagePreview: React.FC = () => {
             }
             else {
                 await presentAlert({
-                    header: 'Error',
+                    header: 'Information',
                     message: result.message,
                     buttons: ['OK'],
                 })

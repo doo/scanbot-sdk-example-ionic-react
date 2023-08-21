@@ -4,18 +4,9 @@ export class ImageResultsRepository {
 
     public static INSTANCE = new ImageResultsRepository();
 
-    public TIFFCompressionList: TIFFCompression[] = [
-        "NONE",
-        "CCITTRLE",
-        "CCITTFAX3",
-        "CCITT_T4",
-        "CCITTFAX4",
-        "CCITT_T6",
-        "CCITTRLEW",
-        "LZW",
-        "PACKBITS",
-        "DEFLATE",
-        "ADOBE_DEFLATE"
+    public TIFFCompressionList: string[] = [
+        "Binarized Images (1-bit)",
+        "Color Images",  
     ];
 
     public pdfPageSizeList: PDFPageSize[] = [

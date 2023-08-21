@@ -65,7 +65,7 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
     // load selected image
     async function loadPage() {
         if (page === undefined) {
-            alert('Can not find a valid document. Please try again!');
+            alert('No scanned image was found. Please scan at least one page.');
             return;
         }
         setSelectedPage(page);
@@ -79,7 +79,7 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
             return;
         }
         if (page === undefined) {
-            alert('Can not find valid page. Please try again!');
+            alert('No scanned image was found. Please scan at least one page.');
             return;
         }
 
@@ -98,8 +98,8 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
 
             if (croppingResult.status === "CANCELED") {
                 await presentAlert({
-                    header: 'Error',
-                    message: 'Cropping screen cancelled. Please try again!',
+                    header: 'Information',
+                    message: 'Cropping screen cancelled.',
                     buttons: ['OK'],
                 })
                 return;
@@ -119,7 +119,7 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
             return;
         }
         if (page === undefined) {
-            alert('Can not find valid page. Please try again!');
+            alert('No scanned image was found. Please scan at least one page.');
             return;
         }
 
@@ -147,7 +147,7 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
         }
         if (page === undefined) {
             modal.current?.dismiss();
-            alert('Can not find valid page. Please try again!');
+            alert('No scanned image was found. Please scan at least one page.');
             return;
         }
 
@@ -164,8 +164,8 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
             await dismiss();
             if (filteredImageResult.status === "CANCELED") {
                 await presentAlert({
-                    header: 'Error',
-                    message: 'Image filtering process cancelled. Please try again!',
+                    header: 'Information',
+                    message: 'Image filtering process cancelled.',
                     buttons: ['OK'],
                 })
                 return;

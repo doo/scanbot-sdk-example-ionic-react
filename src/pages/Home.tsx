@@ -64,8 +64,8 @@ const Home: React.FC = () => {
       const documentScannerResults = await ScanbotSDKService.SDK.UI.startDocumentScanner({uiConfigs: configs});
       if (documentScannerResults.status === 'CANCELED') {
         await presentAlert({
-          header: 'Error',
-          message: 'Document scanner has been cancelled. Please try again!',
+          header: 'Information',
+          message: 'Document scanner has been cancelled.',
           buttons: ['OK'],
         })
         return;
@@ -100,8 +100,8 @@ const Home: React.FC = () => {
       const barcodeScannerResults = await ScanbotSDKService.SDK.UI.startBarcodeScanner({uiConfigs: configs});
       if(barcodeScannerResults.status === "CANCELED") {
         await presentAlert({
-          header: 'Error',
-          message: 'Barcode scanner has been cancelled. Please try again!',
+          header: 'Information',
+          message: 'Barcode scanner has been cancelled.',
           buttons: ['OK'],
         })
         return;
@@ -141,8 +141,8 @@ const Home: React.FC = () => {
       const batchBarcodeScannerResults = await ScanbotSDKService.SDK.UI.startBatchBarcodeScanner({uiConfigs: configs});
       if(batchBarcodeScannerResults.status === "CANCELED") {
         await presentAlert({
-          header: 'Error',
-          message: 'BatchBarcode scanner has been cancelled. Please try again!',
+          header: 'Information',
+          message: 'BatchBarcode scanner has been cancelled.',
           buttons: ['OK'],
         })
         return;
@@ -180,8 +180,8 @@ const Home: React.FC = () => {
       if(result.status === "CANCELED") {
         await dismiss();
         await presentAlert({
-          header: 'Error',
-          message: 'Barcode detection process cancelled. Please try again!',
+          header: 'Information',
+          message: 'Barcode detection process cancelled.',
           buttons: ['OK'],
         })
         return;
@@ -231,8 +231,8 @@ const Home: React.FC = () => {
       if(response.status === "CANCELED") {
         await dismiss();
         await presentAlert({
-          header: 'Error',
-          message: 'Barcode detection process cancelled. Please try again!',
+          header: 'Information',
+          message: 'Barcode detection process cancelled.',
           buttons: ['OK'],
         })
         return;
@@ -286,8 +286,8 @@ const Home: React.FC = () => {
       const result = await ScanbotSDKService.SDK.UI.startMrzScanner({uiConfigs: configs});
       if (result.status === 'CANCELED') {
         await presentAlert({
-          header: 'Error',
-          message: 'MRZ scanner cancelled. Please try again!',
+          header: 'Information',
+          message: 'MRZ scanner cancelled.',
           buttons: ['OK'],
         })
         return;
@@ -337,8 +337,8 @@ const Home: React.FC = () => {
       await dismiss();
       if (ocrResult.status === 'CANCELED') {
         await presentAlert({
-          header: 'Error',
-          message: 'Reading text process cancelled. Please try again!',
+          header: 'Information',
+          message: 'Reading text process cancelled.',
           buttons: ['OK'],
         })
         return;
@@ -375,8 +375,8 @@ const Home: React.FC = () => {
       const checkResult = await ScanbotSDKService.SDK.UI.startCheckRecognizer({uiConfigs: configs});
       if (checkResult.status === 'CANCELED') {
         await presentAlert({
-          header: 'Error',
-          message: 'Check scanner cancelled. Please try again!',
+          header: 'Information',
+          message: 'Check scanner cancelled.',
           buttons: ['OK'],
         })
         return;
@@ -411,8 +411,8 @@ const Home: React.FC = () => {
       const ehicResult = await ScanbotSDKService.SDK.UI.startEHICScanner({uiConfigs: configs});
       if (ehicResult.status === 'CANCELED') {
         await presentAlert({
-          header: 'Error',
-          message: 'EHICCard Scanner cancelled. Please try again!',
+          header: 'Information',
+          message: 'EHICCard Scanner cancelled.',
           buttons: ['OK'],
         });
         return;
@@ -458,8 +458,8 @@ const Home: React.FC = () => {
       const dataScannerResult = await ScanbotSDKService.SDK.UI.startDataScanner({uiConfigs, scannerStep});
       if (dataScannerResult.status === 'CANCELED') {
         await presentAlert({
-          header: 'Error',
-          message: 'Data scanner cancelled. Please try again!',
+          header: 'Information',
+          message: 'Data scanner cancelled.',
           buttons: ['OK'],
         })
         return;
@@ -501,8 +501,8 @@ const Home: React.FC = () => {
       const licensePlateScannerResult = await ScanbotSDKService.SDK.UI.startLicensePlateScanner({uiConfigs: config});
       if (licensePlateScannerResult.status === 'CANCELED') {
         await presentAlert({
-          header: 'Error',
-          message: 'License plate scanner cancelled. Please try again!',
+          header: 'Information',
+          message: 'License plate scanner cancelled.',
           buttons: ['OK'],
         });
         return;
@@ -536,8 +536,8 @@ const Home: React.FC = () => {
       const genericDocumentRecognizerResult = await ScanbotSDKService.SDK.UI.startGenericDocumentRecognizer({uiConfigs: config});
       if (genericDocumentRecognizerResult.status === 'CANCELED') {
         await presentAlert({
-          header: 'Error',
-          message: 'Generic document scanner. Please try again!',
+          header: 'Information',
+          message: 'Generic document scanner cancelled.',
           buttons: ['OK'],
         });
         return;
