@@ -43,19 +43,11 @@ const Home: React.FC = () => {
   const [presentAlert] = useIonAlert();
   const [present, dismiss] = useIonLoading();
 
-  async function checkLicense(): Promise<boolean> {
-    if (!(await ScanbotSDKService.checkLicense())) {
-      alert('Scanbot SDK (trial) license has expired!');
-      return false;
-    }
-    return true;
-  }
-
   // -----------------
   // Document Scanner
   // -----------------
   const startDocumentScanner = async () => {
-    if (!(await checkLicense())) { return; }
+    if (!(await ScanbotSDKService.checkLicense())) { return; }
 
     const configs: DocumentScannerConfiguration = {
       cameraPreviewMode: 'FIT_IN',
@@ -89,7 +81,7 @@ const Home: React.FC = () => {
   // Barcode Scanner
   // __________________
   const startBarcodeScanner = async () => {
-    if (!(await checkLicense())) { return; }
+    if (!(await ScanbotSDKService.checkLicense())) { return; }
 
     const configs: BarcodeScannerConfiguration = {
       // Customize colors, text resources, behavior, etc..
@@ -128,7 +120,7 @@ const Home: React.FC = () => {
   // BatchBarcode Scanner
   // ---------------------
   const startBatchBarcodeScanner = async () => {
-    if (!(await checkLicense())) { return; }
+    if (!(await ScanbotSDKService.checkLicense())) { return; }
 
     const configs: BatchBarcodeScannerConfiguration = {
       // Customize colors, text resources, behavior, etc..
@@ -160,7 +152,7 @@ const Home: React.FC = () => {
   // Detect barcodes from an image
   // ------------------------------
   const detectBarcodeFromImage = async () => {
-    if (!(await checkLicense())) { return; }
+    if (!(await ScanbotSDKService.checkLicense())) { return; }
 
     try {
       const image = await Camera.getPhoto({
@@ -206,7 +198,7 @@ const Home: React.FC = () => {
   // Detect barcodes from multiple images
   // -------------------------------------
   const detectBarcodeFromImages = async () => {
-    if (!(await checkLicense())) { return; }
+    if (!(await ScanbotSDKService.checkLicense())) { return; }
 
     try {
       const barcodes: BarcodeResultField[] = [];
@@ -259,7 +251,7 @@ const Home: React.FC = () => {
   // MRZ scanner
   // -------------
   const startMRZScanner = async () => {
-    if (!(await checkLicense())) { return; }
+    if (!(await ScanbotSDKService.checkLicense())) { return; }
 
     try {
       const configs: MrzScannerConfiguration = {
@@ -302,7 +294,7 @@ const Home: React.FC = () => {
   // Check Scanner
   // --------------
   const startCheckScanner = async () => {
-    if (!(await checkLicense())) { return; }
+    if (!(await ScanbotSDKService.checkLicense())) { return; }
 
     try {
       const configs: CheckRecognizerConfiguration = {
@@ -336,7 +328,7 @@ const Home: React.FC = () => {
   // EHIC Card Scanner
   // ------------------
   const startEHICCardScanner = async () => {
-    if (!(await checkLicense())) { return; }
+    if (!(await ScanbotSDKService.checkLicense())) { return; }
 
     try {
       const configs: HealthInsuranceCardScannerConfiguration = {
@@ -369,7 +361,7 @@ const Home: React.FC = () => {
   // Data Scanner
   // -------------
   const startDataScanner = async () => {
-    if (!(await checkLicense())) { return; }
+    if (!(await ScanbotSDKService.checkLicense())) { return; }
 
     try {
       const uiConfigs: DataScannerConfiguration = {
@@ -412,7 +404,7 @@ const Home: React.FC = () => {
   // License Plate Scanner
   // ----------------------
   const startLicensePlateScanner = async () => {
-    if (!(await checkLicense())) { return; }
+    if (!(await ScanbotSDKService.checkLicense())) { return; }
 
     try {
       const config: LicensePlateScannerConfiguration = {
@@ -452,7 +444,7 @@ const Home: React.FC = () => {
   // Generic Document Scanner
   // -------------------------
   const startGenericDocumentScanner = async () => {
-    if (!(await checkLicense())) { return; }
+    if (!(await ScanbotSDKService.checkLicense())) { return; }
 
     try {
       const config: GenericDocumentRecognizerConfiguration = {
@@ -480,6 +472,9 @@ const Home: React.FC = () => {
     }
   }
 
+  // -------------------------
+  // SDK License Information
+  // -------------------------
   const viewLicenseInfo = async () => {
     const result = await ScanbotSDKService.SDK.getLicenseInfo();
     await presentAlert({
@@ -489,6 +484,9 @@ const Home: React.FC = () => {
     });
   }
 
+  // -------------------------
+  // OCR Confoguaration
+  // -------------------------
   const viewOcrConfigs = async () => {
     const result = await ScanbotSDKService.SDK.getOcrConfigs();
     await presentAlert({

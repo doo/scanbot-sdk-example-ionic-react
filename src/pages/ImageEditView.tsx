@@ -49,7 +49,7 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
         'LOW_LIGHT_BINARIZATION_2',
         'SENSITIVE_BINARIZATION'
     ];
-    const modal = useRef<HTMLIonModalElement>(null);
+    const filterModal = useRef<HTMLIonModalElement>(null);
     const [present, dismiss] = useIonLoading();
     const [presentAlert] = useIonAlert();
     const [imageData, setImageData] = useState('');
@@ -67,17 +67,9 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
         await loadImageData();
     }
 
-    async function checkLicense(): Promise<boolean> {
-        if (!(await ScanbotSDKService.checkLicense())) {
-            alert('Scanbot SDK (trial) license has expired!');
-            return false;
-        }
-        return true;
-    }
-
     /* Crop Image */
     async function openCroppingUi() {
-        if (!(await checkLicense())) { return; }
+        if (!(await ScanbotSDKService.checkLicense())) { return; }
 
         try {
             const croppingResult = await ScanbotSDKService.SDK.UI.startCroppingScreen({
@@ -109,7 +101,7 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
 
     /* load image data */
     async function loadImageData() {
-        if (!(await checkLicense())) { return; }
+        if (!(await ScanbotSDKService.checkLicense())) { return; }
 
         try {
             const imgData = await ScanbotSDKService.fetchDataFromUri(
@@ -124,10 +116,12 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
 
     /* Filter Image */
     async function applyFilter(selectedFilter: ImageFilter) {
-        if (!(await checkLicense())) { return; }
+        filterModal.current?.dismiss();
+
+        if (!(await ScanbotSDKService.checkLicense())) { return; }
 
         try {
-            modal.current?.dismiss();
+            filterModal.current?.dismiss();
             await present({
                 message: 'Loading...',
                 spinner: 'circles'
@@ -177,7 +171,7 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
                         <IonButton id="open-custom-dialog" expand="block">
                             Filter
                         </IonButton>
-                        <IonModal id="example-modal" ref={modal} trigger="open-custom-dialog">
+                        <IonModal id="example-modal" ref={filterModal} trigger="open-custom-dialog">
                             <div className="wrapper">
                                 <h1>Filter Formats</h1>
                                 <IonList lines="inset">

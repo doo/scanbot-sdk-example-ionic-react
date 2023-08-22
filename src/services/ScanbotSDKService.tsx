@@ -11,7 +11,8 @@ export class ScanbotSDKService {
             // OK - we have a trial session, a valid trial license or valid production license.
             return true;
         }
-        console.log('Scanbot SDK (trial) license has expired!');
+        console.log(JSON.stringify(result));
+        alert('Scanbot SDK (trial) license has expired!');
         return false;
     }
 

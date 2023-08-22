@@ -64,14 +64,6 @@ const ImagePreview: React.FC = () => {
         await reloadPages();
     });
 
-    async function checkLicense(): Promise<boolean> {
-        if (!(await ScanbotSDKService.checkLicense())) {
-            alert('Scanbot SDK (trial) license has expired!');
-            return false;
-        }
-        return true;
-    }
-
     function hasScannedPages(): boolean {
         if (!pages || pages.length === 0) {
             alert('No scanned images were found. Please scan at least one page.');
@@ -82,7 +74,7 @@ const ImagePreview: React.FC = () => {
 
     /* load scanned documents */
     async function reloadPages() {
-        if (!(await checkLicense())) { return; }
+        if (!(await ScanbotSDKService.checkLicense())) { return; }
         if (!hasScannedPages()) { return; }
 
         try {
@@ -109,7 +101,7 @@ const ImagePreview: React.FC = () => {
     async function createPDF(pageSize: PDFPageSize) {
         pdfModal.current?.dismiss();
 
-        if (!(await checkLicense())) { return; }
+        if (!(await ScanbotSDKService.checkLicense())) { return; }
         if (!hasScannedPages()) { return; }
 
         try {
@@ -146,7 +138,7 @@ const ImagePreview: React.FC = () => {
     async function createTIFF(binarized: boolean) {
         tiffModal.current?.dismiss();
 
-        if (!(await checkLicense())) { return; }
+        if (!(await ScanbotSDKService.checkLicense())) { return; }
         if (!hasScannedPages()) { return; }
 
         try {
@@ -185,7 +177,7 @@ const ImagePreview: React.FC = () => {
 
     /* Perform OCR, read text from images */
     async function runOCR() {
-        if (!(await checkLicense())) { return; }
+        if (!(await ScanbotSDKService.checkLicense())) { return; }
         if (!hasScannedPages()) { return; }
 
         try {
