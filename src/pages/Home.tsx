@@ -298,52 +298,6 @@ const Home: React.FC = () => {
     }
   }
 
-  // -------------------------------------
-  // Perform OCR, read text from an image
-  // -------------------------------------
-  const startOCR = async () => {
-    if (!(await checkLicense())) { return; }
-
-    try {
-      let pages = ImageResultsRepository.INSTANCE.getPages();
-      if (!pages || pages.length <= 0 ){
-        await presentAlert({
-          header: 'No Pages to Extract Data',
-          message: 'Please add a Document',
-          buttons: ['OK'],
-        });
-        return;
-      }
-      await present({
-        message: 'Loading...',
-        spinner: 'circles'
-      });
-      const ocrResult = await ScanbotSDKService.SDK.performOcr({
-        images: pages.map(p => p.documentImageFileUri!),
-        languages: ['en', 'de'],
-        outputFormat: 'FULL_OCR_RESULT',
-      });
-      await dismiss();
-      if (ocrResult.status === 'CANCELED') {
-        await presentAlert({
-          header: 'Information',
-          message: 'OCR process canceled.',
-          buttons: ['OK'],
-        });
-        return;
-      }
-      await presentAlert({
-        header: 'OCR Results',
-        message: JSON.stringify(ocrResult),
-        buttons: ['OK'],
-      });
-    }
-    catch (error) {
-      await dismiss();
-      console.error(error);
-    }
-  }
-
   // --------------
   // Check Scanner
   // --------------
@@ -607,10 +561,6 @@ const Home: React.FC = () => {
 
           <IonItem onClick={async() => {await startLicensePlateScanner()}}>
             <IonLabel>Scan License Plate</IonLabel>
-          </IonItem>
-
-          <IonItem onClick={async() => {await startOCR()}}>
-            <IonLabel>Read Texts From a Document</IonLabel>
           </IonItem>
 
           <IonItem onClick={async() => {await startDataScanner()}}>

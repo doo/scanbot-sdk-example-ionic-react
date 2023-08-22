@@ -183,6 +183,42 @@ const ImagePreview: React.FC = () => {
         }
     }
 
+    /* Perform OCR, read text from images */
+    async function runOCR() {
+        if (!(await checkLicense())) { return; }
+        if (!hasScannedPages()) { return; }
+
+        try {
+            await present({
+                message: 'Processing...',
+                spinner: 'circles'
+            });
+            const ocrResult = await ScanbotSDKService.SDK.performOcr({
+                images: pages.map(p => p.documentImageFileUri!),
+                languages: ['en', 'de'],
+                outputFormat: 'FULL_OCR_RESULT',
+            });
+            await dismiss();
+            if (ocrResult.status === 'CANCELED') {
+                await presentAlert({
+                    header: 'Information',
+                    message: 'OCR process canceled.',
+                    buttons: ['OK'],
+                });
+                return;
+            }
+            await presentAlert({
+                header: 'OCR Results',
+                message: JSON.stringify(ocrResult),
+                buttons: ['OK'],
+            });
+        }
+        catch (error) {
+            await dismiss();
+            console.error(error);
+        }
+    }
+
     return (
         <IonPage>
             <IonHeader>
@@ -209,7 +245,7 @@ const ImagePreview: React.FC = () => {
             <IonFooter>
                 <IonToolbar>
                     <IonButtons slot="start">
-                        <IonButton id="open-pagesize-list" expand="block"> Create PDF </IonButton>
+                        <IonButton id="open-pagesize-list" expand="block">Create PDF</IonButton>
                         <IonModal id="example-modal" ref={pdfModal} trigger="open-pagesize-list">
                             <div className="wrapper">
                                 <h1>Page Size</h1>
@@ -222,10 +258,11 @@ const ImagePreview: React.FC = () => {
                                 </IonList>
                             </div>
                         </IonModal>
+                        <IonButton onClick={() => runOCR()}>Run OCR</IonButton>
                     </IonButtons>
 
                     <IonButtons slot="end">
-                        <IonButton id="open-tiff-dialog" expand="block"> Create TIFF </IonButton>
+                        <IonButton id="open-tiff-dialog" expand="block">Create TIFF</IonButton>
                         <IonModal id="example-modal" ref={tiffModal} trigger="open-tiff-dialog">
                             <div className="wrapper">
                                 <h1>Image Type</h1>
