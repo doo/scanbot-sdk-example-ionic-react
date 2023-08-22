@@ -45,8 +45,7 @@ setupIonicReact();
 const SDK_LICENSE_KEY = '';
 
 // initialize Scanbot SDK
-const initializeSdk = async () =>
-{
+const initializeSdk = async () => {
     const config: ScanbotSDKConfiguration = {
         loggingEnabled: true,
         licenseKey: SDK_LICENSE_KEY,
@@ -54,10 +53,10 @@ const initializeSdk = async () =>
     try {
       await ScanbotSDKService.SDK.initializeSdk(config)
             .then(result => console.log(JSON.stringify(result)))
-            .catch(err => console.error('Scanbot sdk initialize error ' + JSON.stringify(err)));
+            .catch(err => console.error('Scanbot SDK initialization error: ' + JSON.stringify(err)));
     }
     catch (e) {
-        console.error(e);
+        console.error('Scanbot SDK initialization error: ' + JSON.stringify(e));
     }
 }
 
