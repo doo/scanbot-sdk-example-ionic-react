@@ -43,12 +43,6 @@ Please check the full [requirements for Capacitor](https://capacitorjs.com/docs/
 
 ### Install
 
-Install [Ionic](https://ionicframework.com):
-
-```
-npm install -g ionic
-```
-
 Install the node modules of this project:
 
 ```
