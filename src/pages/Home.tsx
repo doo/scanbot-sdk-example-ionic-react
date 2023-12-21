@@ -36,6 +36,7 @@ import {
   LicensePlateScannerConfiguration,
   GenericDocumentRecognizerConfiguration,
   BarcodeResultField,
+  FinderDocumentScannerConfiguration,
 } from 'cordova-plugin-scanbot-sdk';
 
 const Home: React.FC = () => {
@@ -60,7 +61,7 @@ const Home: React.FC = () => {
       // see further configs ...
     };
     try {
-      const documentScannerResults = await ScanbotSDKService.SDK.UI.startDocumentScanner({uiConfigs: configs});
+      const documentScannerResults = await ScanbotSDKService.SDK.UI.startDocumentScanner({ uiConfigs: configs });
       if (documentScannerResults.status === 'CANCELED') {
         await presentAlert({
           header: 'Information',
@@ -70,6 +71,41 @@ const Home: React.FC = () => {
         return;
       }
       await ImageResultsRepository.INSTANCE.addPages(documentScannerResults.pages);
+      history.push("/imagepreview");
+    }
+    catch (error) {
+      console.error(error);
+    }
+  }
+
+  // ------------------------
+  // Finder Document Scanner
+  // ------------------------
+  const startFinderDocumentScanner = async () => {
+    if (!(await ScanbotSDKService.checkLicense())) { return; }
+
+    const configs: FinderDocumentScannerConfiguration = {
+      // Customize colors, text resources, behavior, etc..
+      cameraPreviewMode: 'FILL_IN',
+      interfaceOrientation: 'PORTRAIT',
+      ignoreBadAspectRatio: true,
+      topBarBackgroundColor: '#c8193c',
+      finderEnabled: true,
+      finderAspectRatio: { width: 4, height: 3 }
+      // see further configs ...
+    };
+    try {
+      const finderDocumentScannerResults = await ScanbotSDKService.SDK.UI.startFinderDocumentScanner({ uiConfigs: configs });
+      if (finderDocumentScannerResults.status === 'CANCELED') {
+        await presentAlert({
+          header: 'Information',
+          message: 'Document scanner has been canceled.',
+          buttons: ['OK'],
+        });
+        return;
+      }
+
+      await ImageResultsRepository.INSTANCE.addPages([finderDocumentScannerResults.page]);
       history.push("/imagepreview");
     }
     catch (error) {
@@ -92,7 +128,7 @@ const Home: React.FC = () => {
       // see further configs ...
     };
     try {
-      const barcodeScannerResults = await ScanbotSDKService.SDK.UI.startBarcodeScanner({uiConfigs: configs});
+      const barcodeScannerResults = await ScanbotSDKService.SDK.UI.startBarcodeScanner({ uiConfigs: configs });
       if (barcodeScannerResults.status === 'CANCELED') {
         await presentAlert({
           header: 'Information',
@@ -131,7 +167,7 @@ const Home: React.FC = () => {
       // see further configs ...
     };
     try {
-      const batchBarcodeScannerResults = await ScanbotSDKService.SDK.UI.startBatchBarcodeScanner({uiConfigs: configs});
+      const batchBarcodeScannerResults = await ScanbotSDKService.SDK.UI.startBatchBarcodeScanner({ uiConfigs: configs });
       if (batchBarcodeScannerResults.status === 'CANCELED') {
         await presentAlert({
           header: 'Information',
@@ -166,7 +202,7 @@ const Home: React.FC = () => {
         spinner: 'circles'
       });
       const result = await ScanbotSDKService.SDK.detectBarcodesOnImage({ imageFileUri: originalImageFileUri });
-      
+
       if (result.status === 'CANCELED') {
         await dismiss();
         await presentAlert({
@@ -214,7 +250,7 @@ const Home: React.FC = () => {
         message: 'Detecting barcodes...',
         spinner: 'circles'
       });
-      const response = await ScanbotSDKService.SDK.detectBarcodesOnImages({ imageFilesUris: originalImageFileUrls});
+      const response = await ScanbotSDKService.SDK.detectBarcodesOnImages({ imageFilesUris: originalImageFileUrls });
       if (response.status === 'CANCELED') {
         await dismiss();
         await presentAlert({
@@ -304,7 +340,7 @@ const Home: React.FC = () => {
         finderLineColor: '#0000ff',
         // see further configs ...
       };
-      const checkResult = await ScanbotSDKService.SDK.UI.startCheckRecognizer({uiConfigs: configs});
+      const checkResult = await ScanbotSDKService.SDK.UI.startCheckRecognizer({ uiConfigs: configs });
       if (checkResult.status === 'CANCELED') {
         await presentAlert({
           header: 'Information',
@@ -337,7 +373,7 @@ const Home: React.FC = () => {
         interfaceOrientation: 'PORTRAIT',
         // see further configs ...
       };
-      const ehicResult = await ScanbotSDKService.SDK.UI.startEHICScanner({uiConfigs: configs});
+      const ehicResult = await ScanbotSDKService.SDK.UI.startEHICScanner({ uiConfigs: configs });
       if (ehicResult.status === 'CANCELED') {
         await presentAlert({
           header: 'Information',
@@ -380,7 +416,7 @@ const Home: React.FC = () => {
         // '?' for any character, '#' for any digit, all other characters represent themselves.
         //pattern: '',
       };
-      const dataScannerResult = await ScanbotSDKService.SDK.UI.startDataScanner({uiConfigs, scannerStep});
+      const dataScannerResult = await ScanbotSDKService.SDK.UI.startDataScanner({ uiConfigs, scannerStep });
       if (dataScannerResult.status === 'CANCELED') {
         await presentAlert({
           header: 'Information',
@@ -420,7 +456,7 @@ const Home: React.FC = () => {
         confirmationDialogConfirmButtonFilled: true,
         // see further configs...
       };
-      const licensePlateScannerResult = await ScanbotSDKService.SDK.UI.startLicensePlateScanner({uiConfigs: config});
+      const licensePlateScannerResult = await ScanbotSDKService.SDK.UI.startLicensePlateScanner({ uiConfigs: config });
       if (licensePlateScannerResult.status === 'CANCELED') {
         await presentAlert({
           header: 'Information',
@@ -452,7 +488,7 @@ const Home: React.FC = () => {
         shouldSavePhotoImageInStorage: true,
         // see further configs...
       };
-      const genericDocumentRecognizerResult = await ScanbotSDKService.SDK.UI.startGenericDocumentRecognizer({uiConfigs: config});
+      const genericDocumentRecognizerResult = await ScanbotSDKService.SDK.UI.startGenericDocumentRecognizer({ uiConfigs: config });
       if (genericDocumentRecognizerResult.status === 'CANCELED') {
         await presentAlert({
           header: 'Information',
@@ -510,8 +546,11 @@ const Home: React.FC = () => {
             <IonLabel>Document Scanner</IonLabel>
           </IonItemDivider>
 
-          <IonItem onClick={async () => { await startDocumentScanner();}}>
+          <IonItem onClick={async () => { await startDocumentScanner(); }}>
             <IonLabel>Scan Document</IonLabel>
+          </IonItem>
+          <IonItem onClick={async () => { await startFinderDocumentScanner(); }}>
+            <IonLabel>Finder Document Scanner</IonLabel>
           </IonItem>
           <IonItem onClick={() => { history.push("/imagepreview"); }}>
             <IonLabel>View Image Results</IonLabel>
@@ -523,19 +562,19 @@ const Home: React.FC = () => {
             <IonLabel>Barcode Scanner & Detector</IonLabel>
           </IonItemDivider>
 
-          <IonItem onClick={async() => {await startBarcodeScanner()}}>
+          <IonItem onClick={async () => { await startBarcodeScanner() }}>
             <IonLabel>Scan QR-/Barcode</IonLabel>
           </IonItem>
 
-          <IonItem onClick={async() => {await startBatchBarcodeScanner()}}>
+          <IonItem onClick={async () => { await startBatchBarcodeScanner() }}>
             <IonLabel>Scan Batch of Barcodes</IonLabel>
           </IonItem>
 
-          <IonItem onClick={async() => {await detectBarcodeFromImage()}}>
+          <IonItem onClick={async () => { await detectBarcodeFromImage() }}>
             <IonLabel>Import Image & Detect Barcodes</IonLabel>
           </IonItem>
 
-          <IonItem onClick={async() => {await detectBarcodeFromImages()}}>
+          <IonItem onClick={async () => { await detectBarcodeFromImages() }}>
             <IonLabel>Import Images & Detect Barcodes</IonLabel>
           </IonItem>
 
@@ -545,27 +584,27 @@ const Home: React.FC = () => {
           <IonItemDivider>
             <IonLabel>Data Detectors</IonLabel>
           </IonItemDivider>
-          <IonItem onClick={async() => {await startMRZScanner()}}>
+          <IonItem onClick={async () => { await startMRZScanner() }}>
             <IonLabel>Scan MRZ</IonLabel>
           </IonItem>
 
-          <IonItem onClick={async() => {await startEHICCardScanner()}}>
+          <IonItem onClick={async () => { await startEHICCardScanner() }}>
             <IonLabel>Scan Health Insurance Card</IonLabel>
           </IonItem>
 
-          <IonItem onClick={async() => {await startCheckScanner()}}>
+          <IonItem onClick={async () => { await startCheckScanner() }}>
             <IonLabel>Scan Checks</IonLabel>
           </IonItem>
 
-          <IonItem onClick={async() => {await startLicensePlateScanner()}}>
+          <IonItem onClick={async () => { await startLicensePlateScanner() }}>
             <IonLabel>Scan License Plate</IonLabel>
           </IonItem>
 
-          <IonItem onClick={async() => {await startDataScanner()}}>
+          <IonItem onClick={async () => { await startDataScanner() }}>
             <IonLabel>Scan Data</IonLabel>
           </IonItem>
 
-          <IonItem onClick={async() => {await startGenericDocumentScanner()}}>
+          <IonItem onClick={async () => { await startGenericDocumentScanner() }}>
             <IonLabel>Scan Generic Documents</IonLabel>
           </IonItem>
         </IonItemGroup>
@@ -575,10 +614,10 @@ const Home: React.FC = () => {
             <IonLabel>Test Other SDK API Methods</IonLabel>
           </IonItemDivider>
 
-          <IonItem onClick={async () => { await viewLicenseInfo();}}>
+          <IonItem onClick={async () => { await viewLicenseInfo(); }}>
             <IonLabel>View License Info</IonLabel>
           </IonItem>
-          <IonItem onClick={async () => { await viewOcrConfigs();}}>
+          <IonItem onClick={async () => { await viewOcrConfigs(); }}>
             <IonLabel>View OCR Configs</IonLabel>
           </IonItem>
           <IonItem>
