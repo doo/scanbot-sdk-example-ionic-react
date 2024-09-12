@@ -1,24 +1,34 @@
-/* Scanbot SDK */
-import ScanbotSdk from 'cordova-plugin-scanbot-sdk';
+// /* Scanbot SDK */
+// import ScanbotSdk from 'cordova-plugin-scanbot-sdk';
 
-export class ScanbotSDKService {
-    public static SDK = ScanbotSdk.promisify!();
-    private static ImageExtension: String = 'JPG';
+// class ScanbotSDKService {
+//     public SDK = ScanbotSdk.promisify!();
+//     private ImageExtension: String = 'JPG';
 
-    public static async checkLicense() {
-        const result = await this.SDK.getLicenseInfo();
-        if (result.info.isLicenseValid) {
-            // OK - we have a trial session, a valid trial license or valid production license.
-            return true;
-        }
-        console.log(JSON.stringify(result));
-        alert('Scanbot SDK (trial) license has expired!');
-        return false;
-    }
+//     // -------------------------
+//     // Validate license
+//     // -------------------------
+//     public validateLicense = async () => {
+//         try {
+//             const result = await this.SDK.getLicenseInfo();
+//             if (result?.isLicenseValid) {
+//                 // OK - we have a trial session, a valid trial license or valid production license.
+//                 return true;
+//             }
+//             alert('Scanbot SDK (trial) license has expired!');
+//             return false;
+//         }
+//         catch (error) {
+//             //ShowAlert('License Validation Failed', JSON.stringify(error), ['OK']);
+//             return false;
+//         }
+//     }
 
-    public static async fetchDataFromUri(path: string): Promise<string> {
-        const result = await this.SDK.getImageData({ imageFileUri: path });
-        // ScanbotSDK return the raw base64 data. Add prefix to convert it to a dataUri
-        return `data:image/${(ScanbotSDKService.ImageExtension)};base64,` + result.base64ImageData;
-    }
-}
+//     // public static async fetchDataFromUri(path: string): Promise<string> {
+//     //     const result = await this.SDK.getImageData({ imageFileUri: path });
+//     //     // ScanbotSDK return the raw base64 data. Add prefix to convert it to a dataUri
+//     //     return `data:image/${(ScanbotSDKService.ImageExtension)};base64,` + result.base64ImageData;
+//     // }
+// }
+
+// export default new ScanbotSDKService();

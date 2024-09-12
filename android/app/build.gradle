@@ -1,7 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    namespace "io.scanbot.example.sdk.capacitor.ionic.react"
+    compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "io.scanbot.example.sdk.capacitor.ionic.react"
         minSdkVersion rootProject.ext.minSdkVersion

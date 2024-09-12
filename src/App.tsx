@@ -24,45 +24,22 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-/* Scanbot SDK */
-import { ScanbotSDKConfiguration } from 'cordova-plugin-scanbot-sdk';
-
-/* Scanbot SDK Service */
-import { ScanbotSDKService } from './services/ScanbotSDKService';
 import React from "react";
-import BarcodeListView from "./pages/BarcodeListView";
+import DocumentScannerPage from './pages/features/document_detectors/DocumentScannerPage';
+import BarcodeScannerPage from './pages/features/barcode_detectors/BarcodeScannerPage';
+import DataDetectorPage from './pages/features/data_detectors/DataDetectorPage';
+import ScanbotService from './services/scanbot_service';
+import BarcodeResultPage from './pages/features/barcode_detectors/BarcodeResultPage';
+import MRZResultPage from './pages/features/data_detectors/MRZResultPage';
+import EHICResultPage from './pages/features/data_detectors/EHICResultPage';
+import CheckResultPage from './pages/features/data_detectors/CheckResultPage';
+import MedicalCertificateResultPage from './pages/features/data_detectors/MedicalCertificateResultPage';
 
 setupIonicReact();
 
-/*
-  * TODO add the license key here.
-  * Please note: The Scanbot SDK will run without a license key for one minute per session!
-  * After the trial period has expired all Scanbot SDK functions as well as the UI components will stop working
-  * or may be terminated. You can get a free "no-strings-attached" trial license key.
-  * Please submit the trial license form (https://scanbot.io/trial/) on our website by using
-  * the app identifier "io.scanbot.example.sdk.capacitor.ionic.react" of this example app.
-  */
-const SDK_LICENSE_KEY = '';
-
-// initialize Scanbot SDK
-const initializeSdk = async () => {
-    const config: ScanbotSDKConfiguration = {
-        loggingEnabled: true,
-        licenseKey: SDK_LICENSE_KEY,
-    };
-    try {
-      await ScanbotSDKService.SDK.initializeSdk(config)
-            .then(result => console.log(JSON.stringify(result)))
-            .catch(err => console.error('Scanbot SDK initialization error: ' + JSON.stringify(err)));
-    }
-    catch (e) {
-        console.error('Scanbot SDK initialization error: ' + JSON.stringify(e));
-    }
-}
-
 const App: React.FC = () => {
 
-  initializeSdk().then();
+  ScanbotService.initSdk();
 
   return (
     <IonApp>
@@ -74,14 +51,28 @@ const App: React.FC = () => {
           <Route exact path="/">
             <Redirect to="/home" />
           </Route>
-            <Route exact path="/imagepreview">
-                <ImagePreview />
-            </Route>
-          <Route exact path="/barcoderesultview">
-            <BarcodeListView />
+          <Route exact path="/document_scanner/:selectedItem" component={DocumentScannerPage}>
           </Route>
-            <Route exact path="/imageeditview/:pageId" component={ImageEditView}>
-            </Route>
+          <Route exact path="/barcode_scanner/:selectedItem" component={BarcodeScannerPage}>
+          </Route>
+          <Route exact path="/data_detector/:selectedItem" component={DataDetectorPage}>
+          </Route>
+          <Route exact path="/imagepreview">
+            <ImagePreview />
+          </Route>
+          <Route exact path="/barcode_result">
+            <BarcodeResultPage />
+          </Route>
+          <Route exact path="/mrz_result" component={MRZResultPage}>
+          </Route>
+          <Route exact path="/ehic_result" component={EHICResultPage}>
+          </Route>
+          <Route exact path="/check_result" component={CheckResultPage}>
+          </Route>
+          <Route exact path="/medical_certificate_result" component={MedicalCertificateResultPage}>
+          </Route>
+          <Route exact path="/imageeditview/:pageId" component={ImageEditView}>
+          </Route>
 
         </IonRouterOutlet>
       </IonReactRouter>
