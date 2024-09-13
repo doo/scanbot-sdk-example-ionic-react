@@ -14,10 +14,8 @@ const CommonModalView: React.FC<Props> = (props: Props) => {
 
     const modal = useRef<HTMLIonModalElement>(null);
 
-    const cancel = () => modal.current?.dismiss();
-
-    function dismiss() {
-        modal.current?.dismiss();
+    async function dismiss() {
+        await modal.current?.dismiss();
     }
 
     return (
@@ -30,6 +28,9 @@ const CommonModalView: React.FC<Props> = (props: Props) => {
                 <IonHeader>
                     <IonToolbar>
                         <IonTitle>{props.modalTitle}</IonTitle>
+                        <IonLabel className='ion-padding' slot="end" onClick={dismiss}>
+                            Cancel
+                        </IonLabel>
                     </IonToolbar>
                 </IonHeader>
                 <IonContent className="ion-padding">

@@ -1,4 +1,4 @@
-import { Page } from 'cordova-plugin-scanbot-sdk';
+import { Page } from "capacitor-plugin-scanbot-sdk";
 
 export class ImageResultsRepository {
 

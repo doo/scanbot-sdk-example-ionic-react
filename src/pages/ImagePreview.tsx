@@ -17,6 +17,7 @@ import {
 
 import { useHistory } from 'react-router';
 import React, { useState, useRef } from 'react';
+import { modalController } from '@ionic/core';
 
 import { ImageResultsRepository } from '../utils/ImageRepository';
 import ScanbotService from '../services/scanbot_service';
@@ -34,7 +35,6 @@ const ImagePreview: React.FC = () => {
     const [imageData, setImageData] = initialState;
 
     let pages = useRef<Page[]>([]);
-    const pdfModalView = useRef<HTMLIonModalElement>(null);
 
     useIonViewWillEnter(() => {
         reloadPages();
@@ -99,18 +99,14 @@ const ImagePreview: React.FC = () => {
     /* Create PDF from scanned image urls */
     const createPDF = async (selectedItem: PDFPageSizeEnum) => {
         if (!(await ScanbotService.validateLicense())) {
-            pdfModalView.current?.dismiss();
             return;
         }
 
         try {
             const imageUrls = pages.current.map(p => p.originalImageFileUri!);
             const pdfPageSize = PDFPageSizeList[selectedItem].value as PageSize;
-
             const result = await ScanbotService.createPDF(imageUrls, pdfPageSize);
-            alert('start');
-            pdfModalView.current?.dismiss();
-            alert('end');
+            modalController.dismiss();
             if (result!.status == 'CANCELED') {
                 await ShowAlert('Information', 'PDF Creation has been canceled.', ['OK']);
                 return;
@@ -141,6 +137,7 @@ const ImagePreview: React.FC = () => {
                 await ShowAlert('Information', 'TIFF Creation has been canceled.', ['OK']);
                 return;
             };
+            modalController.dismiss();
             alert(JSON.stringify(result));
         }
         catch (error) {

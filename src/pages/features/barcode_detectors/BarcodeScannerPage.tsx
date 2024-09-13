@@ -8,9 +8,7 @@ import CoreFeatureItemsView from "../../common_components/CoreFeatureItemsView";
 import ScanbotService from "../../../services/scanbot_service";
 import { ShowAlert } from "../../../services/alert_service";
 import { BarcodeRepository } from "../../../utils/BarcodeRepository";
-import { PickImage, PickImages } from "../../../utils/camera_util";
-import { BarcodeResultField } from "capacitor-plugin-scanbot-sdk";
-import { BarcodeItem } from "capacitor-plugin-scanbot-sdk/dist/esm/ui_v2";
+import { PickImage } from "../../../utils/camera_util";
 
 interface BarcodeScannerProps extends RouteComponentProps<{ selectedItem: string; }> { }
 

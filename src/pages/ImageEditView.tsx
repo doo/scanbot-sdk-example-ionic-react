@@ -9,21 +9,22 @@ import {
     IonButtons,
     IonBackButton,
     IonImg,
-    useIonViewWillEnter
+    useIonViewWillEnter,
+    IonCard,
 } from '@ionic/react';
 
 import './styles/ImageEditView.css';
 
-import React, { useState } from 'react';
 import { RouteComponentProps } from 'react-router';
+import { modalController } from '@ionic/core';
 
 import { ImageResultsRepository } from '../utils/ImageRepository';
-
 import ScanbotService from '../services/scanbot_service';
 import { ShowAlert } from '../services/alert_service';
 import CommonModalView from './common_components/CommonModalView';
 import { FilterOptions } from '../utils/data_util';
 import { Page, ParametricFilter } from 'capacitor-plugin-scanbot-sdk';
+import { useState } from 'react';
 
 interface ImageEditViewIdProps extends RouteComponentProps<{ pageId: string; }> { }
 
@@ -85,7 +86,6 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
         }
 
         try {
-            alert(selectedFilterItem);
             const filteredResult = await ScanbotService.applyImageFilterOnPage(
                 selectedPage,
                 selectedFilterItem
@@ -95,7 +95,9 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
                 await ShowAlert('Information', 'Image filtering process has been cancelled.', ['OK']);
                 return;
             };
+
             await updatePage(filteredResult);
+            modalController.dismiss();
         }
         catch (error) {
             //filterOptionModal.value.cancel();
@@ -115,7 +117,9 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
             </IonHeader>
 
             <IonContent className='ion-padding'>
-                <IonImg src={imageData} />
+                <IonCard>
+                    <IonImg src={imageData} />
+                </IonCard>
             </IonContent>
 
             <IonFooter>
@@ -124,7 +128,6 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
                         <IonButton onClick={startCroppingScreen}>Crop</IonButton>
                     </IonButtons>
                     <IonButtons slot="end">
-
                         <CommonModalView
                             id='filter-modal'
                             modalTitle='Filter Options'

@@ -1,7 +1,7 @@
 import { IonBackButton, IonButtons, IonContent, IonHeader, IonItem, IonLabel, IonList, IonPage, IonTitle, IonToolbar, useIonViewWillEnter } from "@ionic/react";
 import { useState } from "react";
 import { BarcodeRepository } from "../../../utils/BarcodeRepository";
-import { BarcodeResultField } from "cordova-plugin-scanbot-sdk";
+import { BarcodeResultField } from "capacitor-plugin-scanbot-sdk";
 
 const BarcodeResultPage: React.FC = () => {
 
