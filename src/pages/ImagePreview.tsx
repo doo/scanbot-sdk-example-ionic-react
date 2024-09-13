@@ -1,71 +1,46 @@
-import { 
+import {
     IonContent,
-    IonHeader, 
+    IonHeader,
     IonFooter,
-    IonPage, 
-    IonTitle, 
-    IonToolbar, 
-    IonBackButton, 
+    IonPage,
+    IonTitle,
+    IonToolbar,
+    IonBackButton,
     IonButtons,
     IonButton,
-    IonImg, 
-    useIonAlert, 
+    IonImg,
     useIonViewWillEnter,
     IonGrid,
     IonRow,
     IonCol,
-    IonModal,
-    IonList,
-    IonItem,
-    IonLabel,
-    useIonLoading, } from '@ionic/react';
+} from '@ionic/react';
 
 import { useHistory } from 'react-router';
-import React, {useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
+import { modalController } from '@ionic/core';
 
-import { Page, PDFPageSize } from 'cordova-plugin-scanbot-sdk';
 import { ImageResultsRepository } from '../utils/ImageRepository';
-
-/* Scanbot SDK Service */
-import { ScanbotSDKService } from '../services/ScanbotSDKService';
+import ScanbotService from '../services/scanbot_service';
+import CommonModalView from './common_components/CommonModalView';
+import { PDFPageSizeList, TiffOptions } from '../utils/data_util';
+import { PDFPageSizeEnum } from '../enums/pdf_page_size_enum';
+import { TiffOptionsEnum } from '../enums/tiff_option_enum';
+import { Page, PageSize } from 'capacitor-plugin-scanbot-sdk';
 
 const ImagePreview: React.FC = () => {
-    const pdfPageSizeList: PDFPageSize[] = [
-        "FROM_IMAGE",
-        "A4",
-        "FIXED_A4",
-        "US_LETTER",
-        "FIXED_US_LETTER",
-        "AUTO_LOCALE",
-        "AUTO"
-    ];
-    const tiffOptions = [
-        {
-            label: "Binarized Images (1-bit)",
-            binarized: true
-        },
-        {
-            label: "Color Images",
-            binarized: false
-        },
-    ];
 
-    const [presentAlert] = useIonAlert();
-    const pdfModal = useRef<HTMLIonModalElement>(null);
-    const tiffModal = useRef<HTMLIonModalElement>(null);
-    const [present, dismiss] = useIonLoading();
     const history = useHistory();
-    const initialState = useState<any>([]);
-    const [imageData, setImageData] = initialState;
 
-    const pages: Page[] = ImageResultsRepository.INSTANCE.getPages();
+    const [imageData, setImageData] = useState<any>([]);
 
-    useIonViewWillEnter(async () => {
-        await reloadPages();
+    let pages = useRef<Page[]>([]);
+
+    useIonViewWillEnter(() => {
+        reloadPages();
     });
 
     function hasScannedPages(): boolean {
-        if (!pages || pages.length === 0) {
+        if (!pages || pages.current.length === 0) {
             alert('No scanned images were found. Please scan at least one page.');
             return false;
         }
@@ -74,16 +49,20 @@ const ImagePreview: React.FC = () => {
 
     /* load scanned documents */
     async function reloadPages() {
-        if (!(await ScanbotSDKService.checkLicense())) { return; }
-        if (!hasScannedPages()) { return; }
+        if (!(await ScanbotService.validateLicense())) { return; }
 
+        setImageData([]);
         try {
-            for (const page of pages) {
-                const url = page.documentPreviewImageFileUri as string;
-                const imageURL = await ScanbotSDKService.fetchDataFromUri(url);
-                if(imageURL === '' || imageURL === undefined) break;
+            pages.current = ImageResultsRepository.INSTANCE.getPages();
 
-                setImageData((imageData: any) => [...imageData, {id: page.pageId, url: imageURL}]);
+            if (!hasScannedPages()) { return; }
+
+            for (const page of pages.current) {
+                const url = page.documentPreviewImageFileUri as string;
+                const imageURL = await ScanbotService.fetchDataFromUri(url);
+                if (imageURL === '' || imageURL === undefined) break;
+
+                setImageData((imageData: any) => [...imageData, { id: page.pageId, url: imageURL }]);
             }
         }
         catch (error) {
@@ -94,121 +73,84 @@ const ImagePreview: React.FC = () => {
     /* Navigate to cropping page */
     function navigateToCroppingPage(pageId: string): void {
         history.push("/imageeditview/" + pageId);
-        setImageData(() => initialState)
+        setImageData([]);
     }
 
-    /* Create PDF */
-    async function createPDF(pageSize: PDFPageSize) {
-        pdfModal.current?.dismiss();
-
-        if (!(await ScanbotSDKService.checkLicense())) { return; }
-        if (!hasScannedPages()) { return; }
+    /* Scan Document */
+    const startDocumentScanner = async () => {
+        if (!(await ScanbotService.validateLicense())) { return; }
 
         try {
-            await present({
-                message: 'Loading...',
-                spinner: 'circles'
-            })
-            const result = await ScanbotSDKService.SDK.createPdf({
-                images: pages.map(p => p.documentImageFileUri!),
-                pageSize: pageSize
-            });
-            await dismiss();
-            if (result.status === "CANCELED") {
-                await presentAlert({
-                    header: 'Information',
-                    message: result.message,
-                    buttons: ['OK'],
-                });
+            const documentResult = await ScanbotService.startDocumentScanner();
+
+            if (documentResult!.status === 'CANCELED') {
+                alert('Document scanner has been canceled.');
                 return;
-            }
-            await presentAlert({
-                header: 'Success',
-                message: result.pdfFileUri,
-                buttons: ['OK'],
-            });
+            };
+            await ImageResultsRepository.INSTANCE.addPages(documentResult!.pages);
+            await reloadPages();
         }
         catch (error) {
-            await dismiss();
-            console.error(error);
+            console.log('Scan Document Failed: ' + JSON.stringify(error));
         }
     }
 
-    /* Create TIFF */
-    async function createTIFF(binarized: boolean) {
-        tiffModal.current?.dismiss();
-
-        if (!(await ScanbotSDKService.checkLicense())) { return; }
-        if (!hasScannedPages()) { return; }
+    /* Create PDF from scanned image urls */
+    const createPDF = async (selectedItem: PDFPageSizeEnum) => {
+        if (!(await ScanbotService.validateLicense())) {
+            modalController.dismiss();
+            return;
+        }
 
         try {
-            await present({
-                message: 'Loading...',
-                spinner: 'circles'
-            });
-            const result = await ScanbotSDKService.SDK.writeTiff({
-                images: pages.map(p => p.documentImageFileUri!),
-                oneBitEncoded: binarized,
-                dpi: 300,
-                compression: binarized ? 'CCITT_T6' : 'ADOBE_DEFLATE',
-            });
-            await dismiss();
-            if (result.status !== "CANCELED") {
-                await presentAlert({
-                    header: 'Success',
-                    message: result.tiffFileUri,
-                    buttons: ['OK'],
-                });
-            }
-            else {
-                await presentAlert({
-                    header: 'Information',
-                    message: result.message,
-                    buttons: ['OK'],
-                });
+            const imageUrls = pages.current.map(p => p.originalImageFileUri!);
+            const pdfPageSize = PDFPageSizeList[selectedItem].value as PageSize;
+
+            const result = await ScanbotService.createPDF(imageUrls, pdfPageSize);
+            modalController.dismiss();
+            if (result!.status === 'CANCELED') {
+                alert('PDF Creation has been canceled.');
                 return;
-            }
+            };
+            alert(JSON.stringify(result));
         }
         catch (error) {
-            await dismiss();
-            console.error(error);
+            modalController.dismiss();
+            console.log('PDF Creation Failed: ' + JSON.stringify(error));
         }
     }
 
-    /* Perform OCR, read text from images */
-    async function runOCR() {
-        if (!(await ScanbotSDKService.checkLicense())) { return; }
-        if (!hasScannedPages()) { return; }
+    /* Create TIFF from scanned image urls */
+    const writeTIFF = async (selectedItem: TiffOptionsEnum) => {
+        if (!(await ScanbotService.validateLicense())) {
+            modalController.dismiss();
+            return;
+        }
 
         try {
-            await present({
-                message: 'Processing...',
-                spinner: 'circles'
-            });
-            const ocrResult = await ScanbotSDKService.SDK.performOcr({
-                images: pages.map(p => p.documentImageFileUri!),
-                languages: ['en', 'de'],
-                outputFormat: 'FULL_OCR_RESULT',
-            });
-            await dismiss();
-            if (ocrResult.status === 'CANCELED') {
-                await presentAlert({
-                    header: 'Information',
-                    message: 'OCR process canceled.',
-                    buttons: ['OK'],
-                });
+            const imageUrls = pages.current.map(p => p.documentImageFileUri!);
+            const binarized = selectedItem === TiffOptionsEnum.Binarized;
+
+            const result = await ScanbotService.writeTIFF(imageUrls, binarized);
+
+            if (result!.status == 'CANCELED') {
+                alert('TIFF Creation has been canceled.');
                 return;
-            }
-            await presentAlert({
-                header: 'OCR Results',
-                message: JSON.stringify(ocrResult),
-                buttons: ['OK'],
-            });
+            };
+            modalController.dismiss();
+            alert(JSON.stringify(result));
         }
         catch (error) {
-            await dismiss();
-            console.error(error);
+            modalController.dismiss();
+            console.log('TIFF Creation Failed: ' + JSON.stringify(error));
         }
+    }
+
+    const deleteAll = async () => {
+        await ImageResultsRepository.INSTANCE.removeAllPages();
+        pages.current = [];
+        setImageData([]);
+        await ScanbotService.cleanUp();
     }
 
     return (
@@ -218,55 +160,48 @@ const ImagePreview: React.FC = () => {
                     <IonButtons slot="start">
                         <IonBackButton />
                     </IonButtons>
-                <IonTitle>Display Images</IonTitle>
+                    <IonTitle>Image Preview</IonTitle>
                 </IonToolbar>
             </IonHeader>
 
             <IonContent fullscreen>
                 <IonGrid>
-                <IonRow>
-                    {imageData.map((page: any) => (
-                    <IonCol size="6" key={page.id}>
-                        <IonImg onClick={() => navigateToCroppingPage(page.id)} src={page.url} />
-                    </IonCol>
-                    ))}
-                </IonRow>
+                    <IonRow>
+                        {imageData.map((page: any) => (
+                            <IonCol size="4" key={page.id}>
+                                <IonImg onClick={() => navigateToCroppingPage(page.id)} src={page.url} />
+                            </IonCol>
+                        ))}
+                    </IonRow>
                 </IonGrid>
             </IonContent>
 
             <IonFooter>
                 <IonToolbar>
                     <IonButtons slot="start">
-                        <IonButton id="open-pagesize-list" expand="block">Create PDF</IonButton>
-                        <IonModal id="example-modal" ref={pdfModal} trigger="open-pagesize-list">
-                            <div className="wrapper">
-                                <h1>Page Size</h1>
-                                <IonList lines="inset">
-                                    {pdfPageSizeList.map((item) => (
-                                        <IonItem button={true} detail={false} onClick={() => createPDF(item)}>
-                                            <IonLabel>{item}</IonLabel>
-                                        </IonItem>
-                                    ))}
-                                </IonList>
-                            </div>
-                        </IonModal>
-                        <IonButton onClick={() => runOCR()}>Run OCR</IonButton>
+
+                        <IonButton onClick={startDocumentScanner}>Add</IonButton>
+
+                        <CommonModalView
+                            id='pdf-modal'
+                            modalTitle='PDF Page Size Options'
+                            buttonTitle='Create PDF'
+                            initialBreakPoint={0.5}
+                            optionList={PDFPageSizeList}
+                            onItemClick={createPDF} />
+
+                        <CommonModalView
+                            id='tiff-modal'
+                            modalTitle='Tiff Creation Options'
+                            buttonTitle='Create TIFF'
+                            initialBreakPoint={0.25}
+                            optionList={TiffOptions}
+                            onItemClick={writeTIFF} />
+
                     </IonButtons>
 
                     <IonButtons slot="end">
-                        <IonButton id="open-tiff-dialog" expand="block">Create TIFF</IonButton>
-                        <IonModal id="example-modal" ref={tiffModal} trigger="open-tiff-dialog">
-                            <div className="wrapper">
-                                <h1>Image Type</h1>
-                                <IonList lines="inset">
-                                    {tiffOptions.map((item) => (
-                                        <IonItem button={true} detail={false} onClick={() => createTIFF(item.binarized)}>
-                                            <IonLabel>{item.label}</IonLabel>
-                                        </IonItem>
-                                    ))}
-                                </IonList>
-                            </div>
-                        </IonModal>
+                        <IonButton onClick={deleteAll}>Delete</IonButton>
                     </IonButtons>
                 </IonToolbar>
             </IonFooter>
