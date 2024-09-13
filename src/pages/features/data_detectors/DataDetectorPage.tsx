@@ -5,7 +5,6 @@ import { GetItemList } from "../../../utils/data_util";
 import { CoreFeatureIdEnum } from "../../../enums/core_feature_id_enum";
 import { useState } from "react";
 import CoreFeatureItemsView from "../../common_components/CoreFeatureItemsView";
-import { ShowAlert } from "../../../services/alert_service";
 import ScanbotService from "../../../services/scanbot_service";
 import { DataDetectorRepository } from "../../../utils/data_detector_repository";
 import { PickImage } from "../../../utils/camera_util";
@@ -33,15 +32,15 @@ const DataDetectorPage: React.FC<DataDetectorPageProps> = ({ match }) => {
 
         try {
             const mrzResult = await ScanbotService.startMrzScanner();
-            if (mrzResult!.status == 'CANCELED') {
-                await ShowAlert('Information', 'MRZ detector has been cancelled.', ['OK']);
+            if (mrzResult!.status === 'CANCELED') {
+                alert('MRZ detector has been cancelled.');
                 return;
             };
             DataDetectorRepository.GeneratMRZResult(mrzResult);
             await history.push('/mrz_result');
         }
         catch (error) {
-            await ShowAlert('Detect MRZ data Failed', JSON.stringify(error), ['OK']);
+            console.log('Detect MRZ data Failed: ' + JSON.stringify(error));
         }
     }
 
@@ -51,15 +50,15 @@ const DataDetectorPage: React.FC<DataDetectorPageProps> = ({ match }) => {
 
         try {
             const ehicResult = await ScanbotService.startEHICScanner();
-            if (ehicResult!.status == 'CANCELED') {
-                await ShowAlert('Information', 'EHIC detector has been cancelled.', ['OK']);
+            if (ehicResult!.status === 'CANCELED') {
+                alert('EHIC detector has been cancelled.');
                 return;
             };
             DataDetectorRepository.GeneratEHICResult(ehicResult!);
             await history.push('/ehic_result');
         }
         catch (error) {
-            await ShowAlert('Detect EHIC data Failed', JSON.stringify(error), ['OK']);
+            console.log('Detect EHIC data Failed: ' + JSON.stringify(error));
         }
     }
 
@@ -69,15 +68,15 @@ const DataDetectorPage: React.FC<DataDetectorPageProps> = ({ match }) => {
 
         try {
             const checkResult = await ScanbotService.startCheckRecognizer();
-            if (checkResult!.status == 'CANCELED') {
-                await ShowAlert('Information', 'Check data detector has been cancelled.', ['OK']);
+            if (checkResult!.status === 'CANCELED') {
+                alert('Check data detector has been cancelled.');
                 return;
             };
             DataDetectorRepository.GenerateCheckResult(checkResult!);
             await history.push('/check_result');
         }
         catch (error) {
-            await ShowAlert('Detect Check data Failed', JSON.stringify(error), ['OK']);
+            console.log('Detect Check data Failed:' + JSON.stringify(error));
         }
     }
 
@@ -89,15 +88,15 @@ const DataDetectorPage: React.FC<DataDetectorPageProps> = ({ match }) => {
             const originalImageFileUri = await PickImage();
 
             const checkResult = await ScanbotService.recognizeCheck(originalImageFileUri);
-            if (checkResult!.status == 'CANCELED') {
-                await ShowAlert('Information', 'Check data detector has been cancelled.', ['OK']);
+            if (checkResult!.status === 'CANCELED') {
+                alert('Check data detector has been cancelled.');
                 return;
             };
             DataDetectorRepository.GenerateCheckResult(checkResult!);
             await history.push('/check_result');
         }
         catch (error) {
-            await ShowAlert('Detect Check data Failed', 'Please try again!', ['OK']);
+            console.log('Detect Check data Failed: ' + JSON.stringify(error));
         }
     }
 
@@ -107,14 +106,14 @@ const DataDetectorPage: React.FC<DataDetectorPageProps> = ({ match }) => {
 
         try {
             const licensePlateResult = await ScanbotService.startLicensePlateScanner();
-            if (licensePlateResult!.status == 'CANCELED') {
-                await ShowAlert('Information', 'License plate data detector has been cancelled.', ['OK']);
+            if (licensePlateResult!.status === 'CANCELED') {
+                alert('License plate data detector has been cancelled.');
                 return;
             };
             alert(JSON.stringify(licensePlateResult));
         }
         catch (error) {
-            await ShowAlert('Detect license plate data Failed', JSON.stringify(error), ['OK']);
+            console.log('Detect license plate data Failed: ' + JSON.stringify(error));
         }
     }
 
@@ -125,15 +124,15 @@ const DataDetectorPage: React.FC<DataDetectorPageProps> = ({ match }) => {
         try {
             const medicalCertificateResult = await ScanbotService.startMedicalCertificateRecognizer();
             console.log(JSON.stringify(medicalCertificateResult));
-            if (medicalCertificateResult!.status == 'CANCELED') {
-                await ShowAlert('Information', 'Medicle certificate data detector has been cancelled.', ['OK']);
+            if (medicalCertificateResult!.status === 'CANCELED') {
+                alert('Medicle certificate data detector has been cancelled.');
                 return;
             };
             DataDetectorRepository.GenerateMedData(medicalCertificateResult);
             await history.push('/medical_certificate_result');
         }
         catch (error) {
-            await ShowAlert('Detect Medical data Failed', JSON.stringify(error), ['OK']);
+            console.log('Detect Medical data Failed: ' + JSON.stringify(error));
         }
     }
 
@@ -144,13 +143,13 @@ const DataDetectorPage: React.FC<DataDetectorPageProps> = ({ match }) => {
         try {
             const textResult = await ScanbotService.startTextDataScanner();
             if (textResult!.status == 'CANCELED') {
-                await ShowAlert('Information', 'Text data detector has been cancelled.', ['OK']);
+                alert('Text data detector has been cancelled.');
                 return;
             };
             alert(JSON.stringify(textResult));
         }
         catch (error) {
-            await ShowAlert('Detect text data Failed', JSON.stringify(error), ['OK']);
+            console.log('Detect text data Failed: ' + JSON.stringify(error));
         }
     }
 
@@ -161,13 +160,13 @@ const DataDetectorPage: React.FC<DataDetectorPageProps> = ({ match }) => {
         try {
             const genericDocumentResult = await ScanbotService.startGenericDocumentRecognizer();
             if (genericDocumentResult!.status == 'CANCELED') {
-                await ShowAlert('Information', 'Generic document scanner has been cancelled.', ['OK']);
+                alert('Generic document scanner has been cancelled.');
                 return;
             };
             alert(JSON.stringify(genericDocumentResult));
         }
         catch (error) {
-            await ShowAlert('Generic document scanner Failed', JSON.stringify(error), ['OK']);
+            console.log('Generic document scanner Failed: ' + JSON.stringify(error));
         }
     }
 
@@ -201,7 +200,7 @@ const DataDetectorPage: React.FC<DataDetectorPageProps> = ({ match }) => {
                 await startGenericDocumentScaner();
                 break;
             default:
-                await ShowAlert('Selected item is wrong', 'Please try again!', ['OK']);
+                alert('Please try again!');
                 break;
         }
     }

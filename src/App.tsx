@@ -34,6 +34,7 @@ import MRZResultPage from './pages/features/data_detectors/MRZResultPage';
 import EHICResultPage from './pages/features/data_detectors/EHICResultPage';
 import CheckResultPage from './pages/features/data_detectors/CheckResultPage';
 import MedicalCertificateResultPage from './pages/features/data_detectors/MedicalCertificateResultPage';
+import MoreFeaturePage from './pages/features/other_api_features/MoreFeaturePage';
 
 setupIonicReact();
 
@@ -56,6 +57,8 @@ const App: React.FC = () => {
           <Route exact path="/barcode_scanner/:selectedItem" component={BarcodeScannerPage}>
           </Route>
           <Route exact path="/data_detector/:selectedItem" component={DataDetectorPage}>
+          </Route>
+          <Route exact path="/more_api_feature/:selectedItem" component={MoreFeaturePage}>
           </Route>
           <Route exact path="/imagepreview">
             <ImagePreview />

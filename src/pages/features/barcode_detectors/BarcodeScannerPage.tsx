@@ -6,7 +6,6 @@ import { CoreFeatureIdEnum } from "../../../enums/core_feature_id_enum";
 import { useState } from "react";
 import CoreFeatureItemsView from "../../common_components/CoreFeatureItemsView";
 import ScanbotService from "../../../services/scanbot_service";
-import { ShowAlert } from "../../../services/alert_service";
 import { BarcodeRepository } from "../../../utils/BarcodeRepository";
 import { PickImage } from "../../../utils/camera_util";
 
@@ -33,15 +32,15 @@ const BarcodeScannerPage: React.FC<BarcodeScannerProps> = ({ match }) => {
 
         try {
             const barcodeResult = await ScanbotService.startSingleBarcodeScanner();
-            if (barcodeResult!.status == 'CANCELED') {
-                await ShowAlert('Information', 'Barcode Scanner has been cancelled.', ['OK']);
+            if (barcodeResult!.status === 'CANCELED') {
+                alert('Single Barcode Scanner has been cancelled.');
                 return;
             };
 
             await navigateToBarcodeResultPage(barcodeResult.items!);
         }
         catch (error) {
-            await ShowAlert('Scan Barcodes Failed', JSON.stringify(error), ['OK']);
+            console.log('Scan Barcodes Failed: ' + JSON.stringify(error));
         }
     }
 
@@ -51,14 +50,14 @@ const BarcodeScannerPage: React.FC<BarcodeScannerProps> = ({ match }) => {
 
         try {
             const batchBarcodeResult = await ScanbotService.startMultiBarcodeScanner();
-            if (batchBarcodeResult!.status == 'CANCELED') {
-                await ShowAlert('Information', 'Batch Barcode Scanner has been cancelled.', ['OK']);
+            if (batchBarcodeResult!.status === 'CANCELED') {
+                alert('Multi Barcode Scanner has been cancelled.');
                 return;
             };
             await navigateToBarcodeResultPage(batchBarcodeResult.items!);
         }
         catch (error) {
-            await ShowAlert('Scan Barcodes Failed', JSON.stringify(error), ['OK']);
+            console.log('Scan Barcodes Failed: ' + JSON.stringify(error));
         }
     }
 
@@ -68,14 +67,14 @@ const BarcodeScannerPage: React.FC<BarcodeScannerProps> = ({ match }) => {
 
         try {
             const batchBarcodeResult = await ScanbotService.startMultiARBarcodeScanner();
-            if (batchBarcodeResult!.status == 'CANCELED') {
-                await ShowAlert('Information', 'Batch Barcode Scanner has been cancelled.', ['OK']);
+            if (batchBarcodeResult!.status === 'CANCELED') {
+                alert('Multi Barcode Scanner has been cancelled.');
                 return;
             };
             await navigateToBarcodeResultPage(batchBarcodeResult.items!);
         }
         catch (error) {
-            await ShowAlert('Scan Barcodes Failed', JSON.stringify(error), ['OK']);
+            console.log('Scan Barcodes Failed: ' + JSON.stringify(error));
         }
     }
 
@@ -86,14 +85,14 @@ const BarcodeScannerPage: React.FC<BarcodeScannerProps> = ({ match }) => {
         try {
             const originalImageFileUri = await PickImage();
             const detectedBarcodesResult = await ScanbotService.detectBarcodesOnImage(originalImageFileUri);
-            if (detectedBarcodesResult!.status == 'CANCELED') {
-                await ShowAlert('Information', 'Barcode detector has been cancelled.', ['OK']);
+            if (detectedBarcodesResult!.status === 'CANCELED') {
+                alert('Barcode detector has been cancelled.');
                 return;
             };
             await navigateToBarcodeResultPage(detectedBarcodesResult!.barcodes);
         }
         catch (error) {
-            await ShowAlert('Detect Barcodes Failed', 'Please try again!', ['OK']);
+            console.log('Detect Barcodes Failed: ' + JSON.stringify(error));
         }
     }
 
@@ -104,7 +103,7 @@ const BarcodeScannerPage: React.FC<BarcodeScannerProps> = ({ match }) => {
             await history.push('/barcode_result');
         }
         catch (error) {
-            await ShowAlert('Navigate to barcode result page failed', JSON.stringify(error), ['OK']);
+            console.log('Navigate to barcode result page failed: ' + JSON.stringify(error));
         }
     }
 
@@ -126,7 +125,7 @@ const BarcodeScannerPage: React.FC<BarcodeScannerProps> = ({ match }) => {
                 await detectBarcodesFromImage();
                 break;
             default:
-                await ShowAlert('Selected item is wrong', 'Please try again!', ['OK']);
+                alert('Please try again!');
                 break;
         }
     }

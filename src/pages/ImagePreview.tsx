@@ -24,15 +24,14 @@ import ScanbotService from '../services/scanbot_service';
 import CommonModalView from './common_components/CommonModalView';
 import { PDFPageSizeList, TiffOptions } from '../utils/data_util';
 import { PDFPageSizeEnum } from '../enums/pdf_page_size_enum';
-import { ShowAlert } from '../services/alert_service';
 import { TiffOptionsEnum } from '../enums/tiff_option_enum';
 import { Page, PageSize } from 'capacitor-plugin-scanbot-sdk';
 
 const ImagePreview: React.FC = () => {
 
     const history = useHistory();
-    const initialState = useState<any>([]);
-    const [imageData, setImageData] = initialState;
+
+    const [imageData, setImageData] = useState<any>([]);
 
     let pages = useRef<Page[]>([]);
 
@@ -52,7 +51,7 @@ const ImagePreview: React.FC = () => {
     async function reloadPages() {
         if (!(await ScanbotService.validateLicense())) { return; }
 
-        imageData.value = [];
+        setImageData([]);
         try {
             pages.current = ImageResultsRepository.INSTANCE.getPages();
 
@@ -74,7 +73,7 @@ const ImagePreview: React.FC = () => {
     /* Navigate to cropping page */
     function navigateToCroppingPage(pageId: string): void {
         history.push("/imageeditview/" + pageId);
-        setImageData(() => initialState)
+        setImageData([]);
     }
 
     /* Scan Document */
@@ -84,45 +83,47 @@ const ImagePreview: React.FC = () => {
         try {
             const documentResult = await ScanbotService.startDocumentScanner();
 
-            if (documentResult!.status == 'CANCELED') {
-                await ShowAlert('Information', 'Document scanner has been canceled.', ['OK']);
+            if (documentResult!.status === 'CANCELED') {
+                alert('Document scanner has been canceled.');
                 return;
             };
             await ImageResultsRepository.INSTANCE.addPages(documentResult!.pages);
             await reloadPages();
         }
         catch (error) {
-            await ShowAlert('Scan Document Failed', JSON.stringify(error), ['OK']);
+            console.log('Scan Document Failed: ' + JSON.stringify(error));
         }
     }
 
     /* Create PDF from scanned image urls */
     const createPDF = async (selectedItem: PDFPageSizeEnum) => {
         if (!(await ScanbotService.validateLicense())) {
+            modalController.dismiss();
             return;
         }
 
         try {
             const imageUrls = pages.current.map(p => p.originalImageFileUri!);
             const pdfPageSize = PDFPageSizeList[selectedItem].value as PageSize;
+
             const result = await ScanbotService.createPDF(imageUrls, pdfPageSize);
             modalController.dismiss();
-            if (result!.status == 'CANCELED') {
-                await ShowAlert('Information', 'PDF Creation has been canceled.', ['OK']);
+            if (result!.status === 'CANCELED') {
+                alert('PDF Creation has been canceled.');
                 return;
             };
             alert(JSON.stringify(result));
         }
         catch (error) {
-            //pdfPageSizeModal.value.cancel();
-            await ShowAlert('PDF Creation Failed', JSON.stringify(error), ['OK']);
+            modalController.dismiss();
+            console.log('PDF Creation Failed: ' + JSON.stringify(error));
         }
     }
 
     /* Create TIFF from scanned image urls */
     const writeTIFF = async (selectedItem: TiffOptionsEnum) => {
         if (!(await ScanbotService.validateLicense())) {
-            //tiffOptionModal.value.cancel();
+            modalController.dismiss();
             return;
         }
 
@@ -132,17 +133,16 @@ const ImagePreview: React.FC = () => {
 
             const result = await ScanbotService.writeTIFF(imageUrls, binarized);
 
-            //tiffOptionModal.value.cancel();
             if (result!.status == 'CANCELED') {
-                await ShowAlert('Information', 'TIFF Creation has been canceled.', ['OK']);
+                alert('TIFF Creation has been canceled.');
                 return;
             };
             modalController.dismiss();
             alert(JSON.stringify(result));
         }
         catch (error) {
-            //tiffOptionModal.value.cancel();
-            await ShowAlert('TIFF Creation Failed', JSON.stringify(error), ['OK']);
+            modalController.dismiss();
+            console.log('TIFF Creation Failed: ' + JSON.stringify(error));
         }
     }
 

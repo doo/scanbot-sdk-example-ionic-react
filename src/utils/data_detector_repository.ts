@@ -1,5 +1,4 @@
 import { CheckRecognizerResult, HealthInsuranceCardScannerResult, MedicalCertificateScannerResult, MrzScannerResult } from "capacitor-plugin-scanbot-sdk";
-import { ShowAlert } from "../services/alert_service";
 
 export class DataDetectorRepository {
     public static MrzResult: { name: string; value: string; }[] = [];
@@ -61,6 +60,7 @@ export class DataDetectorRepository {
     /** Arrange med data to a readable format */
     public static GenerateMedData = async (medData: MedicalCertificateScannerResult) => {
         try {
+            this.MedicalCertifacteResult = [];
             if (medData === undefined || medData === null) {
                 return;
             }
@@ -129,7 +129,7 @@ export class DataDetectorRepository {
                 )
             }
         } catch (error) {
-            await ShowAlert('Information', 'Medicle certificate data mapping error.', ['OK']);
+            console.log('Medicle certificate data mapping error.');
         }
 
     }

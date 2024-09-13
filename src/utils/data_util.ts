@@ -48,6 +48,7 @@ export const CORE_FEATURES: CoreFeatureModel[] = [
         description: "The Scanbot SDK provides more API methods.",
         items: [
             { key: CoreFeatureEnum.LicenseInfo, value: "View License Info" },
+            { key: CoreFeatureEnum.OCRInfo, value: "View OCR Info" },
             { key: CoreFeatureEnum.LearnMore, value: "Learn More About the Scanbot SDK" },
         ],
     },
@@ -78,7 +79,6 @@ export const TiffOptions = [
 ];
 
 export const FilterOptions = [
-    { key: 'NONE', value: 'None' },
     { key: new ScanbotBinarizationFilter(), value: 'Scanbot Binarization Filter' },
     { key: new CustomBinarizationFilter({ preset: 'PRESET_1' }), value: 'Custom Binarization Filter' },
     { key: new ColorDocumentFilter(), value: 'Color Document Filter' },

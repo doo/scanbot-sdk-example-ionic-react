@@ -16,5 +16,6 @@ export enum CoreFeatureEnum {
     MedicalCertificate,
     GenericDocument,
     LicenseInfo,
+    OCRInfo,
     LearnMore,
 }

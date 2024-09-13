@@ -13,7 +13,6 @@ import {
 
 import { useHistory } from 'react-router';
 
-
 import { CORE_FEATURES } from '../utils/data_util';
 import { CoreFeatureIdEnum } from '../enums/core_feature_id_enum';
 
@@ -32,7 +31,7 @@ const Home: React.FC = () => {
         await history.push("/data_detector/" + selectedItem);
         break;
       case CoreFeatureIdEnum.Other:
-        await history.push("/document_scanner/" + selectedItem);
+        await history.push("/more_api_feature/" + selectedItem);
         break;
       default:
         break;

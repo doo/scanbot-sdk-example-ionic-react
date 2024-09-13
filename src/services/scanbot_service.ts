@@ -1,5 +1,4 @@
 import { Directory, Filesystem } from "@capacitor/filesystem";
-import { ShowAlert } from './alert_service';
 
 import {
     ScanbotSDK,
@@ -61,7 +60,7 @@ export default class ScanbotService {
             const result = await ScanbotSDK.initializeSDK(configuration);
             console.log(JSON.stringify(result));
         } catch (error) {
-            ShowAlert('Initialization Failed', JSON.stringify(error), ['OK']);
+            console.log('Initialization Failed: ' + JSON.stringify(error));
         }
     }
 
@@ -86,7 +85,7 @@ export default class ScanbotService {
             return false;
         }
         catch (error) {
-            //ShowAlert('License Validation Failed', JSON.stringify(error), ['OK']);
+            console.log('License Validation Failed: ' + JSON.stringify(error));
             return false;
         }
     }
@@ -119,7 +118,6 @@ export default class ScanbotService {
             ignoreBadAspectRatio: true,
             topBarBackgroundColor: '#c8193c',
             finderEnabled: true,
-            finderAspectRatio: { width: 4, height: 3 }
             // see further configs ...
         };
         return await ScanbotSDK.startFinderDocumentScanner(configs);
@@ -455,6 +453,27 @@ export default class ScanbotService {
             },
         });
     }
+
+    // -------------------------
+    // SDK License Information
+    // -------------------------
+    public static viewLicenseInfo = async () => {
+        const licenseInfo = await ScanbotSDK.getLicenseInfo();
+        return licenseInfo;
+    }
+
+    // -------------------------
+    // OCR Confoguaration
+    // -------------------------
+    public static viewOcrConfigs = async () => {
+        try {
+            const ocrInfo = await ScanbotSDK.getOCRConfigs();
+            return ocrInfo;
+        } catch (error) {
+            alert(JSON.stringify(error));
+        }
+    }
+
 
     // ----------------------------
     // Clean all data from storage

@@ -6,7 +6,6 @@ import { CoreFeatureIdEnum } from "../../../enums/core_feature_id_enum";
 import { useState } from "react";
 import CoreFeatureItemsView from "../../common_components/CoreFeatureItemsView";
 import ScanbotService from "../../../services/scanbot_service";
-import { ShowAlert } from "../../../services/alert_service";
 import { ImageResultsRepository } from "../../../utils/ImageRepository";
 
 interface DocumentScannerProps extends RouteComponentProps<{ selectedItem: string; }> { }
@@ -32,14 +31,14 @@ const DocumentScannerPage: React.FC<DocumentScannerProps> = ({ match }) => {
         try {
             const documentResult = await ScanbotService.startDocumentScanner();
             if (documentResult.status === 'CANCELED') {
-                await ShowAlert('Information', 'Document scanner has been canceled.', ['OK']);
+                alert('Document scanner has been canceled.');
                 return;
             }
             await ImageResultsRepository.INSTANCE.addPages(documentResult.pages);
             history.push("/imagepreview");
         }
         catch (error) {
-            await ShowAlert('Scan Document Failed', JSON.stringify(error), ['OK']);
+            console.log(JSON.stringify(error));
         }
     }
 
@@ -49,15 +48,15 @@ const DocumentScannerPage: React.FC<DocumentScannerProps> = ({ match }) => {
 
         try {
             const finderDocumentResult = await ScanbotService.startFinderDocumentScanner();
-            if (finderDocumentResult!.status == 'CANCELED') {
-                await ShowAlert('Information', 'Finder Document scanner has been canceled.', ['OK']);
+            if (finderDocumentResult!.status === 'CANCELED') {
+                alert('Finder Document scanner has been canceled.');
                 return;
             };
             await ImageResultsRepository.INSTANCE.addPages(finderDocumentResult!.pages);
             await history.push('/imagepreview');
         }
         catch (error) {
-            await ShowAlert('Scan Document Failed', JSON.stringify(error), ['OK']);
+            console.log('Scan Document Failed: ' + JSON.stringify(error));
         }
     }
 
@@ -80,7 +79,7 @@ const DocumentScannerPage: React.FC<DocumentScannerProps> = ({ match }) => {
                 break;
             }
             default: {
-                await ShowAlert('Selected item is wrong', 'Please try again!', ['OK']);
+                alert('Please try again!');
                 break;
             }
         }

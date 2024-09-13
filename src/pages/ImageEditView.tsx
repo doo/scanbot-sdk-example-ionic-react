@@ -13,14 +13,11 @@ import {
     IonCard,
 } from '@ionic/react';
 
-import './styles/ImageEditView.css';
-
 import { RouteComponentProps } from 'react-router';
 import { modalController } from '@ionic/core';
 
 import { ImageResultsRepository } from '../utils/ImageRepository';
 import ScanbotService from '../services/scanbot_service';
-import { ShowAlert } from '../services/alert_service';
 import CommonModalView from './common_components/CommonModalView';
 import { FilterOptions } from '../utils/data_util';
 import { Page, ParametricFilter } from 'capacitor-plugin-scanbot-sdk';
@@ -66,22 +63,21 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
 
         try {
             const croppingResult = await ScanbotService.startCroppingScreen(selectedPage);
-
-            if (croppingResult!.status == 'CANCELED') {
-                await ShowAlert('Information', 'Cropping screen has been cancelled.', ['OK']);
+            if (croppingResult.status === 'CANCELED') {
+                alert('Cropping screen has been cancelled.');
                 return;
             };
             await updatePage(croppingResult.page!);
         }
         catch (error) {
-            await ShowAlert('Start cropping screen Failed', JSON.stringify(error), ['OK']);
+            console.log('Start cropping screen Failed: ', JSON.stringify(error));
         }
     }
 
     /* Apply filter to the image */
     const onFilterSelected = async (selectedFilterItem: ParametricFilter) => {
         if (!(await ScanbotService.validateLicense())) {
-            //filterOptionModal.value.cancel();
+            modalController.dismiss();
             return;
         }
 
@@ -90,9 +86,8 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
                 selectedPage,
                 selectedFilterItem
             );
-            //filterOptionModal.value.cancel();
-            if (filteredResult!.status == 'CANCELED') {
-                await ShowAlert('Information', 'Image filtering process has been cancelled.', ['OK']);
+            if (filteredResult!.status === 'CANCELED') {
+                alert('Image filtering process has been cancelled.');
                 return;
             };
 
@@ -100,8 +95,8 @@ const ImageEditView: React.FC<ImageEditViewIdProps> = ({ match }) => {
             modalController.dismiss();
         }
         catch (error) {
-            //filterOptionModal.value.cancel();
-            await ShowAlert('Image filtering process Failed', JSON.stringify(error), ['OK']);
+            modalController.dismiss();
+            console.log('Image filtering process Failed: ' + JSON.stringify(error));
         }
     }
 
